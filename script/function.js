@@ -335,7 +335,7 @@ export function cetakNominall(bulanSekarang) {
       // bulanSekarang.forEach(satuanTransaksi => {
         if(satuanTransaksi.jenis === 'masuk'){
           return pemasukanPerbulan += JSON.parse(satuanTransaksi.nominal)
-        } else if(satuanTransaksi.jenis ==='keluar'{ 
+        } else if(satuanTransaksi.jenis ==='keluar'){ 
           return pengeluaranPerbulan += JSON.parse(satuanTransaksi.nominal)
         }
     }
