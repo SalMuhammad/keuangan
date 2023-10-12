@@ -95,7 +95,7 @@ if($('.btn') !== null){
   })
 }
 
-cetakNominall(thisMonthReverse)
+/*if(thisMonthReverse.length > 0) */cetakNominall(thisMonthReverse)
 $('.saldo').innerHTML = rupiah(saldo)
 $('.nominal-masuk').innerHTML = rupiah(pemasukanPerbulan)
 $('.nominal-keluar').innerHTML = rupiah(pengeluaranPerbulan)
