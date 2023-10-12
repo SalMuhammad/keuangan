@@ -330,15 +330,16 @@ export let saldo = 0
 export function cetakNominall(bulanSekarang) {
   // console.log(bulanSekarang)
   if(bulanSekarang){
-
-    for (const satuanTransaksi of bulanSekarang){
+    console.log(bulanSekarang)
+    bulanSekarang.map(satuanTransaksi => {
+      console.log(satuanTransaksi)
       // bulanSekarang.forEach(satuanTransaksi => {
         if(satuanTransaksi.jenis === 'masuk'){
           return pemasukanPerbulan += JSON.parse(satuanTransaksi.nominal)
         } else if(satuanTransaksi.jenis ==='keluar'){ 
           return pengeluaranPerbulan += JSON.parse(satuanTransaksi.nominal)
         }
-    }
+    })
   }
   saldo = pemasukanPerbulan - pengeluaranPerbulan
 }
