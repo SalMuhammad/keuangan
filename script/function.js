@@ -330,7 +330,6 @@ export let saldo = 0
 export function cetakNominall(bulanSekarang) {
   // console.log(bulanSekarang)
   if(bulanSekarang){
-    console.log(bulanSekarang)
     bulanSekarang.map(satuanTransaksi => {
       console.log(satuanTransaksi)
       // bulanSekarang.forEach(satuanTransaksi => {
