@@ -25,3 +25,25 @@ $('.toggle').addEventListener('click',()=>{
   $('.toggle').classList.toggle('bi-three-dots-vertical')
   $('.toggle').classList.toggle('text-oren')
 })
+
+
+
+
+
+$('.nav-lainnya').onclick = function(e){
+  $('.figure-darurat').classList.toggle('hidden')
+}
+
+$('.cls').onclick = function(e){
+  $('.figure-darurat').classList.toggle('hidden')
+  // alert('ik')
+}
+
+// $('.nav-lainnya').onclick = function(e){
+//   if(e.target.classList.constains === 'ada'){
+//     $('.figure-darurat').classList.remove('hidden')
+//   }else if(e.target.classList.constains === 'cls'){
+//     $('.figure-darurat').classList.add('hidden')
+
+//   }
+// }

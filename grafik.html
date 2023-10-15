@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <title>Program Pengelolaan Uang</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+  </head>
+</head>
+<body>   
+  <div class="max-w-sm mx-auto">
+    <header class="header flex justify-between relative text-white">
+      <a href="index.html"><i class="color-white bi bi-arrow-left  cursor-pointer pl-2"></i></a>
+      <div class="flex justify-between gap-1">
+        <div class="flex-col flex ">
+          <label class="" for="saldo">saldo</label>
+          <input id="saldo" type="checkbox">
+        </div>
+        <div class="flex-col flex ">
+          <label class="" for="pemasukan">masukan</label>
+          <input id="pemasukan" type="checkbox">
+        </div>
+        <div class="flex-col flex ">
+          <label class="" for="pengeluaran">keluaran</label>
+          <input id="pengeluaran" type="checkbox">
+        </div>
+      </div>
+    </header>
+    <main>
+      <div class="flex justify-between py-2 border-b-2 shadow-md">
+        <figure>
+          <span><i class="bi bi-chevron-left cursor-pointer"></i></span>
+          <span class="sm:text-sky-600 sm:text-[15px] cursor-pointer">Mar</span>
+          <span>2023</span>
+          <span><i class="bi bi-chevron-right cursor-pointer"></i></span>
+        </figure> 
+        <select class="w-24 border-0" name="" id="">
+          <option value="tahunan">tahunan</option>
+          <option value="bulanan">bulanan</option>
+          <option value="mingguan">mingguan</option>
+        </select>
+      </div>
+      <figure>
+        <div class="grafik mt-3">
+          <div class="float-right">
+            <select name="" id="">
+              <option value="">garis</option>
+              <option value="">batang</option>
+              <option value="">gais-negatif</option>
+            </select>
+          </div>
+          <div class="diagram"></div>
+        </div>
+      </figure>
+    </main>
+  </div>
+</body>
+</html>

@@ -263,7 +263,7 @@ export function tampilkanData(dataArr) {
     dataPerHari[tanggal].push(data);
     }
   ) 
-  
+  // closes
   tambahTotal(dataPerHari)	
   let tableHtml = "";
   for (const tanggal in dataPerHari) {
@@ -322,10 +322,10 @@ export function tampilkanData(dataArr) {
   }
 }
 
-
 export let pemasukanPerbulan = 0
 export let pengeluaranPerbulan = 0
 export let saldo = 0
+export let danaDarurat = 0
 
 export function cetakNominall(bulanSekarang) {
   // console.log(bulanSekarang)

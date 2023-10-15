@@ -34,7 +34,6 @@ if (thisMonthReverse && Array.isArray(thisMonthReverse)) {
   thisMonthReverse.reverse()
 }
 
-
 tampilkanData(thisMonthReverse)
 export {thisMonthReverse}
 
@@ -100,4 +99,4 @@ $('.saldo').innerHTML = rupiah(saldo)
 $('.nominal-masuk').innerHTML = rupiah(pemasukanPerbulan)
 $('.nominal-keluar').innerHTML = rupiah(pengeluaranPerbulan)
 
-
+// localStorage.clear()

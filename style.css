@@ -8,10 +8,15 @@
 	  padding: 0;
 	  --text-color:#555;
 	}
+  .cursor-pointer-child > *{
+    cursor:pointer;
+  }
+
 	.auto-margin{
 	  display: block;
 	  margin: auto;
 	}
+  
 	body {
   font-family: Arial, sans-serif;
   background-color: #eee;
