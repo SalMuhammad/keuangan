@@ -1,4 +1,5 @@
-import {dataUang} from'./eksekusiData.js'
+import {dataUang, thisMonthReverse} from'./eksekusiData.js'
+    const namaBulan = ["Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "Agustus", "September", "Oktober", "November", "Desember"]
 
 
 
@@ -12,10 +13,10 @@ import {dataUang} from'./eksekusiData.js'
 	  dataUang.splice(id, 1)
 		localStorage.setItem("dataUang", JSON.stringify(dataUang))
 //		tampilkanData()
-	}
+	} 
 //})
 }*/
-
+// ubahFormatData
 //fungsi dom
 export function $(varr){
   return document.querySelector(varr)
@@ -25,7 +26,7 @@ export function $all(varr){
 }
 
 //memunculkan form 
-export function munculForm(ell){
+export function munculForm(){
   $('.layoting').style.display = "block"
   $('.trash').style.display = "none"
   tampilkanwaktuSekarang()
@@ -41,7 +42,6 @@ export function closes(){
   $('.trash').style.display = "block"
   $('.form').reset()
 }
-
 
 //pengecekan select
 export function pengecekanSelect(){
@@ -73,18 +73,42 @@ $('.kategori-masuk').classList.add('hidden')
 }
 
 //fungsi rupiah
-export function rupiah(bilangan){
-  var	number_string = bilangan.toString(),
-	  sisa  	= number_string.length % 3,
-	  rupiah 	= number_string.substr(0, sisa),
-	  ribuan 	= number_string.substr(sisa).match(/\d{3}/g)
-  if (ribuan) {
-   // let separator;
-	 const separator = sisa ? '.' : '';
-  	rupiah += separator + ribuan.join('.')
+export function rupiah(bilangan) {
+  // Ubah angka menjadi string
+  var number_string = bilangan.toString();
+
+  // Cek apakah angka negatif
+  var isNegative = false;
+  if (number_string[0] === '-') {
+    isNegative = true;
+    number_string = number_string.slice(1); // Hapus tanda minus
   }
-  return rupiah
-}		
+
+  // Hitung sisa panjang string saat dibagi 3
+  var sisa = number_string.length % 3;
+
+  // Bagian pertama (sebelum titik) dari string Rupiah
+  var rupiah = number_string.substr(0, sisa);
+
+  // Bagian ribuan dalam bentuk grup-grup tiga digit
+  var ribuan = number_string.substr(sisa).match(/\d{3}/g);
+
+  // Jika ada grup ribuan, tambahkan pemisah ribuan (.)
+  if (ribuan) {
+    // Tentukan apakah ada digit sebelum pemisah
+    const separator = sisa ? '.' : '';
+    rupiah += separator + ribuan.join('.');
+  }
+
+  // Tambahkan tanda minus jika angka awalnya negatif
+  if (isNegative) {
+    rupiah = '-' + rupiah;
+  }
+
+  // Kembalikan string Rupiah yang diformat
+  return rupiah;
+}
+
 
 
 
@@ -172,13 +196,17 @@ function add3Dots(string, limit)
     return string;
 }
 
+
+
 export function ubahFormatData(dataAwal) {
-  const dataBaru = {}
+  const dataBaru = {};
+
   dataAwal.forEach(item => {
     const tanggal = new Date(item.tanggal);
     const tahun = tanggal.getFullYear();
-    const bulan = String(tanggal.getMonth() + 1)//.padStart(2, '0');
-    const hari = String(tanggal.getDate())//.padStart(2, '0');
+    const bulan = String(tanggal.getMonth() + 1);
+    const minggu = getWeekNumber(tanggal); // Menggunakan fungsi getWeekNumber (lihat di bawah)
+    const hari = String(tanggal.getDate());
 
     if (!dataBaru[tahun]) {
       dataBaru[tahun] = {};
@@ -186,12 +214,25 @@ export function ubahFormatData(dataAwal) {
     if (!dataBaru[tahun][bulan]) {
       dataBaru[tahun][bulan] = {};
     }
-    if (!dataBaru[tahun][bulan][hari]) {
-      dataBaru[tahun][bulan][hari] = [];
+    if (!dataBaru[tahun][bulan][minggu]) {
+      dataBaru[tahun][bulan][minggu] = {};
     }
-    dataBaru[tahun][bulan][hari].push(item);
-  })
-  return dataBaru
+    if (!dataBaru[tahun][bulan][minggu][hari]) {
+      dataBaru[tahun][bulan][minggu][hari] = [];
+    }
+    dataBaru[tahun][bulan][minggu][hari].push(item);
+  });
+
+  return dataBaru;
+}
+
+// Fungsi untuk mendapatkan nomor minggu dalam tahun
+function getWeekNumber(date) {
+  const d = new Date(date);
+  d.setHours(0, 0, 0, 0);
+  d.setDate(d.getDate() + 4 - (d.getDay() || 7)); // Mulai dari hari Senin (1) hingga Minggu (7)
+  const yearStart = new Date(d.getFullYear(), 0, 1);
+  return Math.ceil(((d - yearStart) / 86400000 + 1) / 7); // Hitung nomor minggu
 }
 
 
@@ -205,7 +246,6 @@ export function sortByTime(data) {
         if (a.tanggal > b.tanggal) return 1;
         return 0;
       });
-  
       return sortedArray;
     } 
 }
@@ -218,60 +258,54 @@ export function tampilkanwaktuSekarang() {
   $("#tanggal").value = currentDate;
 }
 
-
-export function pilihBulanIni(data) {
-  const sekarang = new Date();
-  const currentYear = sekarang.getFullYear();
-  const currentMonth = sekarang.getMonth() +1
-  let currentMonthData = {};
-  let year;
-  let month
-  for ( year in data) {
-    if (year === String(currentYear)) {
-      for ( month in data[year]){
-        if (month === String(currentMonth)) {
-          currentMonthData = data[year][month];
-          // $('.pa').innerHTML = JSON.stringify(currentMonthData)
-          break
+export function pilihBulanIni(data, currentYear, currentMonth) {
+  $('.tombol-pindah-waktu span:nth-child(2)').innerHTML = namaBulan[currentMonth-1]
+  $('.tombol-pindah-waktu span:nth-child(3)').innerHTML = currentYear
+  if (!data[currentYear] || !data[currentYear][currentMonth]) {
+    $(".container .table").innerHTML = ` <span class="confir-data-kosong">Tidak ada transaksi di bulan ${namaBulan[currentMonth-1]} tahun ${currentYear}</span>`
+    return null; // Tidak ada data untuk bulan ini
+  }
+  // console.log(currentYear);
+  // console.log(currentMonth);
+  const currentMonthData = data[currentYear][currentMonth];
+  // console.log(currentMonthData);
+  // Menggabungkan semua data tanggal di dalam bulan
+  const tanggalData = {};
+  for (const minggu in currentMonthData) {
+    if (currentMonthData[minggu] && typeof currentMonthData[minggu] ===  'object') {
+      for (const tanggal in currentMonthData[minggu]) {
+        if (currentMonthData[minggu][tanggal] && currentMonthData[minggu][tanggal].length > 0) {
+          tanggalData[tanggal] = currentMonthData[minggu][tanggal];
         }
       }
-      break;
     }
   }
-  if (currentMonthData !== null && typeof  currentMonthData === 'object') {
-    if (Object.keys(currentMonthData).length === 0) {
-      $(".container").innerHTML = ` <span class="confir-data-kosong">Tidak ada transaksi di bulan ${currentMonth} tahun ${currentYear}</span>`
-    return;
-    }
-  }   
- //tambahTotal(currentMonthData)
- return currentMonthData
+
+  return tanggalData;
 }
 
 export function tampilkanData(dataArr) {
   // Membuat objek untuk menyimpan data per hari
+  // console.log(object);
   const dataPerHari = {};
-	
 	if (typeof dataArr !== 'undefined' && dataArr !== null) {
-  // Memisahkan data berdasarkan tanggal
-  dataArr.forEach(data => {
-   // Mengambil tanggal saja dari string tanggal
-    const tanggal = data.tanggal.slice(0, 10);
-    if (!dataPerHari[tanggal]) {
-	     dataPerHari[tanggal] = [];
-    }
-    dataPerHari[tanggal].push(data);
-    }
-  ) 
-  // closes
-  tambahTotal(dataPerHari)	
-  let tableHtml = "";
-  for (const tanggal in dataPerHari) {
+    // Memisahkan data berdasarkan tanggal
+    dataArr.forEach(data => {
+      // Mengambil tanggal saja dari string tanggal
+      const tanggal = data.tanggal.slice(0, 10);
+      if (!dataPerHari[tanggal]) {
+        dataPerHari[tanggal] = [];
+      }
+      dataPerHari[tanggal].push(data);
+    }) 
+    tambahTotal(dataPerHari)	
+    let tableHtml = "";
+    for (const tanggal in dataPerHari) {
+    // console.log(tanggal);
     let pengeluaran = dataPerHari[tanggal].length -1
     let pemasukan = dataPerHari[tanggal].length - 2
     const date = new Date(tanggal); // membuat objek Date dari string tanggal
     const dinten = ["Minggu", "Senin", "Selasa", "Rabu", "Kamis", "Jumat", "Sabtu"][date.getDay()];
-  /*  const bulan = ["Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "Agustus", "September", "Oktober", "November", "Desember"][date.getMonth()]; */// mengambil nama bulan
     const tgl = tanggal.slice(8,10)
     const bln = tanggal.slice(5,7)
     const thn = tanggal.slice(0,4)
@@ -297,7 +331,6 @@ export function tampilkanData(dataArr) {
     dataPerHari[tanggal].pop()
     dataPerHari[tanggal].pop()
     
-    
     //meluping value objek dataPerHari
     if (typeof dataPerHari[tanggal] !== 'undefined'/* && dataPerHari[tanggal] !== null*/) {
         dataPerHari[tanggal].forEach((data,id) => {
@@ -306,7 +339,7 @@ export function tampilkanData(dataArr) {
       
         tableHtml += tr;
         tableHtml += `
-	         <td>${data.kategori}</td>
+	         <td>${data.kategori}</td> 
 	         <td>${add3Dots(data.keterangan,9)}</td>
            <td class="nominal">
               ${rupiah(data.nominal)}
@@ -317,22 +350,22 @@ export function tampilkanData(dataArr) {
         `;
         })
       } 
-    $(".table").innerHTML = tableHtml;
+    if(document.querySelector(".table")){ document.querySelector(".table").innerHTML = tableHtml}else{alert('data gagal di muat!');console.log(tableHtml)}
+    ;
+    // document.querySelector('.table').innerHTML = tableHtml
     }
   }
 }
-
-export let pemasukanPerbulan = 0
-export let pengeluaranPerbulan = 0
-export let saldo = 0
-export let danaDarurat = 0
-
+//rupiah
+// tambahData
 export function cetakNominall(bulanSekarang) {
-  // console.log(bulanSekarang)
+  let pemasukanPerbulan = 0
+  let pengeluaranPerbulan = 0
+  let saldo = 0
+  let danaDarurat = 0
+  // console.log(bulanSekarang) 
   if(bulanSekarang){
     bulanSekarang.map(satuanTransaksi => {
-      console.log(satuanTransaksi)
-      // bulanSekarang.forEach(satuanTransaksi => {
         if(satuanTransaksi.jenis === 'masuk'){
           return pemasukanPerbulan += JSON.parse(satuanTransaksi.nominal)
         } else if(satuanTransaksi.jenis ==='keluar'){ 
@@ -341,5 +374,11 @@ export function cetakNominall(bulanSekarang) {
     })
   }
   saldo = pemasukanPerbulan - pengeluaranPerbulan
+  
+  $('.saldo').innerHTML = rupiah(saldo)
+  $('.nominal-masuk').innerHTML = rupiah(pemasukanPerbulan)
+  $('.nominal-keluar').innerHTML = rupiah(pengeluaranPerbulan)
 }
 
+// tampilkanData
+/// confir-data-kosong tidak ada transaksi
