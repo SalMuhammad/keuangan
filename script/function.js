@@ -1,62 +1,67 @@
-import {dataUang, thisMonthReverse} from'./eksekusiData.js'
-    const namaBulan = ["Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "Agustus", "September", "Oktober", "November", "Desember"]
+import {
+  dataUang
+  // thisMonthReverse
+} from './eksekusiData.js'
 
-
-
-
+import { 
+  namaBulan,
+  saldo
+} from './data_base.js'
+console.log(saldo.dompet);
 // pengecekanSelect
 // kategoriKetikaMasuk
 
 /* export function hapusData(id){
 //$('bi-trash').addEventListener('click',()=>{
   if (confirm("Apakah anda yakin ingin menghapus data ini?")) {
-	  dataUang.splice(id, 1)
-		localStorage.setItem("dataUang", JSON.stringify(dataUang))
+    dataUang.splice(id, 1)
+    localStorage.setItem("dataUang", JSON.stringify(dataUang))
 //		tampilkanData()
-	} 
+  } 
 //})
 }*/
 // ubahFormatData
 //fungsi dom
-export function $(varr){
+export function $(varr) {
   return document.querySelector(varr)
 }
-export function $all(varr){
+export function $all(varr) {
   return document.querySelectorAll(varr)
 }
 
 //memunculkan form 
-export function munculForm(){
+export function munculForm() {
   $('.layoting').style.display = "block"
   $('.trash').style.display = "none"
   tampilkanwaktuSekarang()
 }
- 
+
 //menghilangkan form
-export function closes(){
+export function closes() {
   $('.layoting').style.display = "none"
   $(".btn").classList.remove('edit')
-  $(".btn").textContent= "Tambahkan"
+  $(".btn").textContent = "Tambahkan"
+  $('#ke-dompet').checked = true
   kategoriKetikaKeluar()
- // $('.caption .trash').innerHTML = ''
+  // $('.caption .trash').innerHTML = ''
   $('.trash').style.display = "block"
   $('.form').reset()
 }
 
 //pengecekan select
-export function pengecekanSelect(){
-  $('#jenis').addEventListener("change",() =>{
-    if($('#jenis').value === "masuk"){
+export function pengecekanSelect() {
+  $('#jenis').addEventListener("change", () => {
+    if ($('#jenis').value === "masuk") {
       kategoriKetikaMasuk()
-    }else{
+    } else {
       kategoriKetikaKeluar()
     }
   })
 }
 
 //fungsi kategori ketika masuk
-export function kategoriKetikaMasuk(){
-  $('.kategori-masuk').classList.remove('hidden')
+export function kategoriKetikaMasuk() {
+  // $('.kategori-masuk').classList.remove('hidden')
   $("#jenis").classList.add('teal')
   $("#jenis").classList.remove('red')
   $(".masuk").style.display = "block"
@@ -64,8 +69,8 @@ export function kategoriKetikaMasuk(){
 }
 
 //fungsi ketika kategori keluar
-export function kategoriKetikaKeluar(){
-$('.kategori-masuk').classList.add('hidden')
+export function kategoriKetikaKeluar() {
+  // $('.kategori-masuk').classList.add('hidden')
   $("#jenis").classList.add('red')
   $("#jenis").classList.remove('teal')
   $(".masuk").style.display = "none"
@@ -115,49 +120,53 @@ export function rupiah(bilangan) {
 function generateUniqueId() {
   // Membuat string acak menggunakan metode Math.random()
   let uniqueId = Math.random().toString(36).substring(2, 8);
-  
+
   // Cek apakah id sudah ada
   if (document.getElementById(uniqueId)) {
     // Jika id sudah ada, panggil fungsi generateUniqueId() lagi untuk membuat id yang berbeda
     return generateUniqueId();
   }
-  
+
   // Jika id belum ada, return id yang telah dihasilkan
   return uniqueId;
 }
 
 //fungsi tambah data
 export function tambahData() {
- // let tanggal = new Date().toLocaleDateString("id-ID");
+  // let tanggal = new Date().toLocaleDateString("id-ID");
   let jenis = $("#jenis").value
   let kategori = document.getElementById(jenis === "masuk" ? "kategori-masuk" : "kategori-keluar").value
-  if(!$('#nominal').value){
+  let alokasi = $('input[name="pilih-penyimpanan"]:checked').value
+  if (!$('#nominal').value) {
     alert('form belum di isi')
-  }else if(!$('#nominal').value){
+  } else if (!$('#nominal').value) {
     alert('nominal wajib di isi')
-  }else {
-    
-   let data = {
-      tanggal   :$('#tanggal').value,
-      nominal   :$('#nominal').value,
+  } else {
+
+    let data = {
+      tanggal: $('#tanggal').value,
+      nominal: $('#nominal').value,
       kategori,
-      keterangan:$('#keterangan').value,
+      keterangan: $('#keterangan').value,
+      alokasi,
       jenis,
-      id        :generateUniqueId()
+      id: generateUniqueId()
     }
-    if(!$(".btn").classList.contains("edit")){
+    console.log(data)
+    if (!$(".btn").classList.contains("edit")) {
       dataUang.push(data)
       localStorage.setItem("dataUang", JSON.stringify(dataUang))
       $('form').reset()
-    }else{
+    } else {
       let id = $(".btn").getAttribute('data-id')
       dataUang[id].jenis = $("#jenis").value
+      dataUang[id].alokasi = alokasi
       dataUang[id].kategori = kategori
       dataUang[id].tanggal = $("#tanggal").value
       dataUang[id].nominal = $("#nominal").value
       dataUang[id].keterangan = $("#keterangan").value
       localStorage.setItem("dataUang", JSON.stringify(dataUang))
-    } closes();window.location = 'index.html'//tampilkanData(thisMonthReverse);
+    } closes(); window.location = 'index.html'//tampilkanData(thisMonthReverse);
   }
 }
 
@@ -167,16 +176,16 @@ export function tambahTotal(objek) {
   for (const tanggal in objek) {
     let totalPemasukan = 0;
     let totalPengeluaran = 0;
-     
+
     objek[tanggal].forEach((transaksi) => {
       const nominal = parseInt(transaksi.nominal)
-      
+
       if (transaksi.jenis === "masuk") {
         totalPemasukan += nominal;
       } else if (transaksi.jenis === "keluar") {
         totalPengeluaran += nominal;
       }
-    
+
     });
     objek[tanggal].push(totalPemasukan);
     objek[tanggal].push(totalPengeluaran);
@@ -184,16 +193,14 @@ export function tambahTotal(objek) {
   return objek;
 }
 
-function add3Dots(string, limit)
-{
+function add3Dots(string, limit) {
   var dots = "...";
-  if(string.length > limit)
-  {
+  if (string.length > limit) {
     // you can also use substr instead of substring
-    string = string.substring(0,limit) + dots;
+    string = string.substring(0, limit) + dots;
   }
- 
-    return string;
+
+  return string;
 }
 
 
@@ -238,16 +245,16 @@ function getWeekNumber(date) {
 
 export function sortByTime(data) {
   // Menggabungkan semua data menjadi satu array
-  if(data !== null && typeof data === 'object'){
+  if (data !== null && typeof data === 'object') {
     const mergedArray = Object.values(data).flat()
     // Mengurutkan array berdasarkan waktu menggunakan metode .sort()
     const sortedArray = mergedArray.sort((a, b) => {
-        if (a.tanggal < b.tanggal) return -1;
-        if (a.tanggal > b.tanggal) return 1;
-        return 0;
-      });
-      return sortedArray;
-    } 
+      if (a.tanggal < b.tanggal) return -1;
+      if (a.tanggal > b.tanggal) return 1;
+      return 0;
+    });
+    return sortedArray;
+  }
 }
 
 export function tampilkanwaktuSekarang() {
@@ -259,20 +266,17 @@ export function tampilkanwaktuSekarang() {
 }
 
 export function pilihBulanIni(data, currentYear, currentMonth) {
-  $('.tombol-pindah-waktu span:nth-child(2)').innerHTML = namaBulan[currentMonth-1]
+  $('.tombol-pindah-waktu span:nth-child(2)').innerHTML = namaBulan[currentMonth - 1]
   $('.tombol-pindah-waktu span:nth-child(3)').innerHTML = currentYear
   if (!data[currentYear] || !data[currentYear][currentMonth]) {
-    $(".container .table").innerHTML = ` <span class="confir-data-kosong">Tidak ada transaksi di bulan ${namaBulan[currentMonth-1]} tahun ${currentYear}</span>`
+    $(".container .table").innerHTML = ` <span class="confir-data-kosong">Tidak ada transaksi di bulan ${namaBulan[currentMonth - 1]} tahun ${currentYear}</span>`
     return null; // Tidak ada data untuk bulan ini
   }
-  // console.log(currentYear);
-  // console.log(currentMonth);
   const currentMonthData = data[currentYear][currentMonth];
-  // console.log(currentMonthData);
   // Menggabungkan semua data tanggal di dalam bulan
   const tanggalData = {};
   for (const minggu in currentMonthData) {
-    if (currentMonthData[minggu] && typeof currentMonthData[minggu] ===  'object') {
+    if (currentMonthData[minggu] && typeof currentMonthData[minggu] === 'object') {
       for (const tanggal in currentMonthData[minggu]) {
         if (currentMonthData[minggu][tanggal] && currentMonthData[minggu][tanggal].length > 0) {
           tanggalData[tanggal] = currentMonthData[minggu][tanggal];
@@ -288,7 +292,7 @@ export function tampilkanData(dataArr) {
   // Membuat objek untuk menyimpan data per hari
   // console.log(object);
   const dataPerHari = {};
-	if (typeof dataArr !== 'undefined' && dataArr !== null) {
+  if (typeof dataArr !== 'undefined' && dataArr !== null) {
     // Memisahkan data berdasarkan tanggal
     dataArr.forEach(data => {
       // Mengambil tanggal saja dari string tanggal
@@ -297,19 +301,19 @@ export function tampilkanData(dataArr) {
         dataPerHari[tanggal] = [];
       }
       dataPerHari[tanggal].push(data);
-    }) 
-    tambahTotal(dataPerHari)	
+    })
+    tambahTotal(dataPerHari)
     let tableHtml = "";
     for (const tanggal in dataPerHari) {
-    // console.log(tanggal);
-    let pengeluaran = dataPerHari[tanggal].length -1
-    let pemasukan = dataPerHari[tanggal].length - 2
-    const date = new Date(tanggal); // membuat objek Date dari string tanggal
-    const dinten = ["Minggu", "Senin", "Selasa", "Rabu", "Kamis", "Jumat", "Sabtu"][date.getDay()];
-    const tgl = tanggal.slice(8,10)
-    const bln = tanggal.slice(5,7)
-    const thn = tanggal.slice(0,4)
-    tableHtml += `
+      // console.log(tanggal);
+      let pengeluaran = dataPerHari[tanggal].length - 1
+      let pemasukan = dataPerHari[tanggal].length - 2
+      const date = new Date(tanggal); // membuat objek Date dari string tanggal
+      const dinten = ["Minggu", "Senin", "Selasa", "Rabu", "Kamis", "Jumat", "Sabtu"][date.getDay()];
+      const tgl = tanggal.slice(8, 10)
+      const bln = tanggal.slice(5, 7)
+      const thn = tanggal.slice(0, 4)
+      tableHtml += `
         <tr class"row">
           <th>
             <div class="flex">
@@ -328,19 +332,19 @@ export function tampilkanData(dataArr) {
           <th class="hidden">detile</th>
         </tr>
     `;
-    dataPerHari[tanggal].pop()
-    dataPerHari[tanggal].pop()
-    
-    //meluping value objek dataPerHari
-    if (typeof dataPerHari[tanggal] !== 'undefined'/* && dataPerHari[tanggal] !== null*/) {
-        dataPerHari[tanggal].forEach((data,id) => {
-        const jenis = data.jenis === "masuk" ? "Pemasukan" : "Pengeluaran";
-        let tr = data.jenis === "masuk"? '<tr class="pemasukan trs">': '<tr class="pengeluaran trs">'
-      
-        tableHtml += tr;
-        tableHtml += `
+      dataPerHari[tanggal].pop()
+      dataPerHari[tanggal].pop()
+
+      //meluping value objek dataPerHari
+      if (typeof dataPerHari[tanggal] !== 'undefined'/* && dataPerHari[tanggal] !== null*/) {
+        dataPerHari[tanggal].forEach((data, id) => {
+          const jenis = data.jenis === "masuk" ? "Pemasukan" : "Pengeluaran";
+          let tr = data.jenis === "masuk" ? '<tr class="pemasukan trs">' : '<tr class="pengeluaran trs">'
+
+          tableHtml += tr;
+          tableHtml += `
 	         <td>${data.kategori}</td> 
-	         <td>${add3Dots(data.keterangan,9)}</td>
+	         <td>${add3Dots(data.keterangan, 9)}</td>
            <td class="nominal">
               ${rupiah(data.nominal)}
               <span class="id-transaksi w-0 text-[0]">${data.id}</span>
@@ -349,10 +353,10 @@ export function tampilkanData(dataArr) {
         </tr>
         `;
         })
-      } 
-    if(document.querySelector(".table")){ document.querySelector(".table").innerHTML = tableHtml}else{alert('data gagal di muat!');console.log(tableHtml)}
-    ;
-    // document.querySelector('.table').innerHTML = tableHtml
+      }
+      if (document.querySelector(".table")) { document.querySelector(".table").innerHTML = tableHtml } else { alert('data gagal di muat!'); console.log(tableHtml) }
+      ;
+      // document.querySelector('.table').innerHTML = tableHtml
     }
   }
 }
@@ -362,23 +366,38 @@ export function cetakNominall(bulanSekarang) {
   let pemasukanPerbulan = 0
   let pengeluaranPerbulan = 0
   let saldo = 0
-  let danaDarurat = 0
-  // console.log(bulanSekarang) 
-  if(bulanSekarang){
+  if (bulanSekarang) {
     bulanSekarang.map(satuanTransaksi => {
-        if(satuanTransaksi.jenis === 'masuk'){
-          return pemasukanPerbulan += JSON.parse(satuanTransaksi.nominal)
-        } else if(satuanTransaksi.jenis ==='keluar'){ 
-          return pengeluaranPerbulan += JSON.parse(satuanTransaksi.nominal)
-        }
+      if (satuanTransaksi.jenis === 'masuk') {
+        return pemasukanPerbulan += JSON.parse(satuanTransaksi.nominal)
+      } else if (satuanTransaksi.jenis === 'keluar') {
+        return pengeluaranPerbulan += JSON.parse(satuanTransaksi.nominal)
+      }
     })
   }
   saldo = pemasukanPerbulan - pengeluaranPerbulan
   
-  $('.saldo').innerHTML = rupiah(saldo)
   $('.nominal-masuk').innerHTML = rupiah(pemasukanPerbulan)
   $('.nominal-keluar').innerHTML = rupiah(pengeluaranPerbulan)
+  // $('.saldo').innerHTML = rupiah(saldo.dompet)
+  $('#bulan-sekarang').addEventListener('change', ()=> $('.saldo').innerHTML = rupiah(saldo))
 }
 
-// tampilkanData
-/// confir-data-kosong tidak ada transaksi
+// menutup sidebar
+export function clossSidebar() {
+  $('.toggle').classList.toggle('bi-x')
+  $('.toggle').classList.toggle('bi-three-dots-vertical')
+  $('.toggle').classList.toggle('text-oren')
+  $('.side-bar').classList.toggle('hidden')
+}
+
+// localStorage.clear()
+
+
+// menuliskanSaldo(dataUang)
+
+
+
+// export {dompet} .saldo
+
+// pilihBulanIni

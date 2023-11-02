@@ -1,10 +1,17 @@
 //import * as say from './function.js';
-import {$, munculForm, closes, tambahData } from './function.js';
+import {
+  $,
+  munculForm,
+  closes,
+  tambahData, 
+  clossSidebar 
+} from './function.js';
 
 
 
 $('#muncul').addEventListener('click', munculForm)
-  $('#tanggal').setAttribute('value',new Date())
+
+$('#tanggal').setAttribute('value',new Date())
 $('.close').addEventListener('click', ()=>{
   closes()
   $("form").reset()
@@ -14,29 +21,31 @@ $('.close').addEventListener('click', ()=>{
 //ketikaBtnDiKlik()
 $(".btn").addEventListener('click', e =>{
     tambahData()
-    e.preventDefault()
-   // closes()
+    e.preventDefault();
  })
 
-//  ketika toggle di klik
+//  ketika toggle di klik menmabahkan atau menyimpan data
 $('.toggle').addEventListener('click',()=>{
-  $('.side-bar').classList.toggle('hidden')
-  $('.toggle').classList.toggle('bi-x')
-  $('.toggle').classList.toggle('bi-three-dots-vertical')
-  $('.toggle').classList.toggle('text-oren')
+  clossSidebar()
 })
 
-
-
-
-
-$('.nav-lainnya').onclick = function(e){
+// perilaku side bar
+// ketika linnya di klik
+$('.side-bar li:nth-child(2)').onclick = function(){
+  window.location = 'grafik.html'
+}
+$('.nav-lainnya').onclick = function(){
   $('.figure-darurat').classList.toggle('hidden')
 }
+// $('.side-bar').addEventListener('click', function(e) {
+//   console.log(e.target)
+//   if(e.target.classList.className ==='nav-lainnya') {
+//   }
+// })
 
 $('.cls').onclick = function(e){
   $('.figure-darurat').classList.toggle('hidden')
-  // alert('ik')
+  clossSidebar()
 }
 
 // $('.nav-lainnya').onclick = function(e){
@@ -48,4 +57,4 @@ $('.cls').onclick = function(e){
 //   }
 // }
 
-// toggle
+// .saldo

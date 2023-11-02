@@ -1,23 +1,27 @@
 import {
   pengecekanSelect,
-  ubahFormatData, 
+  ubahFormatData,
   pilihBulanIni,
-  sortByTime, 
+  sortByTime,
   tampilkanData,
   $,
-  munculForm, 
-  kategoriKetikaMasuk, 
+  munculForm,
+  kategoriKetikaMasuk,
   kategoriKetikaKeluar,
   cetakNominall,
+  tambahData,
   // pemasukanPerbulan,
   // saldo,
-  // rupiah
+  rupiah
+
 } from './function.js';
+import {saldo, namaBulan} from './data_base.js'
 
 //import {} from './prontEnd.js'
 
 export let dataUang = JSON.parse(localStorage.getItem("dataUang")) || []
 
+// console.log(dataUang)
 
 pengecekanSelect()
 
@@ -25,10 +29,10 @@ pengecekanSelect()
 const semuaData = ubahFormatData(dataUang)
 // console.log(semuaData);
 //memilih bulan sekarang saja untuk di tampilkan
-
+// console.log(semuaData);
 const sekarang = new Date()
-let tahunKlik = sekarang.getFullYear() ;
-let bulanKlik = sekarang.getMonth() + 1;  
+let tahunKlik = sekarang.getFullYear();
+let bulanKlik = sekarang.getMonth() + 1;
 
 let thisMonth = pilihBulanIni(semuaData, tahunKlik, bulanKlik)
 
@@ -38,20 +42,16 @@ if (thisMonthReverse && Array.isArray(thisMonthReverse)) {
   thisMonthReverse.reverse()
 }
 
-tampilkanData(thisMonthReverse)
+tampilkanData(thisMonthReverse);
 // mencetak data.
 
-
-cetakNominall(thisMonthReverse)
-// $('.saldo').innerHTML = rupiah(saldo)
-// $('.nominal-masuk').innerHTML = rupiah(pemasukanPerbulan)
-// $('.nominal-keluar').innerHTML = rupiah( )
+cetakNominall(thisMonthReverse);
 
 
 // console.log(semuaData)
- tahunKlik = 2023;
- bulanKlik = 10;
-$('.tombol-pindah-waktu').addEventListener('click', e => {
+tahunKlik = 2023;
+bulanKlik = 10;
+$('.tombol-pindah-waktu figure').addEventListener('click', e => {
   if (e.target.classList.contains('bi-chevron-left')) {
     bulanKlik--;
     if (bulanKlik < 1) {
@@ -72,13 +72,12 @@ $('.tombol-pindah-waktu').addEventListener('click', e => {
     thisMonthReverse.reverse();
   }
   tampilkanData(thisMonthReverse)
-    
+
   cetakNominall(thisMonthReverse)
   // $  ('.saldo').innerHTML = rupiah(saldo)
   // $('.nominal-masuk').innerHTML = rupiah(pemasukanPerbulan)
   // $('.nominal-keluar').innerHTML = rupiah( )
-})
-
+});
 
 //1. menambah fitur hapus dan edit
 //2.   ~"~    dropdown seting
@@ -92,14 +91,10 @@ const trs = document.querySelectorAll(".trs");
 // Menambahkan event listener untuk setiap elemen <tr>
 trs.forEach((tr) => {
   tr.addEventListener("click", () => {
-    
     // Mendapatkan nilai ID dari elemen <span> dalam elemen <td> terakhir dari blok <tr> yang diklik
     const idTransaksi = tr.querySelector(".id-transaksi").textContent;
-     
-    const dataArr = dataUang.filter(da => da.id === idTransaksi)[0]
-    
-    let id = dataUang.indexOf(dataArr)
-    
+    const dataArr = dataUang.filter(da => da.id === idTransaksi)[0];
+    let id = dataUang.indexOf(dataArr);
     munculForm()
     $(".btn").classList.add('edit')
     $(".btn").setAttribute('data-id', id)
@@ -108,12 +103,20 @@ trs.forEach((tr) => {
     $(".tanggal").value = dataArr.tanggal
     $("textarea").value = dataArr.keterangan
     $("#jenis").value = dataArr.jenis
-
+    let htmlAlokasi
+    if (dataArr.alokasi === 'dompet') {
+      htmlAlokasi = $('#ke-dompet')
+    } else if (dataArr.alokasi === 'dana') {
+      htmlAlokasi = $('#ke-e-dana')
+    } else if (dataArr.alokasi === 'darurat') {
+      htmlAlokasi = $('#ke-darurat')
+    }
+    htmlAlokasi.setAttribute("checked", "checked")
     $('.caption .trash').style.display = 'block'
-    if(dataArr.jenis === 'masuk'){
+    if (dataArr.jenis === 'masuk') {
       $("#kategori-masuk").value = dataArr.kategori
       kategoriKetikaMasuk()
-    }else{
+    } else {
       $("#kategori-keluar").value = dataArr.kategori
       kategoriKetikaKeluar()
     }
@@ -121,19 +124,49 @@ trs.forEach((tr) => {
 });
 
 
-if($('.btn') !== null){
-  $('.bi-trash').addEventListener('click',()=>{
+// bagian menghapus
+if ($('.btn') !== null) {
+  $('.bi-trash').addEventListener('click', () => {
     if (confirm("Apakah anda yakin ingin menghapus data ini?")) {
-	    dataUang.splice($('.btn').getAttribute('data-id'), 1)
-	  	localStorage.setItem("dataUang", JSON.stringify(dataUang))
-	  	window.location = 'index.html'
-	  	$('bi-trash').style.display = 'none'
-	  }
+      dataUang.splice($('.btn').getAttribute('data-id'), 1)
+      localStorage.setItem("dataUang", JSON.stringify(dataUang))
+      window.location = 'index.html'
+      $('bi-trash').style.display = 'none'
+    }
   })
 }
 
-/*if(thisMonthReverse.length > 0) */
+// menghitung saldo ke semua wadah uang
+dataUang.map(du => {
+  // console.log(du);
+  if(du.alokasi === 'dompet' && du.jenis === 'masuk') {
+    saldo.dompet += parseInt(du.nominal)
+  } else if(du.alokasi === 'dompet' && du.jenis === 'keluar') {
+    saldo.dompet -= parseInt(du.nominal)
+  } else if(du.alokasi === 'darurat' && du.jenis === 'masuk') {
+    saldo.darurat += parseInt(du.nominal)
+  } else if(du.alokasi === 'darurat' && du.jenis === 'keluar') {
+    saldo.darurat -= parseInt(du.nominal)
+  } else if(du.alokasi === 'dana' && du.jenis === 'masuk') {
+    saldo.dana += parseInt(du.nominal)
+  } else if(du.alokasi === 'dana' && du.jenis === 'keluar') {
+    saldo.dana -= parseInt(du.nominal)
+  } 
+})
+// console.log(saldo.dompet);
+$('.saldo').innerHTML = rupiah(saldo.dompet);
+
+// menampilkan uang di figure laianya
+$('.uang-di-dompet').textContent =  rupiah(saldo.dompet)
+$('.uang-di-dana').textContent = rupiah(saldo.dana)
+$('.uang-darurat').textContent = rupiah(saldo.darurat)
+$('.total-semua-uang').textContent = rupiah(saldo.dompet + saldo.dana + saldo.darurat)
+
+
+
+
+
 
 // localStorage.clear()
-//  toggle
-export {thisMonthReverse}
+
+console.log(saldo);

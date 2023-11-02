@@ -17,32 +17,68 @@
         <figure>
           <span><i class="bi bi-chevron-left cursor-pointer"></i></span>
           <span class="sm:text-[15px] cursor-pointer">Mar</span>
-          <span>2023</span>
+          <span class="cursor-pointer" >2023</span>
           <span><i class="bi bi-chevron-right cursor-pointer"></i></span>
         </figure> 
 
-      <i class="toggle bi bi-three-dots-vertical relative cursor-pointer z-10 font-bold"></i>
-      <div class="side-bar hidden w-1/2 h-96 absolute right-0 top-0 bg-white shadow-lg z-0">
+
+      <i class="toggle bi bi-three-dots-vertical relative cursor-pointer z-20 font-bold"></i>
+      <div class="side-bar hidden w-1/2 h-96 absolute right-0 top-0 bg-white shadow-lg z-10">
         <div class="ul-side-bar mt-11">
           <ul class="capitalize  cursor-pointer-child ">
             <li><i class="bi bi-search text-orange-600"></i> pencarian</li>
-            <li><a href="grafik.html" class="pl-0"><i class="bi bi-graph-up-arrow text-blue-600"></i>grafik</a></li>
+            <li><i class="bi bi-graph-up-arrow text-blue-600"></i>grafik</li>
+            <!-- <li><a href="grafik.html" class="pl-0"><i class="bi bi-graph-up-arrow text-blue-600"></i>grafik</a></li> -->
             <li><i class="bi bi-file-earmark-richtext text-orange-600"></i>kategori</li>
             <li><i class="bi bi-gear text-teal-600"></i>pengaturan</li>
             <li><i class="bi bi-chat-left-dots text-green-600"></i> usulan anda</li>
             <li><i class="bi bi-exclamation-circle rotate-180 inline-block text-teal-600"></i> perhatian</li>
-            <li class="nav-lainnya ada"><i class=" bi-file-earmark-minus text-teal-600"></i>lainnya</li>
+            <li class="nav-lainnya">
+              
+              <i class=" bi-file-earmark-minus text-teal-600"></i>lainnya
+            </li>
           </ul>
         </div>
       </div>
     </header>
-
-    <figure class="figure-darurat fixed top-0 right-0 bottom-0 left-0 bg-blue-600 text-white hidden">
-      <i class="cls bi bi bi-arrow-left pl-3"></i>
-      <div class="mt-9 text-center">
-        <span class="ang-dipegang block">uang di dompet: 300000</span>
-        <span class="dana-darurat block">dana darurat 1300000</span>
-        <span class="total-semua-uang block">semua uang 1500000</span>
+    <figure class="max-w-sm mx-auto figure-darurat fixed top-0 right-0 bottom-0 left-0 bg-blue-600 z-20 hidden">
+      <i class="cls bi bi bi-arrow-left pl-3 cursor-pointer"></i>
+      <br>
+      <div class="pl-2 mt-9 cursor-pointer">
+        <span>tampilkan saldo beranda ?</span>
+        <div>
+          <input name="pengaturan-saldo-beranda" checked id="dompet" type="radio">
+          <label for="dompet">dompet</label>
+        </div>
+        <div>
+          <input name="pengaturan-saldo-beranda" id="bulan-sekarang" type="radio">
+          <label for="bulan-sekarang">bulan sekarang</label>
+        </div>
+        <div> 
+          <input name="pengaturan-saldo-beranda" id="e_dana" type="radio">
+          <label for="e_dana">e_dana</label>
+        </div>
+      </div>
+      <div class="p-2 text-center">
+        <table class="table-deskripsi-uang bg-transparent text-white">
+          <tr>
+            <td>uang di dompet</td>
+            <td class="uang-di-dompet block"></td>
+          </tr>
+          <tr>
+            <td>uang di e-walet dana: </td>
+            <td class="uang-di-dana block"></td>
+          </tr>
+          <tr>
+            <td>uang darurat </td>
+            <td class="uang-darurat block"></td>
+          </tr>
+          <tr>
+            <td>semua uang</td>
+            <td class="total-semua-uang block"></td>
+          </tr>
+        </table>
+        <div class="flex justify-between">
       </div>
     </figure>   
     
@@ -52,7 +88,7 @@
           <div class="bg-red-600">
             <div class="flex justify-between py-2 px-3">
               <span class="bi-chevron-left"></span>
-              <span>2023</span>
+              2023</span>
               <span class="bi-chevron-right"></span>
             </div>
           </div>
@@ -75,10 +111,10 @@
     </section>
 
     <ul class="teing bg-reed-200">
-       <a href="">harian</a>
-       <a href="">mingguan</a>
-       <a href="">bulanan</a>
-       <a href="">tahunan</a>
+       <a href="index.html">harian</a>
+       <a href="weekly.html">mingguan</a>
+       <a href="monthly.html">bulanan</a>
+       <a href="annual.html">tahunan</a>
     </ul>
 
 
@@ -114,14 +150,18 @@
        <option value="keluar">Pengeluaran</option>
        <option value="masuk">Pemasukan</option>
      </select>
-     <div class="kategori-masuk hidden w-[80%] mx-auto">
-        <div class="inline-block semua-uang" >
-          <input id="semua-uang" type="radio" name="kategori-penyimpanan">
-          <label for="semua-uang">semua uang</label>
+     <div class="kategori-masuk w-[80%] mx-auto block">
+        <div class="ke-dompet" >
+          <input value="dompet" id="ke-dompet" type="radio" checked name="pilih-penyimpanan">
+          <label for="ke-dompet">di dompet</label>
         </div>
-        <div class="inline-block dana-darurat ml-7">
-          <input id="dana-darurat" type="radio" name="kategori-penyimpanan">
-          <label for="dana-darurat">dana darurat</label>
+        <div class="ke-darurat ">
+          <input value="darurat" id="ke-darurat" type="radio" name="pilih-penyimpanan">
+          <label for="ke-darurat">uang darurat</label>
+        </div>
+        <div class="ke-e-dana ">
+          <input value="dana" id="ke-e-dana" type="radio" name="pilih-penyimpanan">
+          <label for="ke-e-dana">uang e-walet dana</label>
         </div>
       </div>
    <form class="form" action="">
@@ -172,13 +212,12 @@
      <br>
    </form>
  </div>	
-   <button id="muncul" class="mb-24 text-3xl">+</button>
+   <button id="muncul" class="mb-24 text-3xl z-0">+</button>
    <div class="container" id="tabel-data">
       <span class="tabb"></span>
       <table class="table"></table>
    </div> 
  </div>
-
  <!-- <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script> -->
 	<script type="module" src="script/eksekusiData.js"></script>
 	<script type="module" src="script/prontEnd.js"></script>
@@ -187,4 +226,4 @@
 
 
 
-
+pencarian

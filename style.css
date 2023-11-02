@@ -98,12 +98,12 @@ form label {
  /* background: orange;*/
   border-bottom: 1px solid #aaa;
 }
-.tabel-form tr td:first-child{
+/* .tabel-form tr td:first-child{
   /* display: flex;
-  align-items: flex-end; */
+  align-items: flex-end; 
 }
 .tabel-form tr td:first-child label{
-}
+} */
 
 
 .form input[type="text"], .form input[type="number"], select, option,textarea ,.form .tgl{
@@ -155,6 +155,15 @@ table {
   padding: 0 20px;
   border-collapse: collapse;
 }
+tr:hover{
+  background-color: #ff440050;
+}
+.table-deskripsi-uang tr:last-child td{
+  border-top: 1px solid white;
+}
+.table-deskripsi-uang td:nth-child(2){
+  border-left: 1px solid #aaa;
+}
 
 table th{
   padding: 3px 0;
@@ -163,6 +172,7 @@ table td {
   text-align: left;
   padding:8px 5px;
   cursor: pointer;
+  background-color: transparent;
 }
 
 .row{
@@ -225,7 +235,6 @@ th, td{
   position: absolute;
   bottom: 5px;
   right: 25px;
-  z-index: 5;
 }
 
 .pemasukan .nominal{
@@ -358,3 +367,6 @@ ul a span{
   margin-right: 15px;
   font-weight: bold;
 }
+
+
+.table-deskripsi-uang
