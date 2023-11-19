@@ -3,8 +3,10 @@ import {
   $,
   munculForm,
   closes,
+  close,
+  muncul,
   tambahData, 
-  clossSidebar 
+  // clossSidebar 
 } from './function.js';
 
 
@@ -26,7 +28,8 @@ $(".btn").addEventListener('click', e =>{
 
 //  ketika toggle di klik menmabahkan atau menyimpan data
 $('.toggle').addEventListener('click',()=>{
-  clossSidebar()
+  // clossSidebar()
+  $('.side-bar').classList.toggle('-mr-48')
 })
 
 // perilaku side bar
@@ -34,19 +37,38 @@ $('.toggle').addEventListener('click',()=>{
 $('.side-bar li:nth-child(2)').onclick = function(){
   window.location = 'grafik.html'
 }
-$('.nav-lainnya').onclick = function(){
-  $('.figure-darurat').classList.toggle('hidden')
-}
-// $('.side-bar').addEventListener('click', function(e) {
-//   console.log(e.target)
-//   if(e.target.classList.className ==='nav-lainnya') {
-//   }
-// })
 
-$('.cls').onclick = function(e){
-  $('.figure-darurat').classList.toggle('hidden')
-  clossSidebar()
-}
+// -------------------------------------------------------------------------
+// bagian memunculkan dan mengclose elemen
+
+// memunculkan seting
+$('.ul-side-bar ul li:nth-child(4)').addEventListener('click', () => muncul($('.seting'))) 
+// menghilangkan seting
+$('.bi-arrow-left').addEventListener('click', () => close($('.seting'))) 
+// memunculkan semua aset uang
+document.addEventListener('click', e => {
+  document.addEventListener('click', e => {
+    // memunculkan elemen semua aset
+    const liElement = e.target.closest('.tbl-semua-aset');
+    const isClickedInsideLi = liElement !== null;
+    if(isClickedInsideLi) {
+      muncul($('.elm-semua-aset'))
+      // close($('.seting'))
+      // console.log($('.elm-semua-aset'))
+    } 
+  });
+})
+
+// $('').addEventListener('click', () =>) 
+// menghilangkan semua aset
+$('.elm-semua-aset .bi-arrow-left').addEventListener('click', () => close($('.elm-semua-aset'))) 
+
+
+// $('.close').onclick = function(e){
+//   $('.figure-darurat').classList.toggle('hidden')
+//   // clossSidebar()
+//   $('.side-bar').classList.toggle('hidden')
+// }
 
 // $('.nav-lainnya').onclick = function(e){
 //   if(e.target.classList.constains === 'ada'){
@@ -57,4 +79,6 @@ $('.cls').onclick = function(e){
 //   }
 // }
 
-// .saldo
+// .saldo bi bi-three-dots-vertical toggle cls
+// $('.pengaturan details').classList.remove('list-none')
+// nav-lainya

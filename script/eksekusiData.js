@@ -163,10 +163,12 @@ $('.uang-darurat').textContent = rupiah(saldo.darurat)
 $('.total-semua-uang').textContent = rupiah(saldo.dompet + saldo.dana + saldo.darurat)
 
 
+// cls
+
 
 
 
 
 // localStorage.clear()
 
-console.log(saldo);
+// console.log(saldo);

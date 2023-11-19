@@ -360,6 +360,7 @@ export function tampilkanData(dataArr) {
     }
   }
 }
+
 //rupiah
 // tambahData
 export function cetakNominall(bulanSekarang) {
@@ -383,13 +384,22 @@ export function cetakNominall(bulanSekarang) {
   $('#bulan-sekarang').addEventListener('change', ()=> $('.saldo').innerHTML = rupiah(saldo))
 }
 
-// menutup sidebar
-export function clossSidebar() {
-  $('.toggle').classList.toggle('bi-x')
-  $('.toggle').classList.toggle('bi-three-dots-vertical')
-  $('.toggle').classList.toggle('text-oren')
-  $('.side-bar').classList.toggle('hidden')
+
+export function close(ellem) {
+  ellem.classList.add('hidden')
 }
+export function muncul(ellem) {
+  ellem.classList.remove('hidden')
+}
+
+
+// menutup sidebar
+// export function clossSidebar() {
+//   // $('.toggle').classList.toggle('bi-x')
+//   // $('.toggle').classList.toggle('bi-three-dots-vertical')
+//   // $('.toggle').classList.toggle('text-oren')
+//   $('.side-bar').classList.toggle('hidden')
+// }
 
 // localStorage.clear()
 
@@ -401,3 +411,4 @@ export function clossSidebar() {
 // export {dompet} .saldo
 
 // pilihBulanIni
+// closeSidebar

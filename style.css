@@ -263,7 +263,7 @@ nav ul a{
 }
 
 .header{
-  background: orangered;
+  /* background: orangered; */
   padding: 10px 5px;
   
 }
@@ -276,12 +276,14 @@ nav ul {
 }
 
 nav .teing{
-  background: orangered;
+  /* background: orangered; */
 }
 
 ul a span{
   display: block;
 }
+
+
 
 
 .tgl{
@@ -359,6 +361,9 @@ ul a span{
    color: black;
   display: block;
 }
+.side-bar{
+  transition: .5s;
+}
 
 .side-bar li{
   padding: 10px 20px;
@@ -368,5 +373,23 @@ ul a span{
   font-weight: bold;
 }
 
+/* 
+.pengaturan summary::before {
+  content: '\25B6';
+  display: inline-block;
+  margin-right: 6px; /* Jarak antara ikon dan teks 
+} */ 
+details p{
+  margin-left: 23px;
+}
+/* .pengaturan details[open] summary::before {
+  content: '\25BC'; /* Ganti dengan ikon panah ke bawah saat terbuka 
+} */
 
-.table-deskripsi-uang
+.overflow-hidden li *{
+  cursor: pointer;
+}
+
+.seting li{
+  padding: 5px 0;
+}

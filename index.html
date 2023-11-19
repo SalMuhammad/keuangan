@@ -1,157 +1,292 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <script src="https://cdn.tailwindcss.com"></script>
-	<title>Program Pengelolaan Uang</title>
-  <link rel="stylesheet" href=  "style.css">
+  <title>Program Pengelolaan Uang</title>
+  <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
 </head>
-<body>
-  
+
+<body class="text-sm">
+
   <div class="wadah max-w-sm mx-auto relative">
-    <nav>
+    <nav class="bg-orange-500">
       <header class="header tombol-pindah-waktu flex justify-between relative">
         <figure>
           <span><i class="bi bi-chevron-left cursor-pointer"></i></span>
           <span class="sm:text-[15px] cursor-pointer">Mar</span>
-          <span class="cursor-pointer" >2023</span>
+          <span class="cursor-pointer">2023</span>
           <span><i class="bi bi-chevron-right cursor-pointer"></i></span>
-        </figure> 
+        </figure>
 
 
-      <i class="toggle bi bi-three-dots-vertical relative cursor-pointer z-20 font-bold"></i>
-      <div class="side-bar hidden w-1/2 h-96 absolute right-0 top-0 bg-white shadow-lg z-10">
-        <div class="ul-side-bar mt-11">
-          <ul class="capitalize  cursor-pointer-child ">
-            <li><i class="bi bi-search text-orange-600"></i> pencarian</li>
-            <li><i class="bi bi-graph-up-arrow text-blue-600"></i>grafik</li>
-            <!-- <li><a href="grafik.html" class="pl-0"><i class="bi bi-graph-up-arrow text-blue-600"></i>grafik</a></li> -->
-            <li><i class="bi bi-file-earmark-richtext text-orange-600"></i>kategori</li>
-            <li><i class="bi bi-gear text-teal-600"></i>pengaturan</li>
-            <li><i class="bi bi-chat-left-dots text-green-600"></i> usulan anda</li>
-            <li><i class="bi bi-exclamation-circle rotate-180 inline-block text-teal-600"></i> perhatian</li>
-            <li class="nav-lainnya">
-              
-              <i class=" bi-file-earmark-minus text-teal-600"></i>lainnya
-            </li>
-          </ul>
+        <i class="toggle bi bi-three-dots-vertical relative cursor-pointer z-20 font-bold"></i>
+        <!-- <div class="layer fixed top-11 right-0 bottom-0 left-0 bg-slate-600/70"> -->
+        <div class="max-w-sm side-bar w-1/2 h-96 absolute pt-3 right-0 top-10 bg-white shadow-lg z-10 -mr-48">
+          <div class="ul-side-bar">
+            <ul class="capitalize cursor-pointer-child ">
+              <li><i class="bi bi-search text-orange-600"></i> pencarian</li>
+              <li><i class="bi bi-graph-up-arrow text-blue-600"></i>grafik</li>
+              <!-- <li><a href="grafik.html" class="pl-0"><i class="bi bi-graph-up-arrow text-blue-600"></i>grafik</a></li> -->
+              <li><i class="bi bi-file-earmark-richtext text-orange-600"></i>kategori</li>
+              <li><i class="bi bi-gear text-teal-600"></i>pengaturan</li>
+              <li><i class="bi bi-chat-left-dots text-green-600"></i> usulan anda</li>
+              <li><i class="bi bi-exclamation-circle rotate-180 inline-block text-teal-600"></i> perhatian</li>
+              <!-- <li class="nav-lainnya">
+
+                <i class=" bi-file-earmark-minus text-teal-600"></i>lainnya
+              </li> -->
+            </ul>
+          </div>
         </div>
-      </div>
-    </header>
-    <figure class="max-w-sm mx-auto figure-darurat fixed top-0 right-0 bottom-0 left-0 bg-blue-600 z-20 hidden">
-      <i class="cls bi bi bi-arrow-left pl-3 cursor-pointer"></i>
-      <br>
-      <div class="pl-2 mt-9 cursor-pointer">
-        <span>tampilkan saldo beranda ?</span>
-        <div>
-          <input name="pengaturan-saldo-beranda" checked id="dompet" type="radio">
-          <label for="dompet">dompet</label>
+        <!-- </div> -->
+      </header>
+
+      <figure
+        class="max-w-sm mx-auto fixed top-0 right-0 bottom-0 left-0 bg-stone-200 text-gray-800 capitalize z-40 seting hidden">
+        <div class="p-[10px] bg-orange-600 text-white">
+          <i class="bi bi-arrow-left cursor-pointer"></i>
+          <span>pengaturan</span>
         </div>
-        <div>
-          <input name="pengaturan-saldo-beranda" id="bulan-sekarang" type="radio">
-          <label for="bulan-sekarang">bulan sekarang</label>
+        <div class="max-h-screen" style="height: 100vh; ">
+          <div class="overflow-hidden">
+            <div class="p-3 pb-1 shadow-lg bg-white">
+              <h4 class="font-semibold capitalize box-border">tampilan & komfigurasi</h4>
+              <ul class="block text-xs">
+                <li class="py-2 border-b-gray-400 w-full flex justify-between items-center"
+                  style="border-bottom: 1px solid #8080807e;">
+                  <div>
+                    <h5>atur warna tema</h5>
+                    <p class="text-red-800">orange</p>
+                  </div>
+                  <i class="bi bi-chevron-compact-right"></i>
+                </li>
+                <li class="py-2 border-b-gray-400 w-full flex justify-between items-center"
+                  style="border-bottom: 1px solid #8080807e;">
+                  <div>
+                    <h5>format mata uang</h5>
+                    <p class="text-red-800">rupiah</p>
+                  </div>
+                  <i class="bi bi-chevron-compact-right"></i>
+                </li>
+                
+                <li
+                  style="border-bottom: 1px solid #8080807e;" class="py-2 border-b-gray-400 w-full flex justify-between items-center tbl-semua-aset">
+                  <div>
+                    <h5>lihat semua aset</h5>
+                    <p class="text-red-800">aktif</p>
+                  </div>
+                  <i class="bi bi-chevron-compact-right"></i>
+                </li>
+                <li class="py-2 border-b-gray-400 w-full flex justify-between items-center"
+                  style="border-bottom: 1px solid #8080807e;">
+                  <div>
+                    <h5>hapus iklan</h5>
+                    <p class="text-red-800">tidak aktif</p>
+                  </div>
+                  <i class="bi bi-chevron-compact-right"></i>
+                </li>
+                <li class="py-2 border-b-gray-400 w-full flex justify-between items-center"
+                  style="border-bottom: 1px solid #8080807e;">
+                  <details style="list-style-type: disc;" class="list-disc cursor-pointer">
+                    <summary>pilih bahasa <br> <span class="text-red-800">bahasa indonesia</span></summary>
+                    <p>pengaturan bahasa</p>
+                  </details>
+                </li>
+                <li class="py-2 border-b-gray-400 w-full flex justify-between items-center"
+                  style="border-bottom: 1px solid #8080807e;">
+                  <details style="list-style-type: disc;" class="list-disc cursor-pointer">
+                    <summary>hari pertama dalam seminggu <br> <span class="text-red-800">Ahad</span></summary>
+                    <p>pengaturan minggu</p>
+                  </details>
+                </li>
+                <li class="py-2 border-b-gray-400 w-full flex justify-between items-center">
+                  <details style="list-style-type: disc;" class="list-disc cursor-pointer">
+                    <summary>tanggal pertama dalam sebulan <br> <span class="text-red-800">1</span></summary>
+                    <p>orange warna</p>
+                  </details>
+                </li>
+              </ul>
+            </div>
+
+            <div class="p-2 pl-4 pb-1 shadow-lg bg-white mt-2">
+              <h4 class="font-semibold capitalize box-border">sistem</h4>
+              <ul class="block text-xs">
+                <li class="py-2 border-b-gray-400 w-full flex justify-between items-center"
+                  style="border-bottom: 1px solid #8080807e;">
+                  <div>
+                    <h5>pengingat</h5>
+                    <p class="text-red-800">tidak aktif</p>
+                  </div>
+                  <i class="bi bi-chevron-compact-right"></i>
+                </li>
+                <li class="py-2 border-b-gray-400 w-full flex justify-between items-center"
+                  style="border-bottom: 1px solid #8080807e;">
+                  <div>
+                    <h5>atur pin</h5>
+                    <p class="text-red-800">tidak aktif</p>
+                  </div>
+                  <i class="bi bi-chevron-compact-right"></i>
+                </li>
+                <li class="py-2 border-b-gray-400 w-full flex justify-between items-center">
+                  <div>
+                    <h5>buka cdpat</h5>
+                    <p class="text-red-800">aktif</p>
+                  </div>
+                  <i class="bi bi-chevron-compact-right"></i>
+                </li>
+              </ul>
+            </div>
+
+            <div class="p-2 pl-4 pb-1 shadow-lg bg-white mt-2">
+              <h4 class="font-semibold capitalize box-border">database</h4>
+              <ul class="block text-xs">
+                <li class="py-2 border-b-gray-400 w-full flex justify-between items-center"
+                  style="border-bottom: 1px solid #8080807e;">
+                  <div>
+                    <h5>backup / restore google device</h5>
+                  </div>
+                  <i class="bi bi-chevron-compact-right"></i>
+                </li>
+                <li class="py-2 border-b-gray-400 w-full flex justify-between items-center"
+                  style="border-bottom: 1px solid #8080807e;">
+                  <div>
+                    <h5>backup / restore di device setorage</h5>
+                  </div>
+                  <i class="bi bi-chevron-compact-right"></i>
+                </li>
+                <li class="py-2 border-b-gray-400 w-full">
+                  <h5>kirim file database</h5>
+                </li>
+                <li class="py-2 border-b-gray-400 w-full">
+                  <h5>stel ulang data</h5>
+                </li>
+              </ul>
+            </div>
+          </div>          
         </div>
-        <div> 
-          <input name="pengaturan-saldo-beranda" id="e_dana" type="radio">
-          <label for="e_dana">e_dana</label>
-        </div>
-      </div>
-      <div class="p-2 text-center">
-        <table class="table-deskripsi-uang bg-transparent text-white">
-          <tr>
-            <td>uang di dompet</td>
-            <td class="uang-di-dompet block"></td>
-          </tr>
-          <tr>
-            <td>uang di e-walet dana: </td>
-            <td class="uang-di-dana block"></td>
-          </tr>
-          <tr>
-            <td>uang darurat </td>
-            <td class="uang-darurat block"></td>
-          </tr>
-          <tr>
-            <td>semua uang</td>
-            <td class="total-semua-uang block"></td>
-          </tr>
-        </table>
-        <div class="flex justify-between">
-      </div>
-    </figure>   
-    
-    <section>
-      <nav>
-        <div class="max-w-sm bg-slate-800/60 hidden z-40 fixed top-0 right-0 bottom-0 left-0 mx-auto">
-          <div class="bg-red-600">
-            <div class="flex justify-between py-2 px-3">
-              <span class="bi-chevron-left"></span>
-              2023</span>
-              <span class="bi-chevron-right"></span>
+
+        <figure class="elm-semua-aset max-w-sm mx-auto figure-darurat fixed top-0 right-0 bottom-0 left-0 bg-blue-900 hidden text-white">
+          <div class="p-[10px]">
+            <i class="bi bi-arrow-left cursor-pointer"></i>
+            <span>total semua Uang</span>
+          </div>
+          <div class="pl-2 mt-9 cursor-pointer">
+            <span>tampilkan saldo beranda ?</span>
+            <div>
+              <input name="pengaturan-saldo-beranda" checked id="dompet" type="radio">
+              <label for="dompet">dompet</label>
+            </div>
+            <div>
+              <input name="pengaturan-saldo-beranda" id="bulan-sekarang" type="radio">
+              <label for="bulan-sekarang">bulan sekarang</label>
+            </div>
+            <div>
+              <input name="pengaturan-saldo-beranda" id="e_dana" type="radio">
+              <label for="e_dana">e_dana</label>
             </div>
           </div>
-          <div class="bulan-bulan flex flex-wrap justify-between p-1 px-2 gap-4 capitalize bg-red-600 shadow-md shadow-fuchsia-100">
-            <span>maret</span>
-            <span>maret</span>
-            <span>maret</span>
-            <span>maret</span>
-            <span>maret</span>
-            <span>maret</span>
-            <span>maret</span>
-            <span>maret</span>
-            <span>maret</span>
-            <span>maret</span>
-            <span>maret</span>
-            <span>maret</span>
+          <div class="p-2 pl-4 text-center">
+            <table class="table-deskripsi-uang bg-transparent text-white">
+              <tr>
+                <td>uang di dompet</td>
+                <td class="uang-di-dompet block"></td>
+              </tr>
+              <tr>
+                <td>uang di e-walet dana: </td>
+                <td class="uang-di-dana block"></td>
+              </tr>
+              <tr>
+                <td>uang darurat </td>
+                <td class="uang-darurat block"></td>
+              </tr>
+              <tr>
+                <td>semua uang</td>
+                <td class="total-semua-uang block"></td>
+              </tr>
+            </table>
+            <div class="flex justify-between">
+            </div>
+        </figure>
+      </figure>
+
+     
+
+      <section>
+        <nav>
+          <div class="max-w-sm bg-slate-800/60 hidden z-40 fixed top-0 right-0 bottom-0 left-0 mx-auto">
+            <div class="bg-red-600">
+              <div class="flex justify-between py-2 px-3">
+                <span class="bi-chevron-left"></span>
+                2023</span>
+                <span class="bi-chevron-right"></span>
+              </div>
+            </div>
+            <div
+              class="bulan-bulan flex flex-wrap justify-between p-1 px-2 gap-4 capitalize bg-red-600 shadow-md shadow-fuchsia-100">
+              <span>maret</span>
+              <span>maret</span>
+              <span>maret</span>
+              <span>maret</span>
+              <span>maret</span>
+              <span>maret</span>
+              <span>maret</span>
+              <span>maret</span>
+              <span>maret</span>
+              <span>maret</span>
+              <span>maret</span>
+              <span>maret</span>
+            </div>
           </div>
+        </nav>
+      </section>
+
+      <ul class="teing bg-reed-200 bg-orange-500">
+        <a href="index.html">harian</a>
+        <a href="weekly.html">mingguan</a>
+        <a href="monthly.html">bulanan</a>
+        <a href="annual.html">tahunan</a>
+      </ul>
+
+
+      <ul class="text-black">
+        <a class="pemasukan">
+          <span>pemasukan</span>
+          <span class="nominal-masuk text-teal-600"></span>
+        </a>
+        <a class="pengeluaran">
+          <span>pengeluaran</span>
+          <span class="nominal-keluar text-orange-600"></span></a>
+        <a>
+          <span>saldo</span>
+          <span class="saldo"></span>
+        </a>
+      </ul>
+    </nav>
+
+    <div class="layoting max-w-sm mx-auto">
+      <h2 class="caption justify-between">
+        <div class="flex">
+          <i class="bi bi-arrow-left cursor-pointer close"></i>
+          <span>Don't be wasteful</span>
         </div>
-      </nav>
-    </section>
-
-    <ul class="teing bg-reed-200">
-       <a href="index.html">harian</a>
-       <a href="weekly.html">mingguan</a>
-       <a href="monthly.html">bulanan</a>
-       <a href="annual.html">tahunan</a>
-    </ul>
-
-
-    <ul class="text-black">
-      <a class="pemasukan" >
-        <span>pemasukan</span>
-        <span class="nominal-masuk text-teal-600"></span>
-      </a>
-      <a class="pengeluaran" >
-        <span>pengeluaran</span>
-        <span class="nominal-keluar text-orange-600"></span></a>
-      <a>
-        <span>saldo</span>
-        <span class="saldo"></span>
-      </a>
-    </ul>
-  </nav>   
-
- <div class="layoting max-w-sm mx-auto">	
-   <h2 class="caption justify-between">
-     <div class="flex">
-       <i class="bi bi-arrow-left cursor-pointer close"></i>
-     <span>Don't be wasteful</span>
-     </div>
-     <div class="flex salin-sampah">
-       <span class="trash">
-         <i class="bi bi-trash"></i>
-       </span>
-       <i class="bi bi-back"></i>
-     </div>
-   </h2>
-    <select class="red max-w-[80%]" id="jenis">
-       <option value="keluar">Pengeluaran</option>
-       <option value="masuk">Pemasukan</option>
-     </select>
-     <div class="kategori-masuk w-[80%] mx-auto block">
-        <div class="ke-dompet" >
+        <div class="flex salin-sampah">
+          <span class="trash">
+            <i class="bi bi-trash"></i>
+          </span>
+          <i class="bi bi-back"></i>
+        </div>
+      </h2>
+      <select class="red max-w-[80%]" id="jenis">
+        <option value="keluar">Pengeluaran</option>
+        <option value="masuk">Pemasukan</option>
+      </select>
+      <div class="kategori-masuk w-[80%] mx-auto block">
+        <div class="ke-dompet">
           <input value="dompet" id="ke-dompet" type="radio" checked name="pilih-penyimpanan">
           <label for="ke-dompet">di dompet</label>
         </div>
@@ -164,66 +299,68 @@
           <label for="ke-e-dana">uang e-walet dana</label>
         </div>
       </div>
-   <form class="form" action="">
-    <!-- <select class="red" id="jenis">
+      <form class="form" action="">
+        <!-- <select class="red" id="jenis">
        <option value="keluar">Pengeluaran</option>
        <option value="masuk">Pemasukan</option>
      </select> Don't be wasteful -->
-     <table class="tabel-form">
-       <tr>
-         <td><label class="label-lategori">kategori:</label></td>
-         <td>
-           <div class="overlay ">
-            <div class="masuk">
-              <select class="kategori" id="kategori-masuk">
-                 <option value="ortu">orang-tua</option>
-                <option value="sodara">sodara</option>
-                <option value="bisnis">bisnis</option>
-                 <option value="hibah">hibah</option>
-                <option value="lain-lain">lain-lain</option>
-               </select>
-           </div>
-          <div class="keluar"> 
-            <select class="kategori" id="kategori-keluar"> 
-              <option value="rencang">rencang</option>
-              <option value="kos">bayar kos</option>
-              <option value="kendaraan">kendaraan</option>
-              <option value="pulsa"dropzone="">pulsa</option>
-              <option value="lain-lain">lain-lain</option>
-            </select> 
-          </div>
-          </div>
-        </td>
-       </tr>
-       <tr>
-         <td><label for="tanggal">tanggal</label></td>
-         <td><input class="tgl tanggal" type="datetime-local" id="tanggal"></td>
-       </tr>
-       <tr>
-         <td><label for="nominal">Nominal</label></td>
-         <td><input type="number" id="nominal"></td>
-       </tr>
-       <tr>
-         <td><label for="keterangan">keterangan </label></td>
-         <td><textarea name="keterangan" id="keterangan" cols="25" rows="3"></textarea></td>
-       </tr>
-     </table>
-     <button class="btn auto-margin" type="submit">Tambahkan</button>
-     <br>
-   </form>
- </div>	
-   <button id="muncul" class="mb-24 text-3xl z-0">+</button>
-   <div class="container" id="tabel-data">
+        <table class="tabel-form">
+          <tr>
+            <td><label class="label-lategori">kategori:</label></td>
+            <td>
+              <div class="overlay ">
+                <div class="masuk">
+                  <select class="kategori" id="kategori-masuk">
+                    <option value="ortu">orang-tua</option>
+                    <option value="sodara">sodara</option>
+                    <option value="bisnis">bisnis</option>
+                    <option value="hibah">hibah</option>
+                    <option value="lain-lain">lain-lain</option>
+                  </select>
+                </div>
+                <div class="keluar">
+                  <select class="kategori" id="kategori-keluar">
+                    <option value="rencang">rencang</option>
+                    <option value="kos">bayar kos</option>
+                    <option value="kendaraan">kendaraan</option>
+                    <option value="pulsa" dropzone="">pulsa</option>
+                    <option value="lain-lain">lain-lain</option>
+                  </select>
+                </div>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td><label for="tanggal">tanggal</label></td>
+            <td><input class="tgl tanggal" type="datetime-local" id="tanggal"></td>
+          </tr>
+          <tr>
+            <td><label for="nominal">Nominal</label></td>
+            <td><input type="number" id="nominal"></td>
+          </tr>
+          <tr>
+            <td><label for="keterangan">keterangan </label></td>
+            <td><textarea name="keterangan" id="keterangan" cols="25" rows="3"></textarea></td>
+          </tr>
+        </table>
+        <button class="btn auto-margin" type="submit">Tambahkan</button>
+        <br>
+      </form>
+    </div>
+    <button id="muncul" class="mb-24 text-3xl z-0">+</button>
+    <div class="container" id="tabel-data">
       <span class="tabb"></span>
       <table class="table"></table>
-   </div> 
- </div>
- <!-- <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script> -->
-	<script type="module" src="script/eksekusiData.js"></script>
-	<script type="module" src="script/prontEnd.js"></script>
+    </div>
+  </div>
+  <!-- <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script> -->
+  <script type="module" src="script/eksekusiData.js"></script>
+  <script type="module" src="script/prontEnd.js"></script>
 </body>
+
 </html>
 
-
-
-pencarian
+lainya
+semua-aset
+setin
+teing bg-orange-500
