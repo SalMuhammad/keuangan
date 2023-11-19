@@ -361,10 +361,23 @@ ul a span{
    color: black;
   display: block;
 }
-.side-bar{
+/* .side-bar{
   transition: .5s;
+} */
+
+.layer{
+  animation: .3s ngeblur;
 }
 
+
+@keyframes ngeblur {
+  0%{
+    background-color: transparent;
+  }100%{
+    background-color:rgb(71 85 105 / 0.7);
+    backdrop-filter: 90px;
+  }
+}
 .side-bar li{
   padding: 10px 20px;
 }
@@ -393,3 +406,7 @@ details p{
 .seting li{
   padding: 7px 0;
 }
+.seting > div {
+  animation: 1s nambrak-benget;
+}
+

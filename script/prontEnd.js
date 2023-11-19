@@ -29,7 +29,8 @@ $(".btn").addEventListener('click', e =>{
 //  ketika toggle di klik menmabahkan atau menyimpan data
 $('.toggle').addEventListener('click',()=>{
   // clossSidebar()
-  $('.side-bar').classList.toggle('-mr-48')
+  $('.side-bar').classList.toggle('-translate-x-0')
+  $('.layer').classList.toggle('hidden')
 })
 
 // perilaku side bar
@@ -81,4 +82,4 @@ $('.elm-semua-aset .bi-arrow-left').addEventListener('click', () => close($('.el
 
 // .saldo bi bi-three-dots-vertical toggle cls
 // $('.pengaturan details').classList.remove('list-none')
-// nav-lainya
+// nav-lainya toggle

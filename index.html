@@ -22,10 +22,10 @@
           <span class="cursor-pointer">2023</span>
           <span><i class="bi bi-chevron-right cursor-pointer"></i></span>
         </figure>
-
+        
         <i class="toggle bi bi-three-dots-vertical relative cursor-pointer z-20 font-bold"></i>
-        <!-- <div class="layer fixed top-11 right-0 bottom-0 left-0 bg-slate-600/70"> -->
-        <div class="max-w-sm side-bar w-1/2 h-[90vh] absolute pt-3 right-0 top-10 bg-white shadow-lg z-10 -mr-48">
+        <div class="layer fixed top-11 right-0 bottom-0 left-0 bg-slate-600/70 hidden"></div>
+        <div class="max-w-sm side-bar w-1/2 h-[87vh] absolute pt-3 right-0 top-10 bg-white shadow-lg z-10 translate-x-48 duration-100 transition-transform">
           <div class="ul-side-bar">
             <ul class="capitalize cursor-pointer-child bg-transparent">
               <li><i class="bi bi-search text-orange-600"></i> pencarian</li>
@@ -42,175 +42,176 @@
             </ul>
           </div>
         </div>
-        <!-- </div> -->
       </header>
 
       <figure
         class="max-w-sm mx-auto fixed top-0 right-0 bottom-0 left-0 bg-stone-200 text-gray-800 capitalize z-40 seting hidden">
-        <div class="p-[10px] bg-orange-600 text-white">
-          <i class="bi bi-arrow-left cursor-pointer"></i>
-          <span>pengaturan</span>
-        </div>
-        <div class="max-h-screen" style="height: 100vh; ">
-          <div class="overflow-hidden">
-            <div class="p-3 pb-1 shadow-lg bg-white">
-              <h4 class="font-semibold capitalize box-border">tampilan & komfigurasi</h4>
-              <ul class="block text-xs">
-                <li class="py-2 border-b-gray-400 w-full flex justify-between items-center"
-                  style="border-bottom: 1px solid #8080807e;">
-                  <div>
-                    <h5>atur warna tema</h5>
-                    <p class="text-red-800">orange</p>
-                  </div>
-                  <i class="bi bi-chevron-compact-right"></i>
-                </li>
-                <li class="py-2 border-b-gray-400 w-full flex justify-between items-center"
-                  style="border-bottom: 1px solid #8080807e;">
-                  <div>
-                    <h5>format mata uang</h5>
-                    <p class="text-red-800">rupiah</p>
-                  </div>
-                  <i class="bi bi-chevron-compact-right"></i>
-                </li>
-                
-                <li
-                  style="border-bottom: 1px solid #8080807e;" class="py-2 border-b-gray-400 w-full flex justify-between items-center tbl-semua-aset">
-                  <div>
-                    <h5>lihat semua aset</h5>
-                    <p class="text-red-800">aktif</p>
-                  </div>
-                  <i class="bi bi-chevron-compact-right"></i>
-                </li>
-                <li class="py-2 border-b-gray-400 w-full flex justify-between items-center"
-                  style="border-bottom: 1px solid #8080807e;">
-                  <div>
-                    <h5>hapus iklan</h5>
-                    <p class="text-red-800">tidak aktif</p>
-                  </div>
-                  <i class="bi bi-chevron-compact-right"></i>
-                </li>
-                <li class="py-2 border-b-gray-400 w-full flex justify-between items-center"
-                  style="border-bottom: 1px solid #8080807e;">
-                  <details style="list-style-type: disc;" class="list-disc cursor-pointer">
-                    <summary>pilih bahasa <br> <span class="text-red-800">bahasa indonesia</span></summary>
-                    <p>pengaturan bahasa</p>
-                  </details>
-                </li>
-                <li class="py-2 border-b-gray-400 w-full flex justify-between items-center"
-                  style="border-bottom: 1px solid #8080807e;">
-                  <details style="list-style-type: disc;" class="list-disc cursor-pointer">
-                    <summary>hari pertama dalam seminggu <br> <span class="text-red-800">Ahad</span></summary>
-                    <p>pengaturan minggu</p>
-                  </details>
-                </li>
-                <li class="py-2 border-b-gray-400 w-full flex justify-between items-center">
-                  <details style="list-style-type: disc;" class="list-disc cursor-pointer">
-                    <summary>tanggal pertama dalam sebulan <br> <span class="text-red-800">1</span></summary>
-                    <p>orange warna</p>
-                  </details>
-                </li>
-              </ul>
-            </div>
-
-            <div class="p-2 pl-4 pb-1 shadow-lg bg-white mt-2">
-              <h4 class="font-semibold capitalize box-border">sistem</h4>
-              <ul class="block text-xs">
-                <li class="py-2 border-b-gray-400 w-full flex justify-between items-center"
-                  style="border-bottom: 1px solid #8080807e;">
-                  <div>
-                    <h5>pengingat</h5>
-                    <p class="text-red-800">tidak aktif</p>
-                  </div>
-                  <i class="bi bi-chevron-compact-right"></i>
-                </li>
-                <li class="py-2 border-b-gray-400 w-full flex justify-between items-center"
-                  style="border-bottom: 1px solid #8080807e;">
-                  <div>
-                    <h5>atur pin</h5>
-                    <p class="text-red-800">tidak aktif</p>
-                  </div>
-                  <i class="bi bi-chevron-compact-right"></i>
-                </li>
-                <li class="py-2 border-b-gray-400 w-full flex justify-between items-center">
-                  <div>
-                    <h5>buka cdpat</h5>
-                    <p class="text-red-800">aktif</p>
-                  </div>
-                  <i class="bi bi-chevron-compact-right"></i>
-                </li>
-              </ul>
-            </div>
-
-            <div class="p-2 pl-4 pb-1 shadow-lg bg-white mt-2">
-              <h4 class="font-semibold capitalize box-border">database</h4>
-              <ul class="block text-xs">
-                <li class="py-2 border-b-gray-400 w-full flex justify-between items-center"
-                  style="border-bottom: 1px solid #8080807e;">
-                  <div>
-                    <h5>backup / restore google device</h5>
-                  </div>
-                  <i class="bi bi-chevron-compact-right"></i>
-                </li>
-                <li class="py-2 border-b-gray-400 w-full flex justify-between items-center"
-                  style="border-bottom: 1px solid #8080807e;">
-                  <div>
-                    <h5>backup / restore di device setorage</h5>
-                  </div>
-                  <i class="bi bi-chevron-compact-right"></i>
-                </li>
-                <li class="py-2 border-b-gray-400 w-full">
-                  <h5>kirim file database</h5>
-                </li>
-                <li class="py-2 border-b-gray-400 w-full">
-                  <h5>stel ulang data</h5>
-                </li>
-              </ul>
-            </div>
-          </div>          
-        </div>
-
-        <figure class="elm-semua-aset max-w-sm mx-auto figure-darurat fixed top-0 right-0 bottom-0 left-0 bg-blue-900 hidden text-white">
-          <div class="p-[10px]">
+        <div>
+          <div class="p-[10px] bg-orange-600 text-white">
             <i class="bi bi-arrow-left cursor-pointer"></i>
-            <span>total semua Uang</span>
+            <span>pengaturan</span>
           </div>
-          <div class="pl-2 mt-9 cursor-pointer">
-            <span>tampilkan saldo beranda ?</span>
-            <div>
-              <input name="pengaturan-saldo-beranda" checked id="dompet" type="radio">
-              <label for="dompet">dompet</label>
-            </div>
-            <div>
-              <input name="pengaturan-saldo-beranda" id="bulan-sekarang" type="radio">
-              <label for="bulan-sekarang">bulan sekarang</label>
-            </div>
-            <div>
-              <input name="pengaturan-saldo-beranda" id="e_dana" type="radio">
-              <label for="e_dana">e_dana</label>
-            </div>
+          <div class="max-h-screen" style="height: 100vh; ">
+            <div class="overflow-hidden">
+              <div class="p-3 pb-1 shadow-lg bg-white">
+                <h4 class="font-semibold capitalize box-border">tampilan & komfigurasi</h4>
+                <ul class="block text-xs">
+                  <li class="py-2 border-b-gray-400 w-full flex justify-between items-center"
+                    style="border-bottom: 1px solid #8080807e;">
+                    <div>
+                      <h5>atur warna tema</h5>
+                      <p class="text-red-800">orange</p>
+                    </div>
+                    <i class="bi bi-chevron-compact-right"></i>
+                  </li>
+                  <li class="py-2 border-b-gray-400 w-full flex justify-between items-center"
+                    style="border-bottom: 1px solid #8080807e;">
+                    <div>
+                      <h5>format mata uang</h5>
+                      <p class="text-red-800">rupiah</p>
+                    </div>
+                    <i class="bi bi-chevron-compact-right"></i>
+                  </li>
+                  
+                  <li
+                    style="border-bottom: 1px solid #8080807e;" class="py-2 border-b-gray-400 w-full flex justify-between items-center tbl-semua-aset">
+                    <div>
+                      <h5>lihat semua aset</h5>
+                      <p class="text-red-800">aktif</p>
+                    </div>
+                    <i class="bi bi-chevron-compact-right"></i>
+                  </li>
+                  <li class="py-2 border-b-gray-400 w-full flex justify-between items-center"
+                    style="border-bottom: 1px solid #8080807e;">
+                    <div>
+                      <h5>hapus iklan</h5>
+                      <p class="text-red-800">tidak aktif</p>
+                    </div>
+                    <i class="bi bi-chevron-compact-right"></i>
+                  </li>
+                  <li class="py-2 border-b-gray-400 w-full flex justify-between items-center"
+                    style="border-bottom: 1px solid #8080807e;">
+                    <details style="list-style-type: disc;" class="list-disc cursor-pointer">
+                      <summary>pilih bahasa <br> <span class="text-red-800">bahasa indonesia</span></summary>
+                      <p>pengaturan bahasa</p>
+                    </details>
+                  </li>
+                  <li class="py-2 border-b-gray-400 w-full flex justify-between items-center"
+                    style="border-bottom: 1px solid #8080807e;">
+                    <details style="list-style-type: disc;" class="list-disc cursor-pointer">
+                      <summary>hari pertama dalam seminggu <br> <span class="text-red-800">Ahad</span></summary>
+                      <p>pengaturan minggu</p>
+                    </details>
+                  </li>
+                  <li class="py-2 border-b-gray-400 w-full flex justify-between items-center">
+                    <details style="list-style-type: disc;" class="list-disc cursor-pointer">
+                      <summary>tanggal pertama dalam sebulan <br> <span class="text-red-800">1</span></summary>
+                      <p>orange warna</p>
+                    </details>
+                  </li>
+                </ul>
+              </div>
+
+              <div class="p-2 pl-4 pb-1 shadow-lg bg-white mt-2">
+                <h4 class="font-semibold capitalize box-border">sistem</h4>
+                <ul class="block text-xs">
+                  <li class="py-2 border-b-gray-400 w-full flex justify-between items-center"
+                    style="border-bottom: 1px solid #8080807e;">
+                    <div>
+                      <h5>pengingat</h5>
+                      <p class="text-red-800">tidak aktif</p>
+                    </div>
+                    <i class="bi bi-chevron-compact-right"></i>
+                  </li>
+                  <li class="py-2 border-b-gray-400 w-full flex justify-between items-center"
+                    style="border-bottom: 1px solid #8080807e;">
+                    <div>
+                      <h5>atur pin</h5>
+                      <p class="text-red-800">tidak aktif</p>
+                    </div>
+                    <i class="bi bi-chevron-compact-right"></i>
+                  </li>
+                  <li class="py-2 border-b-gray-400 w-full flex justify-between items-center">
+                    <div>
+                      <h5>buka cdpat</h5>
+                      <p class="text-red-800">aktif</p>
+                    </div>
+                    <i class="bi bi-chevron-compact-right"></i>
+                  </li>
+                </ul>
+              </div>
+
+              <div class="p-2 pl-4 pb-1 shadow-lg bg-white mt-2">
+                <h4 class="font-semibold capitalize box-border">database</h4>
+                <ul class="block text-xs">
+                  <li class="py-2 border-b-gray-400 w-full flex justify-between items-center"
+                    style="border-bottom: 1px solid #8080807e;">
+                    <div>
+                      <h5>backup / restore google device</h5>
+                    </div>
+                    <i class="bi bi-chevron-compact-right"></i>
+                  </li>
+                  <li class="py-2 border-b-gray-400 w-full flex justify-between items-center"
+                    style="border-bottom: 1px solid #8080807e;">
+                    <div>
+                      <h5>backup / restore di device setorage</h5>
+                    </div>
+                    <i class="bi bi-chevron-compact-right"></i>
+                  </li>
+                  <li class="py-2 border-b-gray-400 w-full">
+                    <h5>kirim file database</h5>
+                  </li>
+                  <li class="py-2 border-b-gray-400 w-full">
+                    <h5>stel ulang data</h5>
+                  </li>
+                </ul>
+              </div>
+            </div>          
           </div>
-          <div class="p-2 pl-4 text-center">
-            <table class="table-deskripsi-uang bg-transparent text-white">
-              <tr>
-                <td>uang di dompet</td>
-                <td class="uang-di-dompet block"></td>
-              </tr>
-              <tr>
-                <td>uang di e-walet dana: </td>
-                <td class="uang-di-dana block"></td>
-              </tr>
-              <tr>
-                <td>uang darurat </td>
-                <td class="uang-darurat block"></td>
-              </tr>
-              <tr>
-                <td>semua uang</td>
-                <td class="total-semua-uang block"></td>
-              </tr>
-            </table>
-            <div class="flex justify-between">
+
+          <figure class="elm-semua-aset max-w-sm mx-auto figure-darurat fixed top-0 right-0 bottom-0 left-0 bg-blue-900 hidden text-white">
+            <div class="p-[10px]">
+              <i class="bi bi-arrow-left cursor-pointer"></i>
+              <span>total semua Uang</span>
             </div>
-        </figure>
+            <div class="pl-2 mt-9 cursor-pointer">
+              <span>tampilkan saldo beranda ?</span>
+              <div>
+                <input name="pengaturan-saldo-beranda" checked id="dompet" type="radio">
+                <label for="dompet">dompet</label>
+              </div>
+              <div>
+                <input name="pengaturan-saldo-beranda" id="bulan-sekarang" type="radio">
+                <label for="bulan-sekarang">bulan sekarang</label>
+              </div>
+              <div>
+                <input name="pengaturan-saldo-beranda" id="e_dana" type="radio">
+                <label for="e_dana">e_dana</label>
+              </div>
+            </div>
+            <div class="p-2 pl-4 text-center">
+              <table class="table-deskripsi-uang bg-transparent text-white">
+                <tr>
+                  <td>uang di dompet</td>
+                  <td class="uang-di-dompet block"></td>
+                </tr>
+                <tr>
+                  <td>uang di e-walet dana: </td>
+                  <td class="uang-di-dana block"></td>
+                </tr>
+                <tr>
+                  <td>uang darurat </td>
+                  <td class="uang-darurat block"></td>
+                </tr>
+                <tr>
+                  <td>semua uang</td>
+                  <td class="total-semua-uang block"></td>
+                </tr>
+              </table>
+              <div class="flex justify-between">
+              </div>
+          </figure>
+          </div>
       </figure>
 
      
