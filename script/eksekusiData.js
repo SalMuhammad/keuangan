@@ -43,14 +43,12 @@ if (thisMonthReverse && Array.isArray(thisMonthReverse)) {
 }
 
 tampilkanData(thisMonthReverse);
-// mencetak data.
 
 cetakNominall(thisMonthReverse);
 
 
-// console.log(semuaData)
-tahunKlik = 2023;
-bulanKlik = 10;
+tahunKlik = new Date().getFullYear(); 
+bulanKlik = new Date().getMonth() + 1
 $('.tombol-pindah-waktu figure').addEventListener('click', e => {
   if (e.target.classList.contains('bi-chevron-left')) {
     bulanKlik--;
@@ -65,8 +63,6 @@ $('.tombol-pindah-waktu figure').addEventListener('click', e => {
       tahunKlik++;
     }
   }
-  // console.log(tahunKlik);
-  // console.log(bulanKlik);
   thisMonthReverse = sortByTime(pilihBulanIni(semuaData, tahunKlik, bulanKlik));
   if (thisMonthReverse && Array.isArray(thisMonthReverse)) {
     thisMonthReverse.reverse();

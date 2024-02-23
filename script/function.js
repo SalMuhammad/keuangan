@@ -7,7 +7,7 @@ import {
   namaBulan,
   saldo
 } from './data_base.js'
-console.log(saldo.dompet);
+// console.log(saldo.dompet);
 // pengecekanSelect
 // kategoriKetikaMasuk
 
@@ -412,3 +412,4 @@ export function muncul(ellem) {
 
 // pilihBulanIni
 // closeSidebar
+// sortByTime  console
