@@ -337,7 +337,7 @@ export function tampilkanData(dataArr) {
       if (typeof dataPerHari[tanggal] !== 'undefined'/* && dataPerHari[tanggal] !== null*/) {
         dataPerHari[tanggal].forEach((data, id) => {
           const jenis = data.jenis === "masuk" ? "Pemasukan" : "Pengeluaran";
-          let tr = data.jenis === "masuk" ? '<tr class="pemasukan trs">' : '<tr class="pengeluaran trs">'
+          let tr = data.jenis === "masuk" ? '<tr class="pemasukan">' : '<tr class="pengeluaran">'
 
           tableHtml += tr;
           tableHtml += `

@@ -79,11 +79,28 @@ $('.tombol-pindah-waktu figure').addEventListener('click', e => {
 //2.   ~"~    dropdown seting
 //3. membuat diagram garis
 
+// function ambilIdTransaksi(target) {
+//   let kembalian
+//   if(target.target.querySelector('span').textContent ){
+//     kembalian = target.target.querySelector('span').textContent 
+//   } else if(target.target.nextElementSibling.querySelector('span').textContent ) {
+//     kembalian = target.target.nextElementSibling.querySelector('span').textContent 
+//   } else if(target.target.nextElementSibling.nextElementSibling.querySelector('span').textContent ) {
+//     kembalian = target.target.nextElementSibling.nextElementSibling.querySelector('span').textContent 
+//   }
+// }
 
-   $('.table-klik tbody').addEventListener("click", e => {
+const tbody = $('.table')
+tbody.addEventListener("click", e => {
+  if(e.target.tagName === 'TD') {
+      // let spanElement = e.target.querySelector('span')
+      // if(spanElement && e.target.cellIndex == 2) {
+      //   var textContent = spanElement.textContent
+      //   console.log(textContent);
+      // }
     // Mendapatkan nilai ID dari elemen <span> dalam elemen <td> terakhir dari blok <tr> yang diklik
-    const idTransaksi =  $('.table-klik tbody').querySelector('.nominal span').textContent
-    console.log(idTransaksi);
+    const idTransaksi =  e.target.querySelector('span').textContent 
+    console.log(e.target.tagName === 'TD')
     const dataArr = dataUang.filter(da => da.id === idTransaksi)[0];
     let id = dataUang.indexOf(dataArr);
     munculForm()
@@ -111,7 +128,8 @@ $('.tombol-pindah-waktu figure').addEventListener('click', e => {
       $("#kategori-keluar").value = dataArr.kategori
       kategoriKetikaKeluar()
     }
-  });
+  }
+});
 
 // bagian menghapus
 if ($('.btn') !== null) {
