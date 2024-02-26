@@ -82,13 +82,14 @@ $('.tombol-pindah-waktu figure').addEventListener('click', e => {
 
 
 // Mendapatkan semua elemen <tr> dengan class "trs"
-const trs = document.querySelectorAll(".trs");
-
+// const trs = document.querySelectorAll(".trs")
 // Menambahkan event listener untuk setiap elemen <tr>
-trs.forEach((tr) => {
-  tr.addEventListener("click", () => {
+// trs.forEach((tr) => {
+const tableKlik = $('.table-klik tbody')
+  tableKlik.addEventListener("click", e => {
     // Mendapatkan nilai ID dari elemen <span> dalam elemen <td> terakhir dari blok <tr> yang diklik
-    const idTransaksi = tr.querySelector(".id-transaksi").textContent;
+    const idTransaksi = tableKlik.querySelector('.nominal span').textContent
+    console.log(idTransaksi);
     const dataArr = dataUang.filter(da => da.id === idTransaksi)[0];
     let id = dataUang.indexOf(dataArr);
     munculForm()
@@ -117,7 +118,7 @@ trs.forEach((tr) => {
       kategoriKetikaKeluar()
     }
   });
-});
+// });
 
 
 // bagian menghapus

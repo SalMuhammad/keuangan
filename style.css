@@ -155,9 +155,7 @@ table {
   padding: 0 20px;
   border-collapse: collapse;
 }
-tr:hover{
-  background-color: #ff440050;
-}
+
 .table-deskripsi-uang tr:last-child td{
   border-top: 1px solid white;
 }
@@ -275,9 +273,6 @@ nav ul {
   background: white;
 }
 
-nav .teing{
-  /* background: orangered; */
-}
 
 ul a span{
   display: block;
@@ -339,9 +334,6 @@ ul a span{
   margin-left: 9px;
 }
 
-.i-trash{http://127.0.0.1:3000/index.html
-  display: none;
-}
 
 .wadah{
   height: 100vh;
@@ -367,6 +359,7 @@ ul a span{
 
 .layer{
   animation: .3s ngeblur;
+  -webkit-animation: .3s ngeblur;
 }
 
 
@@ -408,5 +401,7 @@ details p{
 }
 .seting > div {
   animation: 1s nambrak-benget;
+  -webkit-animation: 1s nambrak-benget;
 }
 
+tr:hover
