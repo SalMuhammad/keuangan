@@ -79,54 +79,60 @@ $('.tombol-pindah-waktu figure').addEventListener('click', e => {
 //2.   ~"~    dropdown seting
 //3. membuat diagram garis
 
-// function ambilIdTransaksi(target) {
-//   let kembalian
-//   if(target.target.querySelector('span').textContent ){
-//     kembalian = target.target.querySelector('span').textContent 
-//   } else if(target.target.nextElementSibling.querySelector('span').textContent ) {
-//     kembalian = target.target.nextElementSibling.querySelector('span').textContent 
-//   } else if(target.target.nextElementSibling.nextElementSibling.querySelector('span').textContent ) {
-//     kembalian = target.target.nextElementSibling.nextElementSibling.querySelector('span').textContent 
-//   }
-// }
+
+// fungsi untuk mencari element <span> di dalam element <td>
+function findSpan(element) {
+  // mengecek element <td> apakah ada di dalam element <tr>
+  let spanElement = element.querySelector('span')
+  if(spanElement) {
+    return spanElement
+  } else {
+    // jika tidak ditemukan, mencari di dalam element anaknya secara rekursif
+    for (let i = 0; i< element.children.length; i++ ) {
+      let childSpanElement = findSpan(element.children[i])
+      if(childSpanElement) {
+        return childSpanElement
+      }
+    }
+  } 
+  return null
+}
 
 const tbody = $('.table')
 tbody.addEventListener("click", e => {
   if(e.target.tagName === 'TD') {
-      // let spanElement = e.target.querySelector('span')
-      // if(spanElement && e.target.cellIndex == 2) {
-      //   var textContent = spanElement.textContent
-      //   console.log(textContent);
-      // }
-    // Mendapatkan nilai ID dari elemen <span> dalam elemen <td> terakhir dari blok <tr> yang diklik
-    const idTransaksi =  e.target.querySelector('span').textContent 
-    console.log(e.target.tagName === 'TD')
-    const dataArr = dataUang.filter(da => da.id === idTransaksi)[0];
-    let id = dataUang.indexOf(dataArr);
-    munculForm()
-    $(".btn").classList.add('edit')
-    $(".btn").setAttribute('data-id', id)
-    $('.edit').textContent = 'Edit'
-    $("#nominal").value = dataArr.nominal
-    $(".tanggal").value = dataArr.tanggal
-    $("textarea").value = dataArr.keterangan
-    $("#jenis").value = dataArr.jenis
-    let htmlAlokasi
-    if (dataArr.alokasi === 'dompet') {
-      htmlAlokasi = $('#ke-dompet')
-    } else if (dataArr.alokasi === 'dana') {
-      htmlAlokasi = $('#ke-e-dana')
-    } else if (dataArr.alokasi === 'darurat') {
-      htmlAlokasi = $('#ke-darurat')
-    }
-    htmlAlokasi.setAttribute("checked", "checked")
-    $('.caption .trash').style.display = 'block'
-    if (dataArr.jenis === 'masuk') {
-      $("#kategori-masuk").value = dataArr.kategori
-      kategoriKetikaMasuk()
-    } else {
-      $("#kategori-keluar").value = dataArr.kategori
-      kategoriKetikaKeluar()
+    let spanElement = findSpan(e.target.parentNode)
+    if(spanElement) {
+      
+      // Mendapatkan nilai ID dari elemen <span> dalam elemen <td> terakhir dari blok <tr> yang diklik
+      const idTransaksi =  spanElement.textContent
+      const dataArr = dataUang.filter(da => da.id === idTransaksi)[0];
+      let id = dataUang.indexOf(dataArr);
+      munculForm()
+      $(".btn").classList.add('edit')
+      $(".btn").setAttribute('data-id', id)
+      $('.edit').textContent = 'Edit'
+      $("#nominal").value = dataArr.nominal
+      $(".tanggal").value = dataArr.tanggal
+      $("textarea").value = dataArr.keterangan
+      $("#jenis").value = dataArr.jenis
+      let htmlAlokasi
+      if (dataArr.alokasi === 'dompet') {
+        htmlAlokasi = $('#ke-dompet')
+      } else if (dataArr.alokasi === 'dana') {
+        htmlAlokasi = $('#ke-e-dana')
+      } else if (dataArr.alokasi === 'darurat') {
+        htmlAlokasi = $('#ke-darurat')
+      }
+      htmlAlokasi.setAttribute("checked", "checked")
+      $('.caption .trash').style.display = 'block'
+      if (dataArr.jenis === 'masuk') {
+        $("#kategori-masuk").value = dataArr.kategori
+        kategoriKetikaMasuk()
+      } else {
+        $("#kategori-keluar").value = dataArr.kategori
+        kategoriKetikaKeluar()
+      }
     }
   }
 });
