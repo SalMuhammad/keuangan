@@ -80,15 +80,9 @@ $('.tombol-pindah-waktu figure').addEventListener('click', e => {
 //3. membuat diagram garis
 
 
-
-// Mendapatkan semua elemen <tr> dengan class "trs"
-// const trs = document.querySelectorAll(".trs")
-// Menambahkan event listener untuk setiap elemen <tr>
-// trs.forEach((tr) => {
-const tableKlik = $('.table-klik tbody')
-  tableKlik.addEventListener("click", e => {
+   $('.table-klik tbody').addEventListener("click", e => {
     // Mendapatkan nilai ID dari elemen <span> dalam elemen <td> terakhir dari blok <tr> yang diklik
-    const idTransaksi = tableKlik.querySelector('.nominal span').textContent
+    const idTransaksi =  $('.table-klik tbody').querySelector('.nominal span').textContent
     console.log(idTransaksi);
     const dataArr = dataUang.filter(da => da.id === idTransaksi)[0];
     let id = dataUang.indexOf(dataArr);
@@ -118,8 +112,6 @@ const tableKlik = $('.table-klik tbody')
       kategoriKetikaKeluar()
     }
   });
-// });
-
 
 // bagian menghapus
 if ($('.btn') !== null) {
@@ -160,12 +152,7 @@ $('.uang-darurat').textContent = rupiah(saldo.darurat)
 $('.total-semua-uang').textContent = rupiah(saldo.dompet + saldo.dana + saldo.darurat)
 
 
-// cls
 
 
 
 
-
-// localStorage.clear()
-
-// console.log(saldo);

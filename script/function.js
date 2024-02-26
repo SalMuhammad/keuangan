@@ -204,10 +204,8 @@ function add3Dots(string, limit) {
 }
 
 
-
 export function ubahFormatData(dataAwal) {
   const dataBaru = {};
-
   dataAwal.forEach(item => {
     const tanggal = new Date(item.tanggal);
     const tahun = tanggal.getFullYear();
@@ -343,8 +341,8 @@ export function tampilkanData(dataArr) {
 
           tableHtml += tr;
           tableHtml += `
-	         <td>${data.kategori}</td> 
-	         <td>${add3Dots(data.keterangan, 9)}</td>
+	         <td>${data.kategori}</td>
+	         <td>${add3Dots(data.keterangan, 20)}</td>
            <td class="nominal">
               ${rupiah(data.nominal)}
               <span class="id-transaksi w-0 text-[0]">${data.id}</span>

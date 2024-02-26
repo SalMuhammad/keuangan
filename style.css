@@ -224,16 +224,7 @@ th, td{
   background: teal;
 }
 
-#muncul{
-  border: none;
-  border-radius: 50%;
-  background: teal;
-  color: white;
-  padding: 5px 11px;
-  position: absolute;
-  bottom: 5px;
-  right: 25px;
-}
+
 
 .pemasukan .nominal{
   color: teal;
@@ -404,4 +395,4 @@ details p{
   -webkit-animation: 1s nambrak-benget;
 }
 
-tr:hover
+muncul
