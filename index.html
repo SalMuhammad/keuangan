@@ -40,7 +40,7 @@
         </div>
 
         <div class="layer fixed top-11 right-0 bottom-0 left-0 bg-slate-600/70 hidden"></div>
-        <div class="max-w-sm side-bar w-1/2 h-[87vh] absolute pt-3 right-0 top-10 bg-white shadow-lg z-10 translate-x-48 duration-100 transition-transform rounded-sm">
+        <div class="max-w-sm side-bar w-1/2 h-[87vh] absolute pt-3 right-0 top-10 bg-white shadow-lg z-10 -translate-x-48 duration-100 transition-transform rounded-sm">
           <div class="ul-side-bar">
             <ul class="capitalize cursor-pointer-child bg-transparent">
               <li><i class="bi bi-search text-orange-600"></i> pencarian</li>
@@ -60,7 +60,7 @@
       </header>
 
       <figure
-        class="max-w-sm mx-auto fixed top-0 right-0 bottom-0 left-0 bg-stone-200 text-gray-800 capitalize z-40 seting hidden">
+        class="max-w-sm mx-auto fixed top-0 right-0 bottom-0 left-0 bg-stone-200 text-gray-800 capitalize z-40 seting hidden---">
         <div>
           <div class="p-[10px] bg-orange-600 text-white">
             <i class="bi bi-arrow-left cursor-pointer"></i>
@@ -126,7 +126,8 @@
                   </li>
                 </ul>
               </div>
-
+              
+              <!-- bagain sistem -->
               <div class="p-2 pl-4 pb-1 shadow-lg bg-white mt-2">
                 <h4 class="font-semibold capitalize box-border">sistem</h4>
                 <ul class="block text-xs">
@@ -156,11 +157,11 @@
                 </ul>
               </div>
 
+              <!-- bagian data base -->
               <div class="p-2 pl-4 pb-1 shadow-lg bg-white mt-2">
                 <h4 class="font-semibold capitalize box-border">database</h4>
                 <ul class="block text-xs">
-                  <li class="py-2 border-b-gray-400 w-full flex justify-between items-center"
-                    style="border-bottom: 1px solid #8080807e;">
+                  <li class="py-2 border-b-gray-400 w-full flex justify-between items-center" style="border-bottom: 1px solid #8080807e;">
                     <div>
                       <h5>backup / restore google device</h5>
                     </div>
@@ -184,13 +185,14 @@
             </div>
           </div>
 
-          <figure
-            class="elm-semua-aset max-w-sm mx-auto figure-darurat fixed top-0 right-0 bottom-0 left-0 bg-blue-900 hidden text-white">
+          <figure class="elm-semua-aset max-w-sm mx-auto figure-darurat fixed top-0 right-0 bottom-0 left-0 bg-slate-900 hidden--- text-white">
             <div class="p-[10px]">
               <i class="bi bi-arrow-left cursor-pointer"></i>
               <span>total semua Uang</span>
             </div>
-            <div class="pl-2 mt-9 cursor-pointer">
+
+            <!-- bagian pilihan berdasarkan kategori -->
+            <div class="pl-2 mt-9 cursor-pointer bg-emerald-500">
               <span>tampilkan saldo beranda ?</span>
               <div>
                 <input name="pengaturan-saldo-beranda" checked id="dompet" type="radio">
@@ -205,15 +207,40 @@
                 <label for="e_dana">e_dana</label>
               </div>
             </div>
+
+            <!-- tabel data duit  -->
             <div class="p-2 pl-4 text-center">
-              <table class="table-deskripsi-uang bg-transparent text-white">
+              <table class="table-deskripsi-uang bg-transparent cursor-default text-white">
                 <tr>
-                  <td>uang di dompet</td>
+                  <td>uang cash</td>
                   <td class="uang-di-dompet block"></td>
+                  <div class="text-left bg-slate-800 border rounded-md py-2 w-[170px] absolute left-5">
+                    <div class="hover:bg-slate-700 group/coba px-2">
+                      <!-- <i  class="bi text-red-600 cursor-pointer close">x</i>
+                      <br> -->
+
+                      <span>tf cash ke dana</span>
+                      <div class="hidden w-40 bg-slate-800 border group-hover/coba:block p-2 rounded absolute left-[165px] top-0">
+                        <input type="checkbox" name="" id="ambil-semua">
+                        <label for="ambil-semua" class="my-7">ambil semua</label>
+                        <input class="bg-transparent outline-none border-[1px] w-[90%]" type="number" name="" id="">
+                        <p>bayar admin dengan?</p>
+                        <input type="radio" name="dariCash" id="dana">
+                        <label for="dana">dana</label>
+                        <br>
+                        <input type="radio" name="dariCash" id="cash">
+                        <label for="cash">cash</label>
+                        <button class="block bg-slate-900 px-7 py-1 rounded-full mx-auto">ok</button>
+                      </div>
+                    </div>
+                    <div class="hover:bg-slate-700 px-2">
+                      <span>tf cash ke darurat</span>
+                    </div>
+                  </div>
                 </tr>
                 <tr>
                   <td>uang di e-walet dana: </td>
-                  <td class="uang-di-dana block"></td>
+                  <td class="uang-di-dana block">o</td>
                 </tr>
                 <tr>
                   <td>uang darurat </td>
@@ -229,7 +256,6 @@
           </figure>
         </div>
       </figure>
-
 
 
       <section>
