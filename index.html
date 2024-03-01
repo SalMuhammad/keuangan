@@ -192,7 +192,7 @@
             </div>
 
             <!-- bagian pilihan berdasarkan kategori -->
-            <div class="pl-2 mt-9 cursor-pointer bg-emerald-500">
+            <div class="pl-2 mt-9 cursor-pointer">
               <span>tampilkan saldo beranda ?</span>
               <div>
                 <input name="pengaturan-saldo-beranda" checked id="dompet" type="radio">
@@ -213,35 +213,104 @@
               <table class="table-deskripsi-uang bg-transparent cursor-default text-white">
                 <tr>
                   <td>uang cash</td>
-                  <td class="uang-di-dompet block"></td>
-                  <div class="text-left bg-slate-800 border rounded-md py-2 w-[170px] absolute left-5">
-                    <div class="hover:bg-slate-700 group/coba px-2">
-                      <!-- <i  class="bi text-red-600 cursor-pointer close">x</i>
-                      <br> -->
+                  <td class="block group/tes relative">
+                    <span class="uang-di-dompet"></span>
+                    <div class="text-left bg-slate-900 border border-gray-700 rounded-md py-2 w-[245px] absolute right-[120px] top-0 hidden group-hover/tes:block shadow-lg">
+                      
+                      <div class="hover:bg-slate-800 group/cash-hover:block group/cash-ke-dana px-3">
 
-                      <span>tf cash ke dana</span>
-                      <div class="hidden w-40 bg-slate-800 border group-hover/coba:block p-2 rounded absolute left-[165px] top-0">
-                        <input type="checkbox" name="" id="ambil-semua">
-                        <label for="ambil-semua" class="my-7">ambil semua</label>
-                        <input class="bg-transparent outline-none border-[1px] w-[90%]" type="number" name="" id="">
-                        <p>bayar admin dengan?</p>
-                        <input type="radio" name="dariCash" id="dana">
-                        <label for="dana">dana</label>
-                        <br>
-                        <input type="radio" name="dariCash" id="cash">
-                        <label for="cash">cash</label>
-                        <button class="block bg-slate-900 px-7 py-1 rounded-full mx-auto">ok</button>
+                        <span>tf cash ke dana</span>
+                        <div class="hidden w-52 bg-gray-900 border border-gray-700 group-hover/cash-ke-dana:block p-4 rounded-lg absolute left-[63%] top-1 shadow-lg">
+                          <div class="mb-4">
+                              <input type="checkbox" name="" id="ambil-semua" class="mr-2">
+                              <label for="ambil-semua" class="text-white">Ambil Semua</label>
+                          </div>
+                          <div class="mb-4">
+                              <input class="bg-transparent border border-gray-700 outline-none w-[95%] py-2 px-3 rounded-md text-white" type="number" name="" id="" placeholder="Jumlah">
+                          </div>
+                          <div class="mb-4">
+                              <p class="text-white">Bayar admin dengan?</p>
+                              <div class="flex items-center text-white">
+                                  <input type="radio" name="dariCash" id="dana" class="mr-2">
+                                  <label for="dana" class="mr-4">Dana</label>
+                                  <input type="radio" name="dariCash" id="cash" class="mr-2">
+                                  <label for="cash">Cash</label>
+                              </div>
+                          </div>
+                          <button class="block bg-blue-600 hover:bg-blue-700 text-white px-8 py-2 rounded-full mx-auto">OK</button>
+                      </div>
+                      
+                      </div>
+                      <div class="hover:bg-slate-800 group/cash-hover:block group/cash-ke-dana px-3">
+
+                        <span>tf cash ke darurat</span>
+                        <div class="hidden w-52 bg-gray-900 border border-gray-700 group-hover/cash-ke-dana:block p-4 rounded-lg absolute left-[63%] top-7 shadow-lg">
+                          <div class="mb-4">
+                              <input type="checkbox" name="" id="ambil-semua" class="mr-2">
+                              <label for="ambil-semua" class="text-white">Ambil Semua</label>
+                          </div>
+                          <div class="mb-4">
+                              <input class="bg-transparent border border-gray-700 outline-none w-[95%] py-2 px-3 rounded-md text-white" type="number" name="" id="" placeholder="Jumlah">
+                          </div>
+                          
+                          <button class="block bg-blue-600 hover:bg-blue-700 text-white px-8 py-2 rounded-full mx-auto">OK</button>
+                      </div>
+                      
                       </div>
                     </div>
-                    <div class="hover:bg-slate-700 px-2">
-                      <span>tf cash ke darurat</span>
-                    </div>
-                  </div>
+                  </td>
                 </tr>
                 <tr>
-                  <td>uang di e-walet dana: </td>
-                  <td class="uang-di-dana block">o</td>
+                  <!-- ----------------------------------------- -->
+                <tr>
+                  <td>uang di e walet</td>
+                  <td class="block group/dana relative">
+                    <span class="uang-di-dana"></span>
+                    <div class="text-left bg-slate-900 border border-gray-700 rounded-md py-2 w-[245px] absolute right-[120px] top-0 hidden group-hover/dana:block shadow-lg">
+                      
+                      <div class="hover:bg-slate-800 group/dana-hover:block group/dana-ke-dana px-3">
+
+                        <span>tf dana ke cas</span>
+                        <div class="hidden w-52 bg-gray-900 border border-gray-700 group-hover/dana-ke-dana:block p-4 rounded-lg absolute left-[63%] top-1 shadow-lg">
+                          <div class="mb-4">
+                              <input type="checkbox" name="" id="ambil-semua" class="mr-2">
+                              <label for="ambil-semua" class="text-white">Ambil Semua</label>
+                          </div>
+                          <div class="mb-4">
+                              <input class="bg-transparent border border-gray-700 outline-none w-[95%] py-2 px-3 rounded-md text-white" type="number" name="" id="" placeholder="Jumlah">
+                          </div>
+                          <div class="mb-4">
+                              <p class="text-white">Bayar admin dengan?</p>
+                              <div class="flex items-center text-white">
+                                  <input type="radio" name="daridana" id="dana" class="mr-2">
+                                  <label for="dana" class="mr-4">Dana</label>
+                                  <input type="radio" name="daridana" id="dana" class="mr-2">
+                                  <label for="dana">dana</label>
+                              </div>
+                          </div>
+                          <button class="block bg-blue-600 hover:bg-blue-700 text-white px-8 py-2 rounded-full mx-auto">OK</button>
+                      </div>
+                      
+                      </div>
+                      <div class="hover:bg-slate-800 group/dana-hover:block group/dana-ke-darurat px-3">
+                        <span>tf dana ke darurat</span>
+                        <div class="hidden w-52 bg-gray-900 border border-gray-700 group-hover/dana-ke-darurat:block p-4 rounded-lg absolute left-[63%] top-7 shadow-lg">
+                          <div class="mb-4">
+                              <input type="checkbox" name="" id="ambil-semua" class="mr-2">
+                              <label for="ambil-semua" class="text-white">Ambil Semua</label>
+                          </div>
+                          <div class="mb-4">
+                              <input class="bg-transparent border border-gray-700 outline-none w-[95%] py-2 px-3 rounded-md text-white" type="number" name="" id="" placeholder="Jumlah">
+                          </div>
+                          
+                          <button class="block bg-blue-600 hover:bg-blue-700 text-white px-8 py-2 rounded-full mx-auto">OK</button>
+                      </div>
+                      
+                      </div>
+                    </div>
+                  </td>
                 </tr>
+      <!-- ------------------------------------------------------------- -->
                 <tr>
                   <td>uang darurat </td>
                   <td class="uang-darurat block"></td>
