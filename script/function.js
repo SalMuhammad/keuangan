@@ -241,17 +241,13 @@ function getWeekNumber(date) {
 }
 
 
-export function sortByTime(data) {
+export function susunDataPerhariDariBulan(data) {
   // Menggabungkan semua data menjadi satu array
   if (data !== null && typeof data === 'object') {
     const mergedArray = Object.values(data).flat()
+    console.log(mergedArray);
     // Mengurutkan array berdasarkan waktu menggunakan metode .sort()
-    const sortedArray = mergedArray.sort((a, b) => {
-      if (a.tanggal < b.tanggal) return -1;
-      if (a.tanggal > b.tanggal) return 1;
-      return 0;
-    });
-    return sortedArray;
+    return mergedArray.reverse();
   }
 }
 
@@ -342,7 +338,7 @@ export function tampilkanData(dataArr) {
           tableHtml += tr;
           tableHtml += `
 	         <td>${data.kategori}</td>
-	         <td>${add3Dots(data.keterangan, 20)}</td>
+	         <td>${add3Dots(data.keterangan, 30)}</td>
            <td class="nominal">
               ${rupiah(data.nominal)}
               <span class="id-transaksi w-0 text-[0]">${data.id}</span>
@@ -410,4 +406,6 @@ export function muncul(ellem) {
 
 // pilihBulanIni
 // closeSidebar
-// sortByTime  active
+// sortByTime
+  // active
+// add3Dots

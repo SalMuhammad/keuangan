@@ -2,7 +2,7 @@ import {
   pengecekanSelect,
   ubahFormatData,
   pilihBulanIni,
-  sortByTime,
+  susunDataPerhariDariBulan,
   tampilkanData,
   $,
   munculForm,
@@ -36,15 +36,45 @@ let bulanKlik = sekarang.getMonth() + 1;
 
 let thisMonth = pilihBulanIni(semuaData, tahunKlik, bulanKlik)
 
-//membalikan urutan isi bulan sekarang dan mebakikannya
-let thisMonthReverse = sortByTime(thisMonth)
-if (thisMonthReverse && Array.isArray(thisMonthReverse)) {
-  thisMonthReverse.reverse()
+//membalikan urutan isi bulan sekarang
+let hariPerBulan = susunDataPerhariDariBulan(thisMonth)
+
+// if(hariPerBulan && Array.isArray(hariPerBulan)) {
+//   // secara default data di tampilkan
+//   tampilkanData(hariPerBulan);
+//   cetakNominall(hariPerBulan);
+// }
+// // bagian togle sorting data
+// $('.icon-sorting').addEventListener('click', ()=> {
+//   if(!$('.icon-sorting').classList.contains('bi-sort-numeric-up') && hariPerBulan && Array.isArray(hariPerBulan)) {
+//     tampilkanData(hariPerBulan.reverse());
+//     cetakNominall(hariPerBulan.reverse());
+//   } else if(!$('.icon-sorting').classList.contains('bi-sort-numeric-down-alt') && hariPerBulan && Array.isArray(hariPerBulan)) {
+//     hariPerBulan
+//     tampilkanData(hariPerBulan);
+//     cetakNominall(hariPerBulan);
+//   }
+// })
+// Secara default, data ditampilkan
+
+if (hariPerBulan && Array.isArray(hariPerBulan)) {  // mengecek apakah array isi hariPerBulan ada isinya?
+  tampilkanData(hariPerBulan);
+  cetakNominall(hariPerBulan);
 }
 
-tampilkanData(thisMonthReverse);
+// Bagian toggle sorting data
+$('.icon-sorting').addEventListener('click', () => {
+  if (hariPerBulan && Array.isArray(hariPerBulan)) { // mengecek apakah array isi hariPerBulan ada isinya?
+    const isAscending = !$('.icon-sorting').classList.contains('bi-sort-numeric-up'); // mengecek elemen $('.icon-sorting') apakah tidak memiliki class bi-sort-numeric-up
+    const sortedData = isAscending ? 
+                      hariPerBulan.slice().reverse() :  
+                      hariPerBulan.slice();
+    tampilkanData(sortedData);
+    cetakNominall(sortedData);
+  }
+});
 
-cetakNominall(thisMonthReverse);
+
 
 
 tahunKlik = new Date().getFullYear(); 
@@ -63,13 +93,13 @@ $('.tombol-pindah-waktu figure').addEventListener('click', e => {
       tahunKlik++;
     }
   }
-  thisMonthReverse = sortByTime(pilihBulanIni(semuaData, tahunKlik, bulanKlik));
-  if (thisMonthReverse && Array.isArray(thisMonthReverse)) {
-    thisMonthReverse.reverse();
+  hariPerBulan = susunDataPerhariDariBulan(pilihBulanIni(semuaData, tahunKlik, bulanKlik));
+  if (hariPerBulan && Array.isArray(hariPerBulan)) {
+    hariPerBulan.reverse();
   }
-  tampilkanData(thisMonthReverse)
+  tampilkanData(hariPerBulan)
 
-  cetakNominall(thisMonthReverse)
+  cetakNominall(hariPerBulan)
   // $  ('.saldo').innerHTML = rupiah(saldo)
   // $('.nominal-masuk').innerHTML = rupiah(pemasukanPerbulan)
   // $('.nominal-keluar').innerHTML = rupiah( )
@@ -180,3 +210,4 @@ $('.total-semua-uang').textContent = rupiah(saldo.dompet + saldo.dana + saldo.da
 
 
 
+// sortByTime

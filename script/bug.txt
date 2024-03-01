@@ -1,2 +1,5 @@
 1. program belum terstruktur
 2. ketika tidak bisa melakukan pengeditan dan penghapusan selain bulaan sekarang
+
+
+komit

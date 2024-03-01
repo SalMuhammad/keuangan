@@ -9,6 +9,12 @@ import {
   // clossSidebar 
 } from './function.js';
 
+// bagian togle sorting tanggal
+$('.icon-sorting').addEventListener('click', () => {
+  $('.icon-sorting').classList.toggle('bi-sort-numeric-down-alt')
+  $('.icon-sorting').classList.toggle('bi-sort-numeric-up')
+})
+
 
 
 $('#muncul').addEventListener('click', munculForm)
@@ -39,8 +45,9 @@ $('.side-bar li:nth-child(2)').onclick = function(){
   window.location = 'grafik.html'
 }
 
-// -------------------------------------------------------------------------
-// bagian memunculkan dan mengclose elemen
+// ===========================================================================================
+// -----------------------------bagian memunculkan dan mengclose elemen-----------------------
+// ===========================================================================================
 
 // memunculkan seting
 $('.ul-side-bar ul li:nth-child(4)').addEventListener('click', () => muncul($('.seting'))) 
