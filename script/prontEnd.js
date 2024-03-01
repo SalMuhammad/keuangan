@@ -16,7 +16,6 @@ $('.icon-sorting').addEventListener('click', () => {
 })
 
 
-
 $('#muncul').addEventListener('click', munculForm)
 
 $('#tanggal').setAttribute('value',new Date())
@@ -61,13 +60,11 @@ document.addEventListener('click', e => {
     const isClickedInsideLi = liElement !== null;
     if(isClickedInsideLi) {
       muncul($('.elm-semua-aset'))
-      // close($('.seting'))
-      // console.log($('.elm-semua-aset'))
     } 
   });
 })
 
-// $('').addEventListener('click', () =>) 
+
 // menghilangkan semua aset
 $('.elm-semua-aset .bi-arrow-left').addEventListener('click', () => close($('.elm-semua-aset'))) 
 

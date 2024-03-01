@@ -116,7 +116,6 @@ export function rupiah(bilangan) {
 
 
 
-
 function generateUniqueId() {
   // Membuat string acak menggunakan metode Math.random()
   let uniqueId = Math.random().toString(36).substring(2, 8);
@@ -152,7 +151,7 @@ export function tambahData() {
       jenis,
       id: generateUniqueId()
     }
-    console.log(data)
+    // console.log(data)
     if (!$(".btn").classList.contains("edit")) {
       dataUang.push(data)
       localStorage.setItem("dataUang", JSON.stringify(dataUang))
@@ -166,10 +165,13 @@ export function tambahData() {
       dataUang[id].nominal = $("#nominal").value
       dataUang[id].keterangan = $("#keterangan").value
       localStorage.setItem("dataUang", JSON.stringify(dataUang))
-    } closes(); window.location = 'index.html'//tampilkanData(thisMonthReverse);
+    } 
+    closes(); 
+    // tampilkanData(hariPerBulan);
+    // cetakNominall(hariPerBulan)
+    // window.location = 'index.html'//tampilkanData(thisMonthReverse);
   }
 }
-
 
 //fungsi menambahkan total ke ke Array DataUang
 export function tambahTotal(objek) {
@@ -245,7 +247,7 @@ export function susunDataPerhariDariBulan(data) {
   // Menggabungkan semua data menjadi satu array
   if (data !== null && typeof data === 'object') {
     const mergedArray = Object.values(data).flat()
-    console.log(mergedArray);
+    // console.log(mergedArray);
     // Mengurutkan array berdasarkan waktu menggunakan metode .sort()
     return mergedArray.reverse();
   }
@@ -348,7 +350,7 @@ export function tampilkanData(dataArr) {
         `;
         })
       }
-      if (document.querySelector(".table")) { document.querySelector(".table").innerHTML = tableHtml } else { alert('data gagal di muat!'); console.log(tableHtml) }
+      if (document.querySelector(".table")) { document.querySelector(".table").innerHTML = tableHtml } else { alert('data gagal di muat!'); }
       ;
       // document.querySelector('.table').innerHTML = tableHtml
     }
@@ -409,3 +411,5 @@ export function muncul(ellem) {
 // sortByTime
   // active
 // add3Dots
+// tampilkanData
+console

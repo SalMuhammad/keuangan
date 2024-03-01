@@ -21,41 +21,21 @@ import {saldo, namaBulan} from './data_base.js'
 
 export let dataUang = JSON.parse(localStorage.getItem("dataUang")) || []
 
-// console.log(dataUang)
 
 pengecekanSelect()
 
 // ubah Array Data uang menjadi di rangkum berdasarkan tahun, bulan dan hari
 const semuaData = ubahFormatData(dataUang)
-// console.log(semuaData);
-//memilih bulan sekarang saja untuk di tampilkan
-// console.log(semuaData);
+
 const sekarang = new Date()
 let tahunKlik = sekarang.getFullYear();
 let bulanKlik = sekarang.getMonth() + 1;
 
+//memilih bulan sekarang saja untuk di tampilkan
 let thisMonth = pilihBulanIni(semuaData, tahunKlik, bulanKlik)
-
+console.log(thisMonth)
 //membalikan urutan isi bulan sekarang
 let hariPerBulan = susunDataPerhariDariBulan(thisMonth)
-
-// if(hariPerBulan && Array.isArray(hariPerBulan)) {
-//   // secara default data di tampilkan
-//   tampilkanData(hariPerBulan);
-//   cetakNominall(hariPerBulan);
-// }
-// // bagian togle sorting data
-// $('.icon-sorting').addEventListener('click', ()=> {
-//   if(!$('.icon-sorting').classList.contains('bi-sort-numeric-up') && hariPerBulan && Array.isArray(hariPerBulan)) {
-//     tampilkanData(hariPerBulan.reverse());
-//     cetakNominall(hariPerBulan.reverse());
-//   } else if(!$('.icon-sorting').classList.contains('bi-sort-numeric-down-alt') && hariPerBulan && Array.isArray(hariPerBulan)) {
-//     hariPerBulan
-//     tampilkanData(hariPerBulan);
-//     cetakNominall(hariPerBulan);
-//   }
-// })
-// Secara default, data ditampilkan
 
 if (hariPerBulan && Array.isArray(hariPerBulan)) {  // mengecek apakah array isi hariPerBulan ada isinya?
   tampilkanData(hariPerBulan);
@@ -67,7 +47,7 @@ $('.icon-sorting').addEventListener('click', () => {
   if (hariPerBulan && Array.isArray(hariPerBulan)) { // mengecek apakah array isi hariPerBulan ada isinya?
     const isAscending = !$('.icon-sorting').classList.contains('bi-sort-numeric-up'); // mengecek elemen $('.icon-sorting') apakah tidak memiliki class bi-sort-numeric-up
     const sortedData = isAscending ? 
-                      hariPerBulan.slice().reverse() :  
+                      hariPerBulan.slice().reverse() :  // jika class bi-sort-numeric-up tidak ada maka balikan datanya dari 9 ke 1
                       hariPerBulan.slice();
     tampilkanData(sortedData);
     cetakNominall(sortedData);
@@ -77,8 +57,8 @@ $('.icon-sorting').addEventListener('click', () => {
 
 
 
-tahunKlik = new Date().getFullYear(); 
-bulanKlik = new Date().getMonth() + 1
+// tahunKlik = new Date().getFullYear(); 
+// bulanKlik = new Date().getMonth() + 1
 $('.tombol-pindah-waktu figure').addEventListener('click', e => {
   if (e.target.classList.contains('bi-chevron-left')) {
     bulanKlik--;
@@ -95,10 +75,9 @@ $('.tombol-pindah-waktu figure').addEventListener('click', e => {
   }
   hariPerBulan = susunDataPerhariDariBulan(pilihBulanIni(semuaData, tahunKlik, bulanKlik));
   if (hariPerBulan && Array.isArray(hariPerBulan)) {
-    hariPerBulan.reverse();
+    hariPerBulan
   }
   tampilkanData(hariPerBulan)
-
   cetakNominall(hariPerBulan)
   // $  ('.saldo').innerHTML = rupiah(saldo)
   // $('.nominal-masuk').innerHTML = rupiah(pemasukanPerbulan)
@@ -133,7 +112,6 @@ tbody.addEventListener("click", e => {
   if(e.target.tagName === 'TD') {
     let spanElement = findSpan(e.target.parentNode)
     if(spanElement) {
-      
       // Mendapatkan nilai ID dari elemen <span> dalam elemen <td> terakhir dari blok <tr> yang diklik
       const idTransaksi =  spanElement.textContent
       const dataArr = dataUang.filter(da => da.id === idTransaksi)[0];
