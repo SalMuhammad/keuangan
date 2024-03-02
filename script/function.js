@@ -169,7 +169,7 @@ export function tambahData() {
     closes(); 
     // tampilkanData(hariPerBulan);
     // cetakNominall(hariPerBulan)
-    // window.location = 'index.html'//tampilkanData(thisMonthReverse);
+    window.location = 'index.html'//tampilkanData(thisMonthReverse);
   }
 }
 
