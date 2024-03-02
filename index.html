@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -19,7 +20,7 @@
   <link rel="manifest" href="/f/site.webmanifest">
   <link rel="mask-icon" href="/f/safari-pinned-tab.svg" color="#5bbad5">
   <meta name="msapplication-TileColor" content="#00aba9">
-  <meta name="theme-color" content="#ffffff"> 
+  <meta name="theme-color" content="#ffffff">
 </head>
 
 <body class="text-sm overflow-x-hidden">
@@ -33,14 +34,14 @@
           <span class="cursor-pointer">TAHUN</span>
           <span><i class="bi bi-chevron-right cursor-pointer"></i></span>
         </figure>
-        
+
         <div class="flex justify-between w-14">
           <i class="bi icon-sorting bi-sort-numeric-down-alt cursor-pointer"></i>
           <i class="toggle bi bi-three-dots-vertical relative cursor-pointer z-20 font-bold"></i>
         </div>
 
         <div class="layer fixed top-11 right-0 bottom-0 left-0 bg-slate-600/70 hidden"></div>
-        <div class="max-w-sm side-bar w-1/2 h-[87vh] absolute pt-3 right-0 top-10 bg-white shadow-lg z-10 -translate-x-48 duration-100 transition-transform rounded-sm">
+        <div class="max-w-sm side-bar w-1/2 h-[87vh] absolute pt-3 right-0 top-10 bg-white shadow-lg z-10 translate-x-48 duration-100 transition-transform rounded-sm">
           <div class="ul-side-bar">
             <ul class="capitalize cursor-pointer-child bg-transparent">
               <li><i class="bi bi-search text-orange-600"></i> pencarian</li>
@@ -60,7 +61,7 @@
       </header>
 
       <figure
-        class="max-w-sm mx-auto fixed top-0 right-0 bottom-0 left-0 bg-stone-200 text-gray-800 capitalize z-40 seting hidden---">
+        class="max-w-sm mx-auto fixed top-0 right-0 bottom-0 left-0 bg-stone-200 text-gray-800 capitalize z-40 seting hidden">
         <div>
           <div class="p-[10px] bg-orange-600 text-white">
             <i class="bi bi-arrow-left cursor-pointer"></i>
@@ -126,7 +127,7 @@
                   </li>
                 </ul>
               </div>
-              
+
               <!-- bagain sistem -->
               <div class="p-2 pl-4 pb-1 shadow-lg bg-white mt-2">
                 <h4 class="font-semibold capitalize box-border">sistem</h4>
@@ -161,7 +162,8 @@
               <div class="p-2 pl-4 pb-1 shadow-lg bg-white mt-2">
                 <h4 class="font-semibold capitalize box-border">database</h4>
                 <ul class="block text-xs">
-                  <li class="py-2 border-b-gray-400 w-full flex justify-between items-center" style="border-bottom: 1px solid #8080807e;">
+                  <li class="py-2 border-b-gray-400 w-full flex justify-between items-center"
+                    style="border-bottom: 1px solid #8080807e;">
                     <div>
                       <h5>backup / restore google device</h5>
                     </div>
@@ -185,7 +187,7 @@
             </div>
           </div>
 
-          <figure class="elm-semua-aset max-w-sm mx-auto figure-darurat fixed top-0 right-0 bottom-0 left-0 bg-slate-900 hidden--- text-white">
+          <figure class="elm-semua-aset max-w-sm mx-auto figure-darurat fixed top-0 right-0 bottom-0 left-0 bg-slate-900 hidden text-white">
             <div class="p-[10px]">
               <i class="bi bi-arrow-left cursor-pointer"></i>
               <span>total semua Uang</span>
@@ -213,108 +215,181 @@
               <table class="table-deskripsi-uang bg-transparent cursor-default text-white">
                 <tr>
                   <td>uang cash</td>
-                  <td class="block group/tes relative">
+                  <td class="block group/cash relative z-[50]">
                     <span class="uang-di-dompet"></span>
-                    <div class="text-left bg-slate-900 border border-gray-700 rounded-md py-2 w-[245px] absolute right-[120px] top-0 hidden group-hover/tes:block shadow-lg">
-                      
+                    <div
+                      class="text-left bg-slate-900 border border-gray-700 rounded-md py-2 w-[245px] absolute right-[120px] top-0 hidden group-hover/cash:block shadow-lg">
+
                       <div class="hover:bg-slate-800 group/cash-hover:block group/cash-ke-dana px-3">
 
                         <span>tf cash ke dana</span>
-                        <div class="hidden w-52 bg-gray-900 border border-gray-700 group-hover/cash-ke-dana:block p-4 rounded-lg absolute left-[63%] top-1 shadow-lg">
+                        <div
+                          class="hidden w-52 bg-gray-900 border border-gray-700 group-hover/cash-ke-dana:block p-4 rounded-lg absolute left-[63%] top-1 shadow-lg">
                           <div class="mb-4">
-                              <input type="checkbox" name="" id="ambil-semua" class="mr-2">
-                              <label for="ambil-semua" class="text-white">Ambil Semua</label>
+                            <input type="checkbox" name="" id="ambil-semua" class="mr-2">
+                            <label for="ambil-semua" class="text-white">Ambil Semua</label>
                           </div>
                           <div class="mb-4">
-                              <input class="bg-transparent border border-gray-700 outline-none w-[95%] py-2 px-3 rounded-md text-white" type="number" name="" id="" placeholder="Jumlah">
+                            <input
+                              class="bg-transparent border border-gray-700 outline-none w-[95%] py-2 px-3 rounded-md text-white"
+                              type="number" name="" id="" placeholder="Jumlah">
                           </div>
                           <div class="mb-4">
-                              <p class="text-white">Bayar admin dengan?</p>
-                              <div class="flex items-center text-white">
-                                  <input type="radio" name="dariCash" id="dana" class="mr-2">
-                                  <label for="dana" class="mr-4">Dana</label>
-                                  <input type="radio" name="dariCash" id="cash" class="mr-2">
-                                  <label for="cash">Cash</label>
-                              </div>
+                            <p class="text-white">Bayar admin dengan?</p>
+                            <div class="flex items-center text-white">
+                              <input type="radio" name="dariCash" id="cash-ke-dana" class="mr-2">
+                              <label for="cash-ke-dana" class="mr-4">Dana</label>
+                              <input type="radio" name="dariCash" id="cash" class="mr-2">
+                              <label for="cash">Cash</label>
+                            </div>
                           </div>
-                          <button class="block bg-blue-600 hover:bg-blue-700 text-white px-8 py-2 rounded-full mx-auto">OK</button>
+                          <button
+                            class="block bg-blue-600 hover:bg-blue-700 text-white px-8 py-2 rounded-full mx-auto">OK</button>
+                        </div>
+
                       </div>
-                      
-                      </div>
-                      <div class="hover:bg-slate-800 group/cash-hover:block group/cash-ke-dana px-3">
+                      <div class="hover:bg-slate-800 group/cash-hover:block group/cash-ke-darurat px-3">
 
                         <span>tf cash ke darurat</span>
-                        <div class="hidden w-52 bg-gray-900 border border-gray-700 group-hover/cash-ke-dana:block p-4 rounded-lg absolute left-[63%] top-7 shadow-lg">
+                        <div
+                          class="hidden w-52 bg-gray-900 border border-gray-700 group-hover/cash-ke-darurat:block p-4 rounded-lg absolute left-[63%] top-7 shadow-lg">
                           <div class="mb-4">
-                              <input type="checkbox" name="" id="ambil-semua" class="mr-2">
-                              <label for="ambil-semua" class="text-white">Ambil Semua</label>
+                            <input type="checkbox" name="" id="ambil-semua" class="mr-2">
+                            <label for="ambil-semua" class="text-white">Ambil Semua</label>
                           </div>
                           <div class="mb-4">
-                              <input class="bg-transparent border border-gray-700 outline-none w-[95%] py-2 px-3 rounded-md text-white" type="number" name="" id="" placeholder="Jumlah">
+                            <input
+                              class="bg-transparent border border-gray-700 outline-none w-[95%] py-2 px-3 rounded-md text-white"
+                              type="number" name="" id="" placeholder="Jumlah">
                           </div>
-                          
-                          <button class="block bg-blue-600 hover:bg-blue-700 text-white px-8 py-2 rounded-full mx-auto">OK</button>
-                      </div>
-                      
+
+                          <button
+                            class="block bg-blue-600 hover:bg-blue-700 text-white px-8 py-2 rounded-full mx-auto">OK</button>
+                        </div>
+
                       </div>
                     </div>
                   </td>
                 </tr>
                 <tr>
-                  <!-- ----------------------------------------- -->
+                  <!-- --------------------uang dana--------------------- -->
                 <tr>
                   <td>uang di e walet</td>
-                  <td class="block group/dana relative">
+                  <td class="block group/dana relative z-[30]">
                     <span class="uang-di-dana"></span>
-                    <div class="text-left bg-slate-900 border border-gray-700 rounded-md py-2 w-[245px] absolute right-[120px] top-0 hidden group-hover/dana:block shadow-lg">
-                      
-                      <div class="hover:bg-slate-800 group/dana-hover:block group/dana-ke-dana px-3">
+                    <div
+                      class="text-left bg-slate-900 border border-gray-700 rounded-md py-2 w-[245px] absolute right-[120px] top-0 hidden group-hover/dana:block shadow-lg">
+
+                      <div class="hover:bg-slate-800 group/dana-hover:block group/dana-ke-cash px-3">
 
                         <span>tf dana ke cas</span>
-                        <div class="hidden w-52 bg-gray-900 border border-gray-700 group-hover/dana-ke-dana:block p-4 rounded-lg absolute left-[63%] top-1 shadow-lg">
+                        <div
+                          class="hidden w-52 bg-gray-900 border border-gray-700 group-hover/dana-ke-cash:block p-4 rounded-lg absolute left-[63%] top-1 shadow-lg">
                           <div class="mb-4">
-                              <input type="checkbox" name="" id="ambil-semua" class="mr-2">
-                              <label for="ambil-semua" class="text-white">Ambil Semua</label>
+                            <input type="checkbox" name="" id="ambil-semua" class="mr-2">
+                            <label for="ambil-semua" class="text-white">Ambil Semua</label>
                           </div>
                           <div class="mb-4">
-                              <input class="bg-transparent border border-gray-700 outline-none w-[95%] py-2 px-3 rounded-md text-white" type="number" name="" id="" placeholder="Jumlah">
+                            <input
+                              class="bg-transparent border border-gray-700 outline-none w-[95%] py-2 px-3 rounded-md text-white"
+                              type="number" name="" id="" placeholder="Jumlah">
                           </div>
                           <div class="mb-4">
-                              <p class="text-white">Bayar admin dengan?</p>
-                              <div class="flex items-center text-white">
-                                  <input type="radio" name="daridana" id="dana" class="mr-2">
-                                  <label for="dana" class="mr-4">Dana</label>
-                                  <input type="radio" name="daridana" id="dana" class="mr-2">
-                                  <label for="dana">dana</label>
-                              </div>
+                            <p class="text-white">Bayar admin dengan?</p>
+                            <div class="flex items-center text-white">
+                              <input type="radio" name="daridana" id="dana" class="mr-2">
+                              <label for="dana" class="mr-4">Dana</label>
+                              <input type="radio" name="daridana" id="dana" class="mr-2">
+                              <label for="dana">dana</label>
+                            </div>
                           </div>
-                          <button class="block bg-blue-600 hover:bg-blue-700 text-white px-8 py-2 rounded-full mx-auto">OK</button>
-                      </div>
-                      
+                          <button
+                            class="block bg-blue-600 hover:bg-blue-700 text-white px-8 py-2 rounded-full mx-auto">OK</button>
+                        </div>
+
                       </div>
                       <div class="hover:bg-slate-800 group/dana-hover:block group/dana-ke-darurat px-3">
                         <span>tf dana ke darurat</span>
-                        <div class="hidden w-52 bg-gray-900 border border-gray-700 group-hover/dana-ke-darurat:block p-4 rounded-lg absolute left-[63%] top-7 shadow-lg">
+                        <div
+                          class="hidden w-52 bg-gray-900 border border-gray-700 group-hover/dana-ke-darurat:block p-4 rounded-lg absolute left-[63%] top-7 shadow-lg">
                           <div class="mb-4">
-                              <input type="checkbox" name="" id="ambil-semua" class="mr-2">
-                              <label for="ambil-semua" class="text-white">Ambil Semua</label>
+                            <input type="checkbox" name="" id="ambil-semua" class="mr-2">
+                            <label for="ambil-semua" class="text-white">Ambil Semua</label>
                           </div>
                           <div class="mb-4">
-                              <input class="bg-transparent border border-gray-700 outline-none w-[95%] py-2 px-3 rounded-md text-white" type="number" name="" id="" placeholder="Jumlah">
+                            <input
+                              class="bg-transparent border border-gray-700 outline-none w-[95%] py-2 px-3 rounded-md text-white"
+                              type="number" name="" id="" placeholder="Jumlah">
                           </div>
-                          
-                          <button class="block bg-blue-600 hover:bg-blue-700 text-white px-8 py-2 rounded-full mx-auto">OK</button>
-                      </div>
-                      
+
+                          <button
+                            class="block bg-blue-600 hover:bg-blue-700 text-white px-8 py-2 rounded-full mx-auto">OK</button>
+                        </div>
+
                       </div>
                     </div>
                   </td>
                 </tr>
-      <!-- ------------------------------------------------------------- -->
+                <!-- ------------------------uang darurat ------------------ -->
                 <tr>
-                  <td>uang darurat </td>
-                  <td class="uang-darurat block"></td>
+                  <td>uang darurat</td>
+                  <td class="block group/darurat relative">
+                    <span class="uang-darurat"></span>
+                    <div
+                      class="text-left bg-slate-900 border border-gray-700 rounded-md py-2 w-[245px] absolute right-[120px] top-0 hidden group-hover/darurat:block shadow-lg">
+
+                      <div class="hover:bg-slate-800 group/darurat-hover:block group/darurat-ke-cash px-3">
+
+                        <span>tf dana ke cas</span>
+                        <div
+                          class="hidden w-52 bg-gray-900 border border-gray-700 group-hover/darurat-ke-cash:block p-4 rounded-lg absolute left-[63%] top-1 shadow-lg">
+                          <div class="mb-4">
+                            <input type="checkbox" name="" id="ambil-semua" class="mr-2">
+                            <label for="ambil-semua" class="text-white">Ambil Semua</label>
+                          </div>
+                          <div class="mb-4">
+                            <input
+                              class="bg-transparent border border-gray-700 outline-none w-[95%] py-2 px-3 rounded-md text-white"
+                              type="number" name="" id="" placeholder="Jumlah">
+                          </div>
+                          <div class="mb-4">
+                            <p class="text-white">Bayar admin dengan?</p>
+                            <div class="flex items-center text-white">
+                              <input type="radio" name="daridana" id="dana" class="mr-2">
+                              <label for="dana" class="mr-4">Dana</label>
+                              <input type="radio" name="daridana" id="dana" class="mr-2">
+                              <label for="dana">dana</label>
+                            </div>
+                          </div>
+                          <button
+                            class="block bg-blue-600 hover:bg-blue-700 text-white px-8 py-2 rounded-full mx-auto">OK</button>
+                        </div>
+
+                      </div>
+                      <div class="hover:bg-slate-800 group/dana-hover:block group/darurat-ke-dana px-3">
+                        <span>tf dana ke dana</span>
+                        <div
+                          class="hidden w-52 bg-gray-900 border border-gray-700 group-hover/darurat-ke-dana:block p-4 rounded-lg absolute left-[63%] top-7 shadow-lg">
+                          <div class="mb-4">
+                            <input type="checkbox" name="" id="ambil-semua" class="mr-2">
+                            <label for="ambil-semua" class="text-white">Ambil Semua</label>
+                          </div>
+                          <div class="mb-4">
+                            <input
+                              class="bg-transparent border border-gray-700 outline-none w-[95%] py-2 px-3 rounded-md text-white"
+                              type="number" name="" id="" placeholder="Jumlah">
+                          </div>
+
+                          <button
+                            class="block bg-blue-600 hover:bg-blue-700 text-white px-8 py-2 rounded-full mx-auto">OK</button>
+                        </div>
+
+                      </div>
+                    </div>
+                  </td>
                 </tr>
+                <!-- -----------------  MENAMPILKAN SEMUA UANG   -------------------- -->
+
                 <tr>
                   <td>semua uang</td>
                   <td class="total-semua-uang block"></td>
@@ -339,18 +414,18 @@
             </div>
             <div
               class="bulan-bulan flex flex-wrap justify-between p-1 px-2 gap-4 capitalize bg-red-600 shadow-md shadow-fuchsia-100">
+              <span>januwari</span>
+              <span>februari</span>
               <span>maret</span>
-              <span>maret</span>
-              <span>maret</span>
-              <span>maret</span>
-              <span>maret</span>
-              <span>maret</span>
-              <span>maret</span>
-              <span>maret</span>
-              <span>maret</span>
-              <span>maret</span>
-              <span>maret</span>
-              <span>maret</span>
+              <span>april</span>
+              <span>mei</span>
+              <span>juni</span>
+              <span>juli</span>
+              <span>agustur</span>
+              <span>september</span>
+              <span>okteober</span>
+              <span>november</span>
+              <span>desember</span>
             </div>
           </div>
         </nav>
@@ -473,4 +548,3 @@
 </body>
 
 </html> 
-
