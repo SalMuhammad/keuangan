@@ -7,6 +7,7 @@ import {
   namaBulan,
   saldo
 } from './data_base.js'
+
 // console.log(saldo.dompet);
 // pengecekanSelect
 // kategoriKetikaMasuk
@@ -16,7 +17,7 @@ import {
   if (confirm("Apakah anda yakin ingin menghapus data ini?")) {
     dataUang.splice(id, 1)
     localStorage.setItem("dataUang", JSON.stringify(dataUang))
-//		tampilkanData()
+//tampilkanData()
   } 
 //})
 }*/
@@ -126,12 +127,6 @@ function generateUniqueId() {
   }
   // Jika id belum ada, return id yang telah dihasilkan
   return uniqueId;
-  // let jenis = $("#jenis").value
-  // let nominal = nominalTransaksi !== undefined ? nominalTransaksi:  $('#nominal').value
-  // let tanggal = tanggalTransaksi !== undefined ? tanggalTransaksi : $('#tanggal').value
-  // let keterangan = kategoriTransaksi !== undefined ? kategoriTransaksi : $('#keterangan').value
-  // let kategori = document.getElementById(jenis === "masuk" ? "kategori-masuk" : "kategori-keluar").value
-  // let alokasi = $('input[name="pilih-penyimpanan"]:checked').value
 }
 
 //fungsi tambah data
@@ -185,7 +180,7 @@ export function tambahData(kategoriTransaksi, nominalTransaksi, tanggalTransaksi
       localStorage.setItem("dataUang", JSON.stringify(dataUang))
     } 
     closes(); 
-    // window.location = 'index.html'//tampilkanData(thisMonthReverse);
+    window.location = 'index.html'//tampilkanData(thisMonthReverse);
   }
 }
 
@@ -217,7 +212,6 @@ function add3Dots(string, limit) {
     // you can also use substr instead of substring
     string = string.substring(0, limit) + dots;
   }
-
   return string;
 }
 
@@ -419,8 +413,7 @@ export function pindahUang(inputNominal, alokasiTransaksi, keteranganTransaksi) 
       const parendPilihanModal = children1.children;
       
       // Setelah mendeklarasikan variabel `parendPilihanModal`, barulah Anda dapat mengakses properti checked dari elemen cash.
-      // parendPilihanModal.cash.checked = true;
-
+      parendPilihanModal.cash.checked = true;
       if (parendPilihanModal.cash.checked) {
         alokasiAdmin = 'dompet';
       } else if (parendPilihanModal.dana.checked) {

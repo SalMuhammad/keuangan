@@ -83,6 +83,7 @@ $('.tombol-pindah-waktu figure').addEventListener('click', e => {
   // $('.nominal-keluar').innerHTML = rupiah( )
 });
 
+
 //1. menambah fitur hapus dan edit
 //2.   ~"~    dropdown seting
 //3. membuat diagram garis
@@ -157,7 +158,6 @@ if ($('.btn') !== null) {
 }
 
 // // menghitung saldo ke semua wadah uang
-
 
 // dataUang.map(du => {
 //   const nominal = parseInt(du.nominal);
@@ -281,3 +281,6 @@ $('#btn-darurat-ke-cash').addEventListener('click', () => {
 $('#btn-darurat-ke-dana').addEventListener('click', () => {
   pindahUang($('input#daruat-ke-dana'), 'darurat-ke-dana', 'tf darurat ke dana')
 })
+
+
+
