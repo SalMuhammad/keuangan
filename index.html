@@ -90,7 +90,7 @@
                   </li>
 
                   <li style="border-bottom: 1px solid #8080807e;"
-                    class="py-2 border-b-gray-400 w-full flex justify-between items-center tbl-semua-aset">
+                    class="py-2 border-b-gray-400 w-full flex justify-between items-center tbl-semua-aset cursor-pointer">
                     <div>
                       <h5>lihat semua aset</h5>
                       <p class="text-red-800">aktif</p>
@@ -230,23 +230,22 @@
                             <label for="ambil-semua" class="text-white">Ambil Semua</label>
                           </div>
                           <div class="mb-4">
-                            <input
+                            <input id="cash-ke-dana" 
                               class="bg-transparent border border-gray-700 outline-none w-[95%] py-2 px-3 rounded-md text-white"
                               type="number" name="" id="" placeholder="Jumlah">
                           </div>
                           <div class="mb-4">
                             <p class="text-white">Bayar admin dengan?</p>
                             <div class="flex items-center text-white">
-                              <input type="radio" name="dariCash" id="cash-ke-dana" class="mr-2">
-                              <label for="cash-ke-dana" class="mr-4">Dana</label>
+                              <input type="radio" name="dariCash" id="dana" class="mr-2">
+                              <label for="dana" class="mr-4">Dana</label>
                               <input type="radio" name="dariCash" id="cash" class="mr-2">
                               <label for="cash">Cash</label>
                             </div>
                           </div>
-                          <button
+                          <button id="btn-cash-ke-dana"
                             class="block bg-blue-600 hover:bg-blue-700 text-white px-8 py-2 rounded-full mx-auto">OK</button>
                         </div>
-
                       </div>
                       <div class="hover:bg-slate-800 group/cash-hover:block group/cash-ke-darurat px-3">
 
@@ -260,13 +259,12 @@
                           <div class="mb-4">
                             <input
                               class="bg-transparent border border-gray-700 outline-none w-[95%] py-2 px-3 rounded-md text-white"
-                              type="number" name="" id="" placeholder="Jumlah">
+                              type="number" name="" id="cash-ke-darurat" placeholder="Jumlah">
                           </div>
 
-                          <button
+                          <button id="btn-cash-ke-darurat"
                             class="block bg-blue-600 hover:bg-blue-700 text-white px-8 py-2 rounded-full mx-auto">OK</button>
                         </div>
-
                       </div>
                     </div>
                   </td>
@@ -281,7 +279,6 @@
                       class="text-left bg-slate-900 border border-gray-700 rounded-md py-2 w-[245px] absolute right-[120px] top-0 hidden group-hover/dana:block shadow-lg">
 
                       <div class="hover:bg-slate-800 group/dana-hover:block group/dana-ke-cash px-3">
-
                         <span>tf dana ke cas</span>
                         <div
                           class="hidden w-52 bg-gray-900 border border-gray-700 group-hover/dana-ke-cash:block p-4 rounded-lg absolute left-[63%] top-1 shadow-lg">
@@ -290,23 +287,22 @@
                             <label for="ambil-semua" class="text-white">Ambil Semua</label>
                           </div>
                           <div class="mb-4">
-                            <input
+                            <input id="dana-ke-cash"
                               class="bg-transparent border border-gray-700 outline-none w-[95%] py-2 px-3 rounded-md text-white"
                               type="number" name="" id="" placeholder="Jumlah">
                           </div>
                           <div class="mb-4">
                             <p class="text-white">Bayar admin dengan?</p>
                             <div class="flex items-center text-white">
-                              <input type="radio" name="daridana" id="dana" class="mr-2">
+                              <input type="radio" name="dariCash" id="dana" class="mr-2">
                               <label for="dana" class="mr-4">Dana</label>
-                              <input type="radio" name="daridana" id="dana" class="mr-2">
-                              <label for="dana">dana</label>
+                              <input type="radio" name="dariCash" id="cash" class="mr-2">
+                              <label for="cash">Cash</label>
                             </div>
                           </div>
-                          <button
+                          <button id="btn-dana-ke-cash"
                             class="block bg-blue-600 hover:bg-blue-700 text-white px-8 py-2 rounded-full mx-auto">OK</button>
                         </div>
-
                       </div>
                       <div class="hover:bg-slate-800 group/dana-hover:block group/dana-ke-darurat px-3">
                         <span>tf dana ke darurat</span>
@@ -317,15 +313,22 @@
                             <label for="ambil-semua" class="text-white">Ambil Semua</label>
                           </div>
                           <div class="mb-4">
-                            <input
+                            <input id="dana-ke-darurat"
                               class="bg-transparent border border-gray-700 outline-none w-[95%] py-2 px-3 rounded-md text-white"
                               type="number" name="" id="" placeholder="Jumlah">
                           </div>
-
-                          <button
+                          <div class="mb-4">
+                            <p class="text-white">Bayar admin dengan?</p>
+                            <div class="flex items-center text-white">
+                              <input type="radio" name="dariCash" id="dana" class="mr-2">
+                              <label for="dana" class="mr-4">Dana</label>
+                              <input type="radio" name="dariCash" id="cash" class="mr-2">
+                              <label for="cash">Cash</label>
+                            </div>
+                          </div>
+                          <button id="btn-dana-ke-darurat"
                             class="block bg-blue-600 hover:bg-blue-700 text-white px-8 py-2 rounded-full mx-auto">OK</button>
                         </div>
-
                       </div>
                     </div>
                   </td>
@@ -338,9 +341,8 @@
                     <div
                       class="text-left bg-slate-900 border border-gray-700 rounded-md py-2 w-[245px] absolute right-[120px] top-0 hidden group-hover/darurat:block shadow-lg">
 
-                      <div class="hover:bg-slate-800 group/darurat-hover:block group/darurat-ke-cash px-3">
-
-                        <span>tf dana ke cas</span>
+                      <div class="hover:bg-slate-800 group/dana-hover:block group/darurat-ke-cash px-3">
+                        <span>tf darurat ke cash</span>
                         <div
                           class="hidden w-52 bg-gray-900 border border-gray-700 group-hover/darurat-ke-cash:block p-4 rounded-lg absolute left-[63%] top-1 shadow-lg">
                           <div class="mb-4">
@@ -348,26 +350,20 @@
                             <label for="ambil-semua" class="text-white">Ambil Semua</label>
                           </div>
                           <div class="mb-4">
-                            <input
+                            <input id="darurat-ke-cash"
                               class="bg-transparent border border-gray-700 outline-none w-[95%] py-2 px-3 rounded-md text-white"
                               type="number" name="" id="" placeholder="Jumlah">
                           </div>
-                          <div class="mb-4">
-                            <p class="text-white">Bayar admin dengan?</p>
-                            <div class="flex items-center text-white">
-                              <input type="radio" name="daridana" id="dana" class="mr-2">
-                              <label for="dana" class="mr-4">Dana</label>
-                              <input type="radio" name="daridana" id="dana" class="mr-2">
-                              <label for="dana">dana</label>
-                            </div>
-                          </div>
-                          <button
+
+                          <button id="btn-darurat-ke-cash"
                             class="block bg-blue-600 hover:bg-blue-700 text-white px-8 py-2 rounded-full mx-auto">OK</button>
                         </div>
-
                       </div>
-                      <div class="hover:bg-slate-800 group/dana-hover:block group/darurat-ke-dana px-3">
-                        <span>tf dana ke dana</span>
+
+
+                      <div class="hover:bg-slate-800 group/darurat-hover:block group/darurat-ke-dana px-3">
+
+                        <span>tf darurat ke dana</span>
                         <div
                           class="hidden w-52 bg-gray-900 border border-gray-700 group-hover/darurat-ke-dana:block p-4 rounded-lg absolute left-[63%] top-7 shadow-lg">
                           <div class="mb-4">
@@ -375,15 +371,22 @@
                             <label for="ambil-semua" class="text-white">Ambil Semua</label>
                           </div>
                           <div class="mb-4">
-                            <input
+                            <input id="darurat-ke-dana"
                               class="bg-transparent border border-gray-700 outline-none w-[95%] py-2 px-3 rounded-md text-white"
                               type="number" name="" id="" placeholder="Jumlah">
                           </div>
-
-                          <button
+                          <div class="mb-4">
+                            <p class="text-white">Bayar admin dengan?</p>
+                            <div class="flex items-center text-white">
+                              <input type="radio" name="dariCash" id="dana" class="mr-2">
+                              <label for="dana" class="mr-4">Dana</label>
+                              <input type="radio" name="dariCash" id="cash" class="mr-2">
+                              <label for="cash">Cash</label>
+                            </div>
+                          </div>
+                          <button id="btn-darurat-ke-dana"
                             class="block bg-blue-600 hover:bg-blue-700 text-white px-8 py-2 rounded-full mx-auto">OK</button>
                         </div>
-
                       </div>
                     </div>
                   </td>
@@ -396,7 +399,7 @@
                 </tr>
               </table>
               <div class="flex justify-between">
-              </div>
+            </div>
           </figure>
         </div>
       </figure>
@@ -467,10 +470,12 @@
           <i class="bi bi-back"></i>
         </div>
       </h2>
+
       <select class="red max-w-[80%]" id="jenis">
         <option value="keluar">Pengeluaran</option>
         <option value="masuk">Pemasukan</option>
       </select>
+
       <div class="kategori-masuk w-[80%] mx-auto block">
         <div class="ke-dompet">
           <input value="dompet" id="ke-dompet" type="radio" checked name="pilih-penyimpanan">
@@ -501,17 +506,21 @@
                   <select class="kategori" id="kategori-masuk">
                     <option value="ortu">orang-tua</option>
                     <option value="sodara">sodara</option>
-                    <option value="bisnis">bisnis</option>
+                    <option value="bisnis">shoope</option>
+                    <option value="freelancer">freelancer</option>
                     <option value="hibah">hibah</option>
                     <option value="lain-lain">lain-lain</option>
                   </select>
                 </div>
                 <div class="keluar">
                   <select class="kategori" id="kategori-keluar">
-                    <option value="rencang">rencang</option>
+                    <option value="makan">makan & rencang</option>
+                    <option value="jajan">jajan</option>
+                    <option value="belanja">belanja</option>
+                    <option value="perabot">perabot</option>
                     <option value="kos">bayar kos</option>
                     <option value="kendaraan">kendaraan</option>
-                    <option value="pulsa" dropzone="">pulsa</option>
+                    <option value="pulsa&internet" dropzone="">pulsa & internet</option>
                     <option value="lain-lain">lain-lain</option>
                   </select>
                 </div>
@@ -547,4 +556,4 @@
   <script type="module" src="script/prontEnd.js"></script>
 </body>
 
-</html> 
+</html> lihat semua aset

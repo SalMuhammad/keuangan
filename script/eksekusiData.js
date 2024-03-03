@@ -12,11 +12,13 @@ import {
   tambahData,
   // pemasukanPerbulan,
   // saldo,
-  rupiah
+  rupiah,
+  pindahUang
 
 } from './function.js';
 import {saldo, namaBulan} from './data_base.js'
 
+// console.log(saldo);
 //import {} from './prontEnd.js'
 
 export let dataUang = JSON.parse(localStorage.getItem("dataUang")) || []
@@ -33,7 +35,7 @@ let bulanKlik = sekarang.getMonth() + 1;
 
 //memilih bulan sekarang saja untuk di tampilkan
 let thisMonth = pilihBulanIni(semuaData, tahunKlik, bulanKlik)
-console.log(thisMonth)
+// console.log(thisMonth)
 //membalikan urutan isi bulan sekarang
 let hariPerBulan = susunDataPerhariDariBulan(thisMonth)
 
@@ -53,9 +55,6 @@ $('.icon-sorting').addEventListener('click', () => {
     cetakNominall(sortedData);
   }
 });
-
-
-
 
 // tahunKlik = new Date().getFullYear(); 
 // bulanKlik = new Date().getMonth() + 1
@@ -143,7 +142,7 @@ tbody.addEventListener("click", e => {
       }
     }
   }
-});
+})
 
 // bagian menghapus
 if ($('.btn') !== null) {
@@ -157,35 +156,128 @@ if ($('.btn') !== null) {
   })
 }
 
-// menghitung saldo ke semua wadah uang
+// // menghitung saldo ke semua wadah uang
+
+
+// dataUang.map(du => {
+//   const nominal = parseInt(du.nominal);
+//   switch (du.alokasi) {
+//     case 'dompet':
+//       if (du.jenis === 'masuk') saldo.dompet += nominal;
+//       else if (du.jenis === 'keluar') saldo.dompet -= nominal;
+//       break;
+//     case 'darurat':
+//       if (du.jenis === 'masuk') saldo.darurat += nominal;
+//       else if (du.jenis === 'keluar') saldo.darurat -= nominal;
+//       break;
+//     case 'dana':
+//       if (du.jenis === 'masuk') saldo.dana += nominal;
+//       else if (du.jenis === 'keluar') saldo.dana -= nominal;
+//       break;
+//     case 'transfer':
+//       if (du.alokasi === 'cash-ke-dana') {
+//         saldo.dompet -= nominal;
+//         saldo.dana += nominal;
+//       } else if (du.alokasi === 'cash-ke-darurat') {
+//         saldo.dompet -= nominal;
+//         saldo.darurat += nominal;
+//       } else if (du.alokasi === 'dana-ke-cash') {
+//         saldo.dana -= nominal;
+//         saldo.dompet += nominal;
+//       } else if (du.alokasi === 'dana-ke-darurat') {
+//         saldo.dana -= nominal;
+//         saldo.darurat += nominal;
+//       } else if (du.alokasi === 'darurat-ke-cash') {
+//         saldo.darurat -= nominal;
+//         saldo.dompet += nominal;
+//       } else if (du.alokasi === 'darurat-ke-dana') {
+//         saldo.darurat -= nominal;
+//         saldo.dana += nominal;
+//       }
+//       break;
+//     default:
+//       break;
+//   }
+// });
+
+
 dataUang.map(du => {
-  // console.log(du);
-  if(du.alokasi === 'dompet' && du.jenis === 'masuk') {
-    saldo.dompet += parseInt(du.nominal)
-  } else if(du.alokasi === 'dompet' && du.jenis === 'keluar') {
-    saldo.dompet -= parseInt(du.nominal)
-  } else if(du.alokasi === 'darurat' && du.jenis === 'masuk') {
-    saldo.darurat += parseInt(du.nominal)
-  } else if(du.alokasi === 'darurat' && du.jenis === 'keluar') {
-    saldo.darurat -= parseInt(du.nominal)
-  } else if(du.alokasi === 'dana' && du.jenis === 'masuk') {
-    saldo.dana += parseInt(du.nominal)
-  } else if(du.alokasi === 'dana' && du.jenis === 'keluar') {
-    saldo.dana -= parseInt(du.nominal)
-  } 
+  const jenisMasuk = du.jenis === 'masuk';
+  const nominal = parseInt(du.nominal);
+
+  switch (du.alokasi) {
+    case 'dompet':
+      saldo.dompet += jenisMasuk ? nominal : -nominal;
+      break;
+    case 'darurat':
+      saldo.darurat += jenisMasuk ? nominal : -nominal;
+      break;
+    case 'dana':
+      saldo.dana += jenisMasuk ? nominal : -nominal;
+      break;
+    default:
+      break;
+  }
+  // menghitung transaksi
+  if(du.jenis === 'transfer') {
+    if(du.alokasi === 'cash-ke-dana') {
+      saldo.dompet -= parseInt(du.nominal)
+      saldo.dana += parseInt(du.nominal)
+    } else if(du.alokasi === 'cash-ke-darurat') {
+      saldo.dompet -= parseInt(du.nominal)
+      saldo.darurat += parseInt(du.nominal)
+    } 
+    
+    else if(du.alokasi === 'dana-ke-cash') {
+      saldo.dana -= parseInt(du.nominal)
+      saldo.dompet+= parseInt(du.nominal)
+    } else if(du.alokasi === 'dana-ke-darurat') {
+      saldo.dana -= parseInt(du.nominal)
+      saldo.darurat+= parseInt(du.nominal)
+    } 
+
+    else if(du.alokasi === 'darurat-ke-cash') {
+      saldo.darurat -= parseInt(du.nominal)
+      saldo.dompet += parseInt(du.nominal)
+    } 
+    else if(du.alokasi === 'darurat-ke-cash') {
+      saldo.darurat -= du.nominal
+      saldo.dana += du.nominal
+    } 
+  }
 })
-// console.log(saldo.dompet);
-$('.saldo').innerHTML = rupiah(saldo.dompet);
+
+
+
+
+
+
 
 // menampilkan uang di figure laianya
+$('.saldo').innerHTML = rupiah(saldo.dompet);
 $('.uang-di-dompet').textContent =  rupiah(saldo.dompet)
 $('.uang-di-dana').textContent = rupiah(saldo.dana)
 $('.uang-darurat').textContent = rupiah(saldo.darurat)
 $('.total-semua-uang').textContent = rupiah(saldo.dompet + saldo.dana + saldo.darurat)
 
-
-
-
-
-
-// sortByTime
+// menjalankan interaksi transaksi
+$('#btn-cash-ke-dana').addEventListener('click', () => {
+  pindahUang($('input#cash-ke-dana'), 'cash-ke-dana', 'tf cash ke dana')
+})
+$('#btn-cash-ke-darurat').addEventListener('click', () => {
+  pindahUang($('input#cash-ke-darurat'), 'cash-ke-darurat', 'tf cash ke darurat')
+})
+//----------------------------------------------------------
+$('#btn-dana-ke-cash').addEventListener('click', () => {
+  pindahUang($('input#dana-ke-cash'), 'dana-ke-cash', 'dana ke cash')
+})
+$('#btn-dana-ke-darurat').addEventListener('click', () => {
+  pindahUang($('input#dana-ke-darurat'), 'dana-ke-darurat', 'tf dana ke darurat')
+})
+//----------------------------------------------------------
+$('#btn-darurat-ke-cash').addEventListener('click', () => {
+  pindahUang($('input#darurat-ke-cash'), 'daruat-ke-cash', 'daruat ke cash')
+})
+$('#btn-darurat-ke-dana').addEventListener('click', () => {
+  pindahUang($('input#daruat-ke-dana'), 'darurat-ke-dana', 'tf darurat ke dana')
+})

@@ -235,6 +235,10 @@ th, td{
 .pengeluaran .nominal{
   color: red;
 }
+.transfer .nominal {
+  color: rgb(173, 2, 173);
+}
+
 tr .nominal{
   text-align: right;
 }
@@ -398,4 +402,4 @@ details p{
   -webkit-animation: 1s nambrak-benget;
 }
 
-muncul
+.pemasukan

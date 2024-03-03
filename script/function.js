@@ -115,7 +115,6 @@ export function rupiah(bilangan) {
 }
 
 
-
 function generateUniqueId() {
   // Membuat string acak menggunakan metode Math.random()
   let uniqueId = Math.random().toString(36).substring(2, 8);
@@ -125,28 +124,47 @@ function generateUniqueId() {
     // Jika id sudah ada, panggil fungsi generateUniqueId() lagi untuk membuat id yang berbeda
     return generateUniqueId();
   }
-
   // Jika id belum ada, return id yang telah dihasilkan
   return uniqueId;
+  // let jenis = $("#jenis").value
+  // let nominal = nominalTransaksi !== undefined ? nominalTransaksi:  $('#nominal').value
+  // let tanggal = tanggalTransaksi !== undefined ? tanggalTransaksi : $('#tanggal').value
+  // let keterangan = kategoriTransaksi !== undefined ? kategoriTransaksi : $('#keterangan').value
+  // let kategori = document.getElementById(jenis === "masuk" ? "kategori-masuk" : "kategori-keluar").value
+  // let alokasi = $('input[name="pilih-penyimpanan"]:checked').value
 }
 
 //fungsi tambah data
-export function tambahData() {
-  // let tanggal = new Date().toLocaleDateString("id-ID");
-  let jenis = $("#jenis").value
-  let kategori = document.getElementById(jenis === "masuk" ? "kategori-masuk" : "kategori-keluar").value
-  let alokasi = $('input[name="pilih-penyimpanan"]:checked').value
-  if (!$('#nominal').value) {
+export function tambahData(kategoriTransaksi, nominalTransaksi, tanggalTransaksi, alokasiTransaksi, keteranganTransaksi) { // semua argurmen ini adalah kiriman untuk metode transaksi
+  let jenis = kategoriTransaksi !== undefined ? kategoriTransaksi : $('#jenis').value
+  let nominal = nominalTransaksi !== undefined ? nominalTransaksi : $('#nominal').value
+  let tanggal = tanggalTransaksi !== undefined ? tanggalTransaksi : $('#tanggal').value
+
+  let kategori
+  let keterangan
+  if(kategoriTransaksi === undefined) {
+     kategori = document.getElementById(jenis === "masuk" ? "kategori-masuk" : "kategori-keluar").value
+     keterangan = !$('#keterangan').value === '' ? 'transfer' : $('#keterangan').value
+  } else {
+    kategori = kategoriTransaksi
+    keterangan = keteranganTransaksi
+  }
+  console.log(jenis);
+  console.log(kategori);
+
+  let alokasi = alokasiTransaksi !== undefined ? alokasiTransaksi : $('input[name="pilih-penyimpanan"]:checked').value
+  // console.log(keterangan);
+  // console.log(JSON.parse(localStorage.dataUang));
+  if (!$('#nominal').value && nominalTransaksi === undefined) {
     alert('form belum di isi')
-  } else if (!$('#nominal').value) {
+  } else if (!$('#nominal').value && kategoriTransaksi === undefined) {
     alert('nominal wajib di isi')
   } else {
-
     let data = {
-      tanggal: $('#tanggal').value,
-      nominal: $('#nominal').value,
+      tanggal,
+      nominal,
       kategori,
-      keterangan: $('#keterangan').value,
+      keterangan,
       alokasi,
       jenis,
       id: generateUniqueId()
@@ -167,9 +185,7 @@ export function tambahData() {
       localStorage.setItem("dataUang", JSON.stringify(dataUang))
     } 
     closes(); 
-    // tampilkanData(hariPerBulan);
-    // cetakNominall(hariPerBulan)
-    window.location = 'index.html'//tampilkanData(thisMonthReverse);
+    // window.location = 'index.html'//tampilkanData(thisMonthReverse);
   }
 }
 
@@ -204,7 +220,6 @@ function add3Dots(string, limit) {
 
   return string;
 }
-
 
 export function ubahFormatData(dataAwal) {
   const dataBaru = {};
@@ -247,7 +262,6 @@ export function susunDataPerhariDariBulan(data) {
   // Menggabungkan semua data menjadi satu array
   if (data !== null && typeof data === 'object') {
     const mergedArray = Object.values(data).flat()
-    // console.log(mergedArray);
     // Mengurutkan array berdasarkan waktu menggunakan metode .sort()
     return mergedArray.reverse();
   }
@@ -334,8 +348,13 @@ export function tampilkanData(dataArr) {
       //meluping value objek dataPerHari
       if (typeof dataPerHari[tanggal] !== 'undefined'/* && dataPerHari[tanggal] !== null*/) {
         dataPerHari[tanggal].forEach((data, id) => {
-          const jenis = data.jenis === "masuk" ? "Pemasukan" : "Pengeluaran";
-          let tr = data.jenis === "masuk" ? '<tr class="pemasukan">' : '<tr class="pengeluaran">'
+          // const jenis = data.jenis === "masuk" ? "Pemasukan" : "Pengeluaran";
+          let tr
+          if(data.jenis === "masuk") {
+            tr = '<tr class="pemasukan">'
+          } else if(data.jenis === "keluar") {
+            tr = '<tr class="pengeluaran">'
+          } else tr = '<tr class="transfer">'
 
           tableHtml += tr;
           tableHtml += `
@@ -388,28 +407,33 @@ export function muncul(ellem) {
   ellem.classList.remove('hidden')
 }
 
+// funsi transfer duit
+export function pindahUang(inputNominal, alokasiTransaksi, keteranganTransaksi) {
+  let admin = inputNominal.value < 500000 ? 3000 : 5000;
+  let alokasiAdmin = '';
 
-// menutup sidebar
-// export function clossSidebar() {
-//   // $('.toggle').classList.toggle('bi-x')
-//   // $('.toggle').classList.toggle('bi-three-dots-vertical')
-//   // $('.toggle').classList.toggle('text-oren')
-//   $('.side-bar').classList.toggle('hidden')
-// }
+  const parentElement = inputNominal.parentElement;
+  if (parentElement && parentElement.nextElementSibling) {
+    const children1 = parentElement.nextElementSibling.children[1];
+    if (children1 && children1.children) {
+      const parendPilihanModal = children1.children;
+      
+      // Setelah mendeklarasikan variabel `parendPilihanModal`, barulah Anda dapat mengakses properti checked dari elemen cash.
+      // parendPilihanModal.cash.checked = true;
 
-// localStorage.clear()
+      if (parendPilihanModal.cash.checked) {
+        alokasiAdmin = 'dompet';
+      } else if (parendPilihanModal.dana.checked) {
+        alokasiAdmin = 'dana';
+      } else {
+        alert('SILAKAN pilih bayar admin!')
+      }
+
+      tambahData('keluar', admin, new Date(), alokasiAdmin, `admin ${keteranganTransaksi}`);
+    }
+  }
+  
+  tambahData('transfer', inputNominal.value, new Date(), alokasiTransaksi, keteranganTransaksi);
+}
 
 
-// menuliskanSaldo(dataUang)
-
-
-
-// export {dompet} .saldo
-
-// pilihBulanIni
-// closeSidebar
-// sortByTime
-  // active
-// add3Dots
-// tampilkanData
-console

@@ -4,5 +4,3 @@ export let saldo = {
   darurat: 0,
   dana: 0
 }
-
-// console.log(saldo);

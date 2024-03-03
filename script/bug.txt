@@ -2,4 +2,6 @@
 2. ketika tidak bisa melakukan pengeditan dan penghapusan selain bulaan sekarang
 
 
-komit
+
+kategori jadi mati
+tambahkah validasi saat transksi saat uang kurang

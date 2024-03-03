@@ -9,6 +9,11 @@ import {
   // clossSidebar 
 } from './function.js';
 
+// import {
+//   saldo
+// } from './data_base.js'
+// console.log(saldo);
+
 // bagian togle sorting tanggal
 $('.icon-sorting').addEventListener('click', () => {
   $('.icon-sorting').classList.toggle('bi-sort-numeric-down-alt')
@@ -63,7 +68,6 @@ document.addEventListener('click', e => {
     } 
   });
 })
-
 
 // menghilangkan semua aset
 $('.elm-semua-aset .bi-arrow-left').addEventListener('click', () => close($('.elm-semua-aset'))) 
