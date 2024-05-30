@@ -89,7 +89,7 @@ $('.tombol-pindah-waktu figure').addEventListener('click', e => {
 //3. membuat diagram garis
 
 
-// fungsi untuk mencari element <span> di dalam element <td>
+//* fungsi untuk mencari element <span> di dalam element <td>
 function findSpan(element) {
   // mengecek element <td> apakah ada di dalam element <tr>
   let spanElement = element.querySelector('span')
@@ -279,7 +279,7 @@ $('#btn-darurat-ke-cash').addEventListener('click', () => {
   pindahUang($('input#darurat-ke-cash'), 'daruat-ke-cash', 'daruat ke cash')
 })
 $('#btn-darurat-ke-dana').addEventListener('click', () => {
-  pindahUang($('input#daruat-ke-dana'), 'darurat-ke-dana', 'tf darurat ke dana')
+  pindahUang($('input#darurat-ke-dana'), 'darurat-ke-dana', 'tf darurat ke dana')
 })
 
 

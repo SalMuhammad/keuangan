@@ -144,8 +144,8 @@ export function tambahData(kategoriTransaksi, nominalTransaksi, tanggalTransaksi
     kategori = kategoriTransaksi
     keterangan = keteranganTransaksi
   }
-  console.log(jenis);
-  console.log(kategori);
+  // console.log(jenis);
+  // console.log(kategori);
 
   let alokasi = alokasiTransaksi !== undefined ? alokasiTransaksi : $('input[name="pilih-penyimpanan"]:checked').value
   // console.log(keterangan);
@@ -405,28 +405,35 @@ export function muncul(ellem) {
 export function pindahUang(inputNominal, alokasiTransaksi, keteranganTransaksi) {
   let admin = inputNominal.value < 500000 ? 3000 : 5000;
   let alokasiAdmin = '';
-
-  const parentElement = inputNominal.parentElement;
-  if (parentElement && parentElement.nextElementSibling) {
-    const children1 = parentElement.nextElementSibling.children[1];
-    if (children1 && children1.children) {
-      const parendPilihanModal = children1.children;
-      
-      // Setelah mendeklarasikan variabel `parendPilihanModal`, barulah Anda dapat mengakses properti checked dari elemen cash.
-      parendPilihanModal.cash.checked = true;
-      if (parendPilihanModal.cash.checked) {
-        alokasiAdmin = 'dompet';
-      } else if (parendPilihanModal.dana.checked) {
-        alokasiAdmin = 'dana';
-      } else {
-        alert('SILAKAN pilih bayar admin!')
-      }
-
-      tambahData('keluar', admin, new Date(), alokasiAdmin, `admin ${keteranganTransaksi}`);
-    }
-  }
   
-  tambahData('transfer', inputNominal.value, new Date(), alokasiTransaksi, keteranganTransaksi);
+  if(inputNominal.value >= 1 ) {
+    const parentElement = inputNominal.parentElement;
+    if (parentElement && parentElement.nextElementSibling) {
+      const children1 = parentElement.nextElementSibling.children[1];
+      if (children1 && children1.children) {
+        const parendPilihanModal = children1.children;
+        
+        //* Setelah mendeklarasikan variabel `parendPilihanModal`, barulah Anda dapat mengakses properti checked dari elemen cash.
+        // parendPilihanModal.cash.checked = true;
+        if (parendPilihanModal.cash.checked) {
+          alokasiAdmin = 'dompet';
+        } else if (parendPilihanModal.dana.checked) {
+          alokasiAdmin = 'dana';
+        } else {
+          alert('SILAKAN pilih bayar admin!')
+          // return
+        }
+        console.log(alokasiAdmin)
+        console.log(typeof(alokasiAdmin));
+        if(alokasiAdmin) {
+          tambahData('keluar', admin, new Date(), alokasiAdmin, `admin ${keteranganTransaksi}`);
+        } else {
+          alert('nominal belum di isi!!')
+          return
+        }
+      }
+    }
+    tambahData('transfer', inputNominal.value, new Date(), alokasiTransaksi, keteranganTransaksi);
+  } else alert('nominal belum di isi!!')
 }
-
 
