@@ -232,7 +232,10 @@
                           <div class="mb-4">
                             <input id="cash-ke-dana" 
                               class="bg-transparent border border-gray-700 outline-none w-[95%] py-2 px-3 rounded-md text-white"
-                              type="number" name="" id="" placeholder="Jumlah">
+                              type="number" name="" id="" placeholder="Nominal">
+                            <input id="admin-cash-ke-dana" 
+                              class="bg-transparent border border-gray-700 outline-none w-[51%] py-2 px-3 rounded-md text-white"
+                              type="number" name="" id="" placeholder="admin">
                           </div>
                           <div class="mb-4">
                             <p class="text-white">Bayar admin dengan?</p>
@@ -285,11 +288,13 @@
                           <div class="mb-4">
                             <input type="checkbox" name="" id="ambil-semua" class="mr-2">
                             <label for="ambil-semua" class="text-white">Ambil Semua</label>
+
                           </div>
                           <div class="mb-4">
-                            <input id="dana-ke-cash"
-                              class="bg-transparent border border-gray-700 outline-none w-[95%] py-2 px-3 rounded-md text-white"
-                              type="number" name="" id="" placeholder="Jumlah">
+                            <input id="dana-ke-cash" class="bg-transparent border border-gray-700 outline-none w-[95%] py-2 px-3 rounded-md text-white" type="number" name="" id="" placeholder="Nominal">
+
+                            <input id="admin-dana-ke-cash" class="bg-transparent border border-gray-700 outline-none w-[55%] py-2 px-3 rounded-md text-white" type="number" name="" id="" placeholder="admin">
+                              
                           </div>
                           <div class="mb-4">
                             <p class="text-white">Bayar admin dengan?</p>
@@ -315,7 +320,10 @@
                           <div class="mb-4">
                             <input id="dana-ke-darurat"
                               class="bg-transparent border border-gray-700 outline-none w-[95%] py-2 px-3 rounded-md text-white"
-                              type="number" name="" id="" placeholder="Jumlah">
+                              type="number" name="" id="" placeholder="Nominal">
+                            <input id="admin-dana-ke-darurat"
+                              class="bg-transparent border border-gray-700 outline-none w-[95%] py-2 px-3 rounded-md text-white"
+                              type="number" name="" id="" placeholder="admin">
                           </div>
                           <div class="mb-4">
                             <p class="text-white">Bayar admin dengan?</p>
@@ -373,15 +381,18 @@
                           <div class="mb-4">
                             <input id="darurat-ke-dana"
                               class="bg-transparent border border-gray-700 outline-none w-[95%] py-2 px-3 rounded-md text-white"
-                              type="number" name="" id="" placeholder="Jumlah">
+                              type="number" name="" placeholder="nominal">
+                            <input id="admin-darurat-ke-dana"
+                              class="bg-transparent border border-gray-700 outline-none w-[51%] py-2 px-3 rounded-md text-white"
+                              type="number" name="" placeholder="admin">
                           </div>
                           <div class="mb-4">
                             <p class="text-white">Bayar admin dengan?</p>
                             <div class="flex items-center text-white">
                               <input type="radio" name="dariCash" id="dana" class="mr-2">
                               <label for="dana" class="mr-4">Dana</label>
-                              <input type="radio" name="dariCash" id="cash" class="mr-2">
-                              <label for="cash">Cash</label>
+                              <input type="radio" name="dariCash" id="drrt" class="mr-2">
+                              <label for="drrt">cash</label>
                             </div>
                           </div>
                           <button id="btn-darurat-ke-dana"
@@ -565,4 +576,4 @@
   <script type="module" src="script/prontEnd.js"></script>
 </body>
 
-</html> btn-darurat-ke-dana
+</html> darurat ke dana

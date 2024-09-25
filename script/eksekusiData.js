@@ -16,6 +16,7 @@ import {
   pindahUang
 
 } from './function.js';
+//export let admin = document.querySelector('#admin-dana-ke-cash').value
 import {saldo, namaBulan} from './data_base.js'
 
 // console.log(saldo);
@@ -262,24 +263,24 @@ $('.total-semua-uang').textContent = rupiah(saldo.dompet + saldo.dana + saldo.da
 
 // menjalankan interaksi transaksi
 $('#btn-cash-ke-dana').addEventListener('click', () => {
-  pindahUang($('input#cash-ke-dana'), 'cash-ke-dana', 'tf cash ke dana')
+  pindahUang($('input#cash-ke-dana'), 'cash-ke-dana', 'tf cash ke dana', $('#admin-cash-ke-dana').value)
 })
 $('#btn-cash-ke-darurat').addEventListener('click', () => {
   pindahUang($('input#cash-ke-darurat'), 'cash-ke-darurat', 'tf cash ke darurat')
 })
 //----------------------------------------------------------
 $('#btn-dana-ke-cash').addEventListener('click', () => {
-  pindahUang($('input#dana-ke-cash'), 'dana-ke-cash', 'dana ke cash')
+  pindahUang($('input#dana-ke-cash'), 'dana-ke-cash', 'dana ke cash', $('#admin-dana-ke-cash').value)
 })
 $('#btn-dana-ke-darurat').addEventListener('click', () => {
-  pindahUang($('input#dana-ke-darurat'), 'dana-ke-darurat', 'tf dana ke darurat')
+  pindahUang($('input#dana-ke-darurat'), 'dana-ke-darurat', 'tf dana ke darurat', $('#admin-dana-ke-darurat').value)
 })
 //----------------------------------------------------------
 $('#btn-darurat-ke-cash').addEventListener('click', () => {
   pindahUang($('input#darurat-ke-cash'), 'daruat-ke-cash', 'daruat ke cash')
 })
 $('#btn-darurat-ke-dana').addEventListener('click', () => {
-  pindahUang($('input#darurat-ke-dana'), 'darurat-ke-dana', 'tf darurat ke dana')
+  pindahUang($('input#darurat-ke-dana'), 'darurat-ke-dana', 'tf darurat ke dana', $('#admin-darurat-ke-dana'))
 })
 
 

@@ -1,5 +1,6 @@
 import {
-  dataUang
+  dataUang,
+  //admin
   // thisMonthReverse
 } from './eksekusiData.js'
 
@@ -392,8 +393,6 @@ export function cetakNominall(bulanSekarang) {
   // $('.saldo').innerHTML = rupiah(saldo.dompet)
   $('#bulan-sekarang').addEventListener('change', ()=> $('.saldo').innerHTML = rupiah(saldo))
 }
-
-
 export function close(ellem) {
   ellem.classList.add('hidden')
 }
@@ -402,8 +401,8 @@ export function muncul(ellem) {
 }
 
 // funsi transfer duit
-export function pindahUang(inputNominal, alokasiTransaksi, keteranganTransaksi) {
-  let admin = inputNominal.value < 500000 ? 3000 : 5000;
+export function pindahUang(inputNominal, alokasiTransaksi, keteranganTransaksi, admin) {
+  //let admin = inputNominal.value < 500000 ? 3000 : 5000;
   let alokasiAdmin = '';
   
   if(inputNominal.value >= 1 ) {
@@ -437,3 +436,4 @@ export function pindahUang(inputNominal, alokasiTransaksi, keteranganTransaksi) 
   } else alert('nominal belum di isi!!')
 }
 
+//pindahUang
