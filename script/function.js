@@ -135,6 +135,7 @@ export function tambahData(kategoriTransaksi, nominalTransaksi, tanggalTransaksi
   let jenis = kategoriTransaksi !== undefined ? kategoriTransaksi : $('#jenis').value
   let nominal = nominalTransaksi !== undefined ? nominalTransaksi : $('#nominal').value
   let tanggal = tanggalTransaksi !== undefined ? tanggalTransaksi : $('#tanggal').value
+  // console.log(nominal); return
 
   let kategori
   let keterangan
@@ -145,7 +146,6 @@ export function tambahData(kategoriTransaksi, nominalTransaksi, tanggalTransaksi
     kategori = kategoriTransaksi
     keterangan = keteranganTransaksi
   }
-  // console.log(jenis);
   // console.log(kategori);
 
   let alokasi = alokasiTransaksi !== undefined ? alokasiTransaksi : $('input[name="pilih-penyimpanan"]:checked').value
@@ -168,6 +168,7 @@ export function tambahData(kategoriTransaksi, nominalTransaksi, tanggalTransaksi
     // console.log(data)
     if (!$(".btn").classList.contains("edit")) {
       dataUang.push(data)
+      console.log(data); //return
       localStorage.setItem("dataUang", JSON.stringify(dataUang))
       $('form').reset()
     } else {
@@ -402,6 +403,8 @@ export function muncul(ellem) {
 
 // funsi transfer duit
 export function pindahUang(inputNominal, alokasiTransaksi, keteranganTransaksi, admin) {
+  // console.log(inputNominal)
+  // return;
   //let admin = inputNominal.value < 500000 ? 3000 : 5000;
   let alokasiAdmin = '';
   if(inputNominal.value >= 1 ) {
@@ -422,7 +425,7 @@ export function pindahUang(inputNominal, alokasiTransaksi, keteranganTransaksi, 
           // return
         }
         // console.log(alokasiAdmin)
-        console.log(typeof(alokasiAdmin));
+        // console.log(typeof(alokasiAdmin));
         if(alokasiAdmin) {
           tambahData('keluar', admin, new Date(), alokasiAdmin, `admin ${keteranganTransaksi}`);
         } else {
@@ -431,7 +434,8 @@ export function pindahUang(inputNominal, alokasiTransaksi, keteranganTransaksi, 
         }
       }
     }
-    tambahData('transfer', inputNominal.value, new Date(), alokasiTransaksi, keteranganTransaksi);
+    
+    tambahData('transfer', parseInt(inputNominal.value), new Date(), alokasiTransaksi, keteranganTransaksi);
   } else alert('nominal belum di isi!!')
 }
 

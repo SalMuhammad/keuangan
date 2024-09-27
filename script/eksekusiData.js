@@ -237,14 +237,14 @@ dataUang.map(du => {
       saldo.darurat+= parseInt(du.nominal)
     } 
 
-    else if(du.alokasi === 'darurat-ke-cash') {
+    else if(du.alokasi === 'daruat-ke-cash') {
       saldo.darurat -= parseInt(du.nominal)
       saldo.dompet += parseInt(du.nominal)
     } 
-    else if(du.alokasi === 'darurat-ke-cash') {
-      saldo.darurat -= du.nominal
-      saldo.dana += du.nominal
-    } 
+    // else if(du.alokasi === 'darurat-ke-cash') {
+    //   saldo.darurat -= du.nominal
+    //   saldo.dana += du.nominal
+    // } 
   }
 })
 
@@ -275,13 +275,28 @@ $('#btn-dana-ke-cash').addEventListener('click', () => {
 $('#btn-dana-ke-darurat').addEventListener('click', () => {
   pindahUang($('input#dana-ke-darurat'), 'dana-ke-darurat', 'tf dana ke darurat', parseInt($('#admin-dana-ke-darurat').value))
 })
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 //----------------------------------------------------------
 $('#btn-darurat-ke-cash').addEventListener('click', () => {
-  pindahUang($('input#darurat-ke-cash'), 'daruat-ke-cash', 'daruat ke cash')
+  pindahUang($('input#darurat-ke-cash'), 'daruat-ke-cash', 'tf daruat ke cash')
 })
-$('#btn-darurat-ke-dana').addEventListener('click', () => {
-  pindahUang($('input#darurat-ke-dana'), 'darurat-ke-dana', 'tf darurat ke dana', parseInt($('#admin-darurat-ke-dana')))
-})
+// $('#btn-darurat-ke-dana').addEventListener('click', () => {
+//   pindahUang($('input#darurat-ke-dana'), 'darurat-ke-dana', 'tf darurat ke dana', parseInt($('#admin-darurat-ke-dana')))
+// })
 
 
 
