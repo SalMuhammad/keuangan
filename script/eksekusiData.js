@@ -31,7 +31,7 @@ pengecekanSelect()
 const semuaData = ubahFormatData(dataUang)
 
 const sekarang = new Date()
-let tahunKlik = sekarang.getFullYear();
+let tahunKlik = sekarang.getFullYear();9
 let bulanKlik = sekarang.getMonth() + 1;
 
 //memilih bulan sekarang saja untuk di tampilkan
@@ -248,7 +248,7 @@ dataUang.map(du => {
   }
 })
 
-localStorage.clear()
+// localStorage.clear()
 
 
 
@@ -263,24 +263,24 @@ $('.total-semua-uang').textContent = rupiah(saldo.dompet + saldo.dana + saldo.da
 
 // menjalankan interaksi transaksi
 $('#btn-cash-ke-dana').addEventListener('click', () => {
-  pindahUang($('input#cash-ke-dana'), 'cash-ke-dana', 'tf cash ke dana', $('#admin-cash-ke-dana').value)
+  pindahUang($('input#cash-ke-dana'), 'cash-ke-dana', 'tf cash ke dana', parseInt($('#admin-cash-ke-dana').value))
 })
 $('#btn-cash-ke-darurat').addEventListener('click', () => {
   pindahUang($('input#cash-ke-darurat'), 'cash-ke-darurat', 'tf cash ke darurat')
 })
 //----------------------------------------------------------
 $('#btn-dana-ke-cash').addEventListener('click', () => {
-  pindahUang($('input#dana-ke-cash'), 'dana-ke-cash', 'dana ke cash', $('#admin-dana-ke-cash').value)
+  pindahUang($('input#dana-ke-cash'), 'dana-ke-cash', 'dana ke cash', parseInt($('#admin-dana-ke-cash').value))
 })
 $('#btn-dana-ke-darurat').addEventListener('click', () => {
-  pindahUang($('input#dana-ke-darurat'), 'dana-ke-darurat', 'tf dana ke darurat', $('#admin-dana-ke-darurat').value)
+  pindahUang($('input#dana-ke-darurat'), 'dana-ke-darurat', 'tf dana ke darurat', parseInt($('#admin-dana-ke-darurat').value))
 })
 //----------------------------------------------------------
 $('#btn-darurat-ke-cash').addEventListener('click', () => {
   pindahUang($('input#darurat-ke-cash'), 'daruat-ke-cash', 'daruat ke cash')
 })
 $('#btn-darurat-ke-dana').addEventListener('click', () => {
-  pindahUang($('input#darurat-ke-dana'), 'darurat-ke-dana', 'tf darurat ke dana', $('#admin-darurat-ke-dana'))
+  pindahUang($('input#darurat-ke-dana'), 'darurat-ke-dana', 'tf darurat ke dana', parseInt($('#admin-darurat-ke-dana')))
 })
 
 
