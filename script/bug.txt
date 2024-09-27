@@ -5,3 +5,6 @@
 
 kategori jadi mati
 tambahkah validasi saat transksi saat uang kurang
+
+1. fitur transfer dana ke darurat belum berjalan
+2. fitur transfer darurat ke dana belum juga berjalan
