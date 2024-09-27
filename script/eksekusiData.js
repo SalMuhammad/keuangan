@@ -248,7 +248,7 @@ dataUang.map(du => {
   }
 })
 
-
+localStorage.clear()
 
 
 

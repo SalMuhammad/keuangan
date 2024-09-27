@@ -404,7 +404,6 @@ export function muncul(ellem) {
 export function pindahUang(inputNominal, alokasiTransaksi, keteranganTransaksi, admin) {
   //let admin = inputNominal.value < 500000 ? 3000 : 5000;
   let alokasiAdmin = '';
-  
   if(inputNominal.value >= 1 ) {
     const parentElement = inputNominal.parentElement;
     if (parentElement && parentElement.nextElementSibling) {
@@ -422,7 +421,7 @@ export function pindahUang(inputNominal, alokasiTransaksi, keteranganTransaksi, 
           alert('SILAKAN pilih bayar admin!')
           // return
         }
-        console.log(alokasiAdmin)
+        // console.log(alokasiAdmin)
         console.log(typeof(alokasiAdmin));
         if(alokasiAdmin) {
           tambahData('keluar', admin, new Date(), alokasiAdmin, `admin ${keteranganTransaksi}`);
