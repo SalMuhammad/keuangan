@@ -485,7 +485,7 @@
                 <span class="bi bi-dot"></span>
                 <span class="bi bi-dot"></span>
               </div>
-              <div class="wadah-saldo absolute top-0 transition duration-100">
+              <div class="wadah-saldo absolute top-0 transition duration-100 hidden">
                 <span class="saldo bg-white absolute top-0"></span>
               </div>
             </div>
@@ -607,10 +607,10 @@
       // const nextElement = panon.parentElement.nextElementSibling;
       const wadah_saldo = document.querySelector('.wadah-saldo')
       if (panon.classList.contains('bi-eye-fill') && !panon.classList.contains('bi-eye-slash-fill')) {
-        wadah_saldo.style.display = 'none'; // Menyembunyikan elemen
+        wadah_saldo.style.display = 'block'; // Menyembunyikan elemen
         // wadah_saldo.innerHTML = 'TERSEMBUYI';
       } else {
-        wadah_saldo.style.display = 'block'; // Menampilkan elemen
+        wadah_saldo.style.display = 'none'; // Menampilkan elemen
         // wadah_saldo.innerHTML = 'TERLIHAT';
       }
     });
