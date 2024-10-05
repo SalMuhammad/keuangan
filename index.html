@@ -478,16 +478,16 @@
           <span>saldo</span>
           <div class="flex gap-1">
             <span><i class="bi bi-eye-slash-fill panon"></i></span>
-            <div class="wadah-saldo relative">
-              <div class="relative">
-                <!-- <div class="flex">
-                  <span class="bi bi-dot"></span>
-                  <span class="bi bi-dot"></span>
-                  <span class="bi bi-dot"></span>
-                </div>
-                <span class="bi bi-dot"></span> -->
+            <div class="relative">
+              <div class="flex font-bold text-1xl">
+                <span class="bi bi-dot"></span>
+                <span class="bi bi-dot"></span>
+                <span class="bi bi-dot"></span>
+                <span class="bi bi-dot"></span>
               </div>
-                <span class="saldo absolute transition top-0"></span>
+              <div class="wadah-saldo absolute top-0 transition duration-100">
+                <span class="saldo bg-white absolute top-0"></span>
+              </div>
             </div>
           </div>
         </a>
@@ -599,8 +599,7 @@
     }
 
 
-    const panon = document.querySelector('.panon');
-    panon.parentElement.nextElementSibling.style.background = 'yellow'
+    const panon = document.querySelector('.panon')
     panon.addEventListener('click', () => {
       panon.classList.toggle('bi-eye-slash-fill');
       panon.classList.toggle('bi-eye-fill');
