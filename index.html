@@ -476,7 +476,20 @@
           <span class="nominal-keluar text-orange-600"></span></a>
         <a>
           <span>saldo</span>
-          <span class="saldo"></span>
+          <div class="flex gap-1">
+            <span><i class="bi bi-eye-slash-fill panon"></i></span>
+            <div class="wadah-saldo relative">
+              <div class="relative">
+                <!-- <div class="flex">
+                  <span class="bi bi-dot"></span>
+                  <span class="bi bi-dot"></span>
+                  <span class="bi bi-dot"></span>
+                </div>
+                <span class="bi bi-dot"></span> -->
+              </div>
+                <span class="saldo absolute top-0"></span>
+            </div>
+          </div>
         </a>
       </ul>
     </nav>
@@ -545,6 +558,7 @@
                     <option value="kos">bayar kos</option>
                     <option value="kendaraan">kendaraan</option>
                     <option value="pulsa&internet" dropzone="">pulsa & internet</option>
+                    <option value="di-pinjam">di pinjam</option>
                     <option value="lain-lain">lain-lain</option>
                   </select>
                 </div>
@@ -583,10 +597,29 @@
         localStorage.setItem('dataUang', JSON.stringify(f))
       }
     }
+
+
+    const panon = document.querySelector('.panon');
+    panon.parentElement.nextElementSibling.style.background = 'yellow'
+    panon.addEventListener('click', () => {
+      panon.classList.toggle('bi-eye-slash-fill');
+      panon.classList.toggle('bi-eye-fill');
+
+      // const nextElement = panon.parentElement.nextElementSibling;
+      const wadah_saldo = document.querySelector('.wadah-saldo')
+      if (panon.classList.contains('bi-eye-fill') && !panon.classList.contains('bi-eye-slash-fill')) {
+        wadah_saldo.style.display = 'none'; // Menyembunyikan elemen
+        // wadah_saldo.innerHTML = 'TERSEMBUYI';
+      } else {
+        wadah_saldo.style.display = 'block'; // Menampilkan elemen
+        // wadah_saldo.innerHTML = 'TERLIHAT';
+      }
+    });
+
   </script>
   <!-- <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script> -->
   <script type="module" src="script/eksekusiData.js"></script>
   <script type="module" src="script/prontEnd.js"></script>
 </body>
 
-</html> darurat ke dana ke darurat
+</html> 
