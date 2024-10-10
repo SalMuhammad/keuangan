@@ -22,7 +22,7 @@
 </head> 
 <body>   
   <div class="max-w-sm mx-auto">
-    <header class="header flex justify-between relative text-white">
+    <header class="header flex justify-between relative">
       <a href="index.html"><i class="color-white bi bi-arrow-left cursor-pointer pl-2"></i></a>
       <div class="flex justify-between gap-1">
         <div class="flex-col flex">
@@ -68,12 +68,14 @@
     </main>
   </div>
 
-  <canvas id="myChart" style="width:100%;max-width:600px"></canvas>
+  <canvas id="myChart" style="width:100%;"></canvas>
 
   <script>
     const ctx = document.getElementById("myChart").getContext("2d");
 
-    const xValues = [100, 200, 300, 400, 500, 600, 700, 800, 900, 1000];
+    const xValues = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 
+                    11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 
+                    21, 22, 23, 24, 25, 26, 27, 28, 29, 30]
 
     const gradientRed = ctx.createLinearGradient(0, 0, 0, 400);
     gradientRed.addColorStop(0, 'rgba(255, 0, 0, 0.5)');
@@ -92,29 +94,29 @@
       data: {
         labels: xValues,
         datasets: [{ 
-          data: [860, 1140, 1060, 1060, 1070, 1110, 1330, 2210, 7830, 2478],
+          data: [860, 1140, 1060, 1060, 1070, 1110, 1330, 2210, 7830, 2478, 2000], // 10 data points
           borderColor: "red",
-          fill: true, // Mengaktifkan pengisian
-          backgroundColor: gradientRed, // Menggunakan gradien
-          pointRadius: 2, // mengatur ukuran lingkaran point
-          borderWidth: 1, // mengatur ukuran garis diagra
-          lineTension: 0 // mengatur  ukuran sudut garis
+          fill: true,
+          backgroundColor: gradientRed,
+          pointRadius: 2,
+          borderWidth: 1,
+          lineTension: 0
         }, { 
-          data: [1600, 1700, 1700, 1900, 2000, 2700, 4000, 5000, 6000, 7900],
+          data: [1600, 1700, 1700, 1900, 2000, 2700, 4000, 5000, 6000, 7900], // 10 data points
           borderColor: "green",
           fill: true,
-          backgroundColor: gradientGreen, // Menggunakan gradien
-          pointRadius: 2, // mengatur ukuran lingkaran point
-          borderWidth: 1, // mengatur ukuran garis diagra
-          lineTension: 0 // mengatur  ukuran sudut garis
+          backgroundColor: gradientGreen,
+          pointRadius: 2,
+          borderWidth: 1,
+          lineTension: 0
         }, { 
-          data: [300, 700, 2000, 5000, 6000, 4000, 2000, 1000, 200, 100],
+          data: [300, 700, 2000, 5000, 6000, 4000, 2000, 1000, 200, 100], // 10 data points
           borderColor: "blue",
           fill: true,
-          backgroundColor: gradientBlue, // Menggunakan gradien
-          pointRadius: 2, // mengatur ukuran lingkaran point
-          borderWidth: 1, // mengatur ukuran garis diagra
-          lineTension: .43 // mengatur  ukuran sudut garis
+          backgroundColor: gradientBlue,
+          pointRadius: 2,
+          borderWidth: 1,
+          lineTension: .43
         }]
       },
       options: {
