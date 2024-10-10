@@ -6,12 +6,12 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <title>Program Pengelolaan Uang</title>
   <link rel="stylesheet" href="style.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
 
   <!-- link bootstrap-icons -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
 
   <!-- link favicon -->
-  <!-- <link rel="shortcut icon" href="f/favicon.ico"> -->
   <link rel="apple-touch-icon" sizes="180x180" href="/f/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/f/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/f/favicon-16x16.png">
@@ -19,23 +19,22 @@
   <link rel="mask-icon" href="/f/safari-pinned-tab.svg" color="#5bbad5">
   <meta name="msapplication-TileColor" content="#00aba9">
   <meta name="theme-color" content="#ffffff"> 
-  </head>
 </head> 
 <body>   
   <div class="max-w-sm mx-auto">
     <header class="header flex justify-between relative text-white">
-      <a href="index.html"><i class="color-white bi bi-arrow-left  cursor-pointer pl-2"></i></a>
+      <a href="index.html"><i class="color-white bi bi-arrow-left cursor-pointer pl-2"></i></a>
       <div class="flex justify-between gap-1">
-        <div class="flex-col flex ">
-          <label class="" for="saldo">saldo</label>
+        <div class="flex-col flex">
+          <label for="saldo">saldo</label>
           <input id="saldo" type="checkbox">
         </div>
-        <div class="flex-col flex ">
-          <label class="" for="pemasukan">masukan</label>
+        <div class="flex-col flex">
+          <label for="pemasukan">masukan</label>
           <input id="pemasukan" type="checkbox">
         </div>
-        <div class="flex-col flex ">
-          <label class="" for="pengeluaran">keluaran</label>
+        <div class="flex-col flex">
+          <label for="pengeluaran">keluaran</label>
           <input id="pengeluaran" type="checkbox">
         </div>
       </div>
@@ -69,7 +68,59 @@
     </main>
   </div>
 
-  <div class="w-20 h-20 bg-sky-500 mx-auto mt-64 rounded-lg hover:bg-purple-600 hover:rotate-45 transition hover:mt-8"></div>
+  <canvas id="myChart" style="width:100%;max-width:600px"></canvas>
+
+  <script>
+    const ctx = document.getElementById("myChart").getContext("2d");
+
+    const xValues = [100, 200, 300, 400, 500, 600, 700, 800, 900, 1000];
+
+    const gradientRed = ctx.createLinearGradient(0, 0, 0, 400);
+    gradientRed.addColorStop(0, 'rgba(255, 0, 0, 0.5)');
+    gradientRed.addColorStop(1, 'rgba(255, 0, 0, 0.1)');
+
+    const gradientGreen = ctx.createLinearGradient(0, 0, 0, 400);
+    gradientGreen.addColorStop(0, 'rgba(0, 255, 0, 0.5)');
+    gradientGreen.addColorStop(1, 'rgba(0, 255, 0, 0.1)');
+
+    const gradientBlue = ctx.createLinearGradient(0, 0, 0, 400);
+    gradientBlue.addColorStop(0, 'rgba(0, 0, 255, 0.5)');
+    gradientBlue.addColorStop(1, 'rgba(0, 0, 255, 0.1)');
+
+    new Chart(ctx, { 
+      type: "line",
+      data: {
+        labels: xValues,
+        datasets: [{ 
+          data: [860, 1140, 1060, 1060, 1070, 1110, 1330, 2210, 7830, 2478],
+          borderColor: "red",
+          fill: true, // Mengaktifkan pengisian
+          backgroundColor: gradientRed, // Menggunakan gradien
+          pointRadius: 2, // mengatur ukuran lingkaran point
+          borderWidth: 1, // mengatur ukuran garis diagra
+          lineTension: 0 // mengatur  ukuran sudut garis
+        }, { 
+          data: [1600, 1700, 1700, 1900, 2000, 2700, 4000, 5000, 6000, 7900],
+          borderColor: "green",
+          fill: true,
+          backgroundColor: gradientGreen, // Menggunakan gradien
+          pointRadius: 2, // mengatur ukuran lingkaran point
+          borderWidth: 1, // mengatur ukuran garis diagra
+          lineTension: 0 // mengatur  ukuran sudut garis
+        }, { 
+          data: [300, 700, 2000, 5000, 6000, 4000, 2000, 1000, 200, 100],
+          borderColor: "blue",
+          fill: true,
+          backgroundColor: gradientBlue, // Menggunakan gradien
+          pointRadius: 2, // mengatur ukuran lingkaran point
+          borderWidth: 1, // mengatur ukuran garis diagra
+          lineTension: .43 // mengatur  ukuran sudut garis
+        }]
+      },
+      options: {
+        legend: { display: false }
+      }
+    });
+  </script>
 </body>
 </html>
-
