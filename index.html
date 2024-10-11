@@ -477,7 +477,7 @@
         <a>
           <span>saldo</span>
           <div class="flex gap-1">
-            <span><i class="bi bi-eye-slash-fill panon"></i></span>
+            <span><i class="bi bi-eye-fill panon"></i></span>
             <div class="relative">
               <div class="flex font-bold text-1xl">
                 <span class="bi bi-dot"></span>
@@ -486,7 +486,7 @@
                 <span class="bi bi-dot"></span>
               </div>
               <div class="wadah-saldo absolute top-0 transition duration-100 hidden">
-                <span class="saldo bg-white absolute top-0"></span>
+                <span class="saldo bg-green-500 absolute top-0"></span>
               </div>
             </div>
           </div>
@@ -598,15 +598,14 @@
       }
     }
 
-
     const panon = document.querySelector('.panon')
     panon.addEventListener('click', () => {
-      panon.classList.toggle('bi-eye-slash-fill');
       panon.classList.toggle('bi-eye-fill');
+      panon.classList.toggle('bi-eye-slash-fill');
 
       // const nextElement = panon.parentElement.nextElementSibling;
       const wadah_saldo = document.querySelector('.wadah-saldo')
-      if (panon.classList.contains('bi-eye-fill') && !panon.classList.contains('bi-eye-slash-fill')) {
+      if (!panon.classList.contains('bi-eye-fill') && panon.classList.contains('bi-eye-slash-fill')) {
         wadah_saldo.style.display = 'block'; // Menyembunyikan elemen
         // wadah_saldo.innerHTML = 'TERSEMBUYI';
       } else {
